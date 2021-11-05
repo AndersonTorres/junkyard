@@ -1,0 +1,713 @@
+# -*- mode: org; coding: utf-8-unix; fill-column: 80 -*-
+
+* Fascículo 02 - Análise de Expressões
+
+  Se você leu o documento introdutório desta série, então já sabe do que estamos
+  falando. Você  também já deve ter  copiado o berço  para o seu Turbo  Pascal e
+  compilado o mesmo. Então devemos estar prontos para prosseguir.
+
+  O propósito deste  artigo é aprendermos a como analisar  e traduzir expressões
+  matemáticas. O que gostaríamos de ver como  saída é uma série de instruções em
+  assembly que realizam as ações desejadas. Para os propósitos de definição, uma
+  expressão é o lado direito de uma equação, como em
+
+  #+begin_example
+    x = 2*y + 3/(4*z) 
+  #+end_example
+
+  Neste início, levarei as coisas em passos bem pequenos, para que os iniciantes
+  não fiquem  totalmente perdidos. Também há  algumas lições muito boas  a serem
+  aprendidas logo cedo, as quais nos  servirão mais tarde. Para os leitores mais
+  experientes: continuem comigo. Vamos prosseguir mais em breve.
+
+** Dígitos Simples
+
+   Mantendo o lema  da série (KISS, lembra?), vamos começar  com o absolutamente
+   mais simples caso  que podemos pensar. Para mim, é  uma expressão consistindo
+   de um dígito somente.
+
+   Antes de  começar a codificar, assegure-se  de ter uma cópia-base  do "berço"
+   que  te dei  da última  vez.  Nós a  usaremos em  outros experimentos.  Então
+   adicione este código:
+
+   #+begin_src pascal
+     {---------------------------------------------------------------}
+     { Parse and Translate a Math Expression }
+
+     procedure Expression;
+     begin
+        EmitLn('MOVE #' + GetNum + ',D0')
+     end;
+     {---------------------------------------------------------------}
+   #+end_src
+
+   E adicione a linha ="Expression;"= ao programa principal, de tal forma que se
+   leia:
+
+   #+begin_src pascal
+     {---------------------------------------------------------------}
+     begin
+        Init;
+        Expression;
+     end.
+     {---------------------------------------------------------------}
+   #+end_src
+
+   Agora execute  o programa. Tente  um dígito  simples como entrada.  Você deve
+   conseguir  uma  linha  de  saída  em assembly.  Agora  tente  qualquer  outro
+   caractere como entrada, e você  verá o analisador reportar apropriadamente um
+   erro.
+
+   *Parabéns!* Você acabou de fazer um tradutor que funciona!
+
+   OK,  eu  concedo  que  ele  é  bastante limitado.  Mas  não  o  descarte  tão
+   despreocupadamente.  Este pequeno  "compilador" faz,  em uma  escala bastante
+   limitada,  exatamente o  que qualquer  compilador grande  faz: ele  reconhece
+   instruções legais na "linguagem de entrada" que definimos, e produz código de
+   máquina  executável,   apropriado  para  montagem  em   formato  objeto.  Tão
+   importante quanto, ele reconhece corretamente  instruções que não são legais,
+   e exibe  uma mensagem de  erro significativa.  Poderíamos pedir por  mais que
+   isso? Enquanto expandirmos  nosso analisador, é bom que  garantamos que estas
+   duas características sempre permaneçam verdadeiras.
+
+   Existem   outras   características   desde   pequeno   programa   dignas   de
+   menção. Primeiro,  você pode  ver que  não separamos a  geração de  código da
+   análise. Assim que o analisador sabe o que queremos, ele gera o código objeto
+   diretamente. Em um compilador real, é  claro. as leituras de =GetChar= viriam
+   de um arquivo do disco, e as  escritas para outro arquivo do disco, mas desta
+   maneira é muito mais fácil lidar enquanto estamos fazendo experimentos.
+
+   Note também  que uma expressão deve  deixar seu resultado em  algum lugar. Eu
+   escolhi o registrador =D0=. Eu poderia ter feito algumas outras escolhas, mas
+   esta faz sentido.
+
+** Expressões Binárias
+
+   Agora   que  temos   isso  no   cinto  de   utilidades,  vamos   divergir  um
+   pouco. Admitidamente, uma "expressão" consistindo  de apenas um caractere não
+   irá suprir nossas necessidades por muito tempo, então vamos ver o que podemos
+   fazer para estendê-lo. Suponha que desejemos lidar com expressões da forma
+
+   - =1+2=
+   - =4-3=
+   - ou, em  geral, =<term>  +/- <term>=  (isto é  um pouco  de Forma  Normal de
+     Backus-Naur, ou BNF.)
+
+   Para fazer isto, precisamos de um procedimento que reconhece um termo e deixa
+   o seu resultado  em algum lugar, e  outro que reconhece e  distingue entre um
+   =+= e um =-=, e gera o  código apropriado. Mas se =Expression= vai deixar seu
+   resultado em  D0, onde =Term= deve  deixar seu resultado? Resposta:  no mesmo
+   lugar. Teremos que salvar o primeiro resultado de =Term= em algum lugar antes
+   de pegar o próximo.
+
+   OK, basicamente o  que queremos fazer é  ter o procedimento =Term=  que faz o
+   mesmo que =Expression= estava fazendo  antes. Então renomeemos o procedimento
+   =Expression= para =Term=, e escrevemos esta nova versão de =Expression=:
+
+   #+begin_src pascal
+     {---------------------------------------------------------------}
+     { Parse and Translate an Expression }
+
+     procedure Expression;
+     begin
+        Term;
+        EmitLn('MOVE D0,D1');
+        case Look of
+         '+': Add;
+         '-': Subtract;
+        else Expected('Addop');
+        end;
+     end;
+     {--------------------------------------------------------------}
+   #+end_src
+
+   A seguir, logo acima de Expression insira estes dois procedimentos
+
+   #+begin_src pascal
+     {--------------------------------------------------------------}
+     { Recognize and Translate an Add }
+
+     procedure Add;
+     begin
+        Match('+');
+        Term;
+        EmitLn('ADD D1,D0');
+     end;
+
+
+     {-------------------------------------------------------------}
+     { Recognize and Translate a Subtract }
+
+     procedure Subtract;
+     begin
+        Match('-');
+        Term;
+        EmitLn('SUB D1,D0');
+     end;
+     {-------------------------------------------------------------}
+   #+end_src                              
+
+   Quando finalizarmos com essa parte, a ordem das rotinas deverá ser:
+
+   - =Term= (antiga =Expression=)
+   - =Add=
+   - =Subtract=
+   - =Expression=
+
+   Agora execute o programa. Tente qualquer combinação que puder pensar de dois
+   dígitos separados, separados por =+= ou =-=. Você deve obter uma série de
+   quatro instruções assembly a cada rodada. Agora tente algumas expressões com
+   erros deliberados nelas. O analisador captura os erros?
+
+   Observe o código objeto gerado. Existem duas observações que podemos
+   fazer. Primeiro, o código gerado não é algo que faríamos nós mesmos. A
+   sequência 
+
+   #+begin_src asm
+     MOVE #n,D0
+     MOVE D0,D1
+   #+end_src
+
+   é ineficiente. Se fôssemos escrever este código na mão, provavelmente
+   carregaríamos o dado diretamente em =D1=.
+
+   Existe uma mensagem  aqui: código gerado pelo nosso parser  é menos eficiente
+   que o  código que poderíamos  escrever na  mão.  Acostume-se.  Isto  será uma
+   constante ao longo da série. Isto  é verdadeiro para todos os compiladores em
+   alguma extensão.   Cientistas de computação  devotaram vidas inteiras  para a
+   questão da  otimização de código,  e de fato há  coisas que podem  ser feitas
+   para melhorar  a qualidade  do código  gerado.  Alguns  compiladores otimizam
+   muito bem, mas existe um preço alto a  se pagar em complexidade, e esta é uma
+   batalha perdida de qualquer forma. Provavelmente nunca existirá um tempo onde
+   um  bom programador  assembly não  consiga  superar um  compilador. Antes  de
+   encerrar esta seção, eu irei  brevemente mencionar algumas formas pelas quais
+   podemos realizar um pouco de otimização,  só para mostrar que podemos de fato
+   melhorar as coisas sem muito problema.  Mas note, estamos aqui para aprender,
+   não  para ver  o quão  ajustado podemos  fazer o  código objeto.  Por ora,  e
+   realmente  ao longo  desta  série de  artigos,  vamos cuidadosamente  ignorar
+   otimização e nos concentrar em fazer um código que funcione.
+
+   Falando nisso, nosso código não funciona! Está errado! Da forma que as coisas
+   estão correndo agora,  o processo de substração subtrai =D1=  (que continha o
+   primeiro argumento) de =D0= (que continha  o segundo). Este é o jeito errado,
+   então acabamos com  o sinal errado para o resultado.  Então vamos consertar o
+   procedimento =Subtract= com uma mudança de sinal, de forma que se leia
+
+   #+begin_src pascal
+     {-------------------------------------------------------------}
+     { Recognize and Translate a Subtract }
+
+     procedure Subtract;
+     begin
+        Match('-');
+        Term;
+        EmitLn('SUB D1,D0');
+        EmitLn('NEG D0');
+     end;
+     {-------------------------------------------------------------}
+   #+end_src
+
+   Agora nosso código é ainda menos eficiente,  mas pelo menos ele nos entrega a
+   resposta  correta!  Infelizmente,  as  regras   que  dão  o  significado  das
+   expressões matemáticas  requerem que os  termos em uma expressão  apareçam em
+   uma ordem inconveniente para nós. Novamente,  este é apenas um daqueles fatos
+   da vida que temos que conviver. Este voltará a nos assombrar quando chegarmos
+   na divisão.
+
+   OK, neste ponto temos um analisador que pode reconhecer a soma ou a diferença
+   de dois dígitos. Antes nós só  conseguíamos reconhecer um dígito simples. Mas
+   expressões reais  podem ter  qualquer destes formatos  (ou uma  infinidade de
+   outros). Para começar, volte e rode o programa com a simples linha de entrada
+   =1=.
+
+   Falhou, não?  E por que  deveria funcionar? Nós  apenas acabamos de  dizer ao
+   nosso analisador que as únicas formas de expressão que são legais são aquelas
+   com dois termos. Devemos reescrever  o procedimento =Expression= para ser bem
+   mais  mente-aberta, e  é aqui  que as  coisas  começam a  ter a  forma de  um
+   analisador de verdade.
+
+** Expressões Gerais
+
+   No mundo real,  uma expressão pode consistir de um  ou mais termos, separados
+   por "addops" (=+= ou =-=). Na BNF, isto é escrito
+
+   #+begin_example
+   <expression> ::= <term> [<addop> <term>]*
+   #+end_example
+
+   Podemos acomodar esta definição de expressão  com a adição de um laço simples
+   para o procedimento =Expression=:
+
+   #+begin_src pascal
+     {---------------------------------------------------------------}
+     { Parse and Translate an Expression }
+
+     procedure Expression;
+     begin
+        Term;
+        while Look in ['+', '-'] do begin
+           EmitLn('MOVE D0,D1');
+           case Look of
+            '+': Add;
+            '-': Subtract;
+           else Expected('Addop');
+           end;
+        end;
+     end;
+     {--------------------------------------------------------------}
+   #+end_src
+
+   Agora estamos chegando  em algum lugar! Esta versão lida  com qualquer número
+   de termos,  e só nos  custou duas  linhas extras de  código. À medida  em que
+   prosseguimos,  você descobrirá  que  isto é  característico dos  analisadores
+   top-down. Só se precisa de algumas linhas de código para acomodar extensões à
+   linguagem. É  isto o  que torna nossa  abordagem incremental  possível. Note,
+   também,  quão  bem nosso  código  do  procedimento  =Expression= casa  com  a
+   definição BNF.  Esta também é uma  característica do método. À  medida em que
+   você fica proficiente  nesta abordagem, você descobrirá  que pode transformar
+   uma BNF num analisador tão rápido quanto pode escrever!
+
+   OK, compile a nova versão de nosso analisador, e faça algumas
+   tentativas. Como usual, verifique que o "compilador" pode lidar com qualquer
+   expressão legal, e dará uma mensagem significativa de erro para as ilegais.
+   Bonito, não? Você pode notar que na nossa versão de testes qualquer mensagem
+   de erro vem meio que soterrada no código que já geramos. Mas lembre-se, isto
+   é apenas porque estamos usando o monitor como "arquivo de saída" para esta
+   série de experimentos. Em uma versão de produção, as saídas seriam separadas:
+   uma para o arquivo de saída e outra para a tela.
+
+** Usando a Pilha
+
+   Neste ponto, violarei minha regra de  não inserir complexidade alguma até ser
+   absolutamente necessário, o suficiente para  apontar um problema com o código
+   que estamos gerando.  Como as coisas  estão agora, o analisador usa =D0= como
+   registrador "primário" e =D1= como lugar  para armazenar a soma parcial. Isso
+   funciona bem  por enquanto, porque enquanto  lidamos apenas com addops  =+= e
+   =-=, qualquer novo termo pode ser adicionado assim que for encontrado. Mas em
+   geral isto não é verdadeiro. Considere por exemplo a expressão
+
+   #+begin_example
+     1+(2-(3+(4-5)))
+   #+end_example
+
+   Se colocarmos 1 em =D1=, onde colocaremos o =2=? Dado que uma expressão geral
+   pode ter qualquer grau de complexidade, acabaremos esgotando os registradores
+   rápido demais!
+
+   Felizmente, existe uma solução simples. Como todo microprocessador moderno, o
+   68k tem uma pilha, que é o lugar perfeito para salvar uma quantidade variável
+   de itens.  Então, em vez  de mover  o termo em  =D0= para =D1=,  vamos apenas
+   inseri-lo na  pilha. Para o benefício  daqueles que não são  familiares com a
+   linguagem de montagem do 68k, uma inserção (/push/) é escrita
+
+   #+begin_src asm
+     -(SP)
+   #+end_src
+
+   e uma retirada (/pop/), 
+
+   #+begin_src asm
+     (SP)+
+   #+end_src
+
+   Vamos então modificar o =EmitLn= em =Expression= para que se tenha
+
+   #+begin_src pascal
+     EmitLn('MOVE D0,-(SP)');
+   #+end_src
+
+   e as duas linhas em =Add= e =Subtract= para
+
+   #+begin_src pascal
+     EmitLn('ADD (SP)+,D0')
+   #+end_src
+
+   #+begin_src pascal
+     EmitLn('SUB (SP)+,D0')
+   #+end_src
+
+   respectivamente. Agora  teste o analisador  novamente e certifique-se  de que
+   não o quebramos.
+
+   Mais uma vez, o código gerado é menos eficiente que anteriormente, mas é um
+   passo necessário, como veremos.
+
+** Multiplicação e Divisão
+
+   Agora vamos para  negócios realmente sérios. Como vocês  todos sabem, existem
+   outros operadores  matemáticos além  de addops.  Expressões podem  ter também
+   operações  de  multiplicação e  divisão.  Você  também  sabe que  existe  uma
+   hierarquia   de  operadores   implícita,  uma   precedência,  associada   com
+   expressões, de forma que numa expressão como
+
+   #+begin_example
+   2 + 3 * 4
+   #+end_example
+
+   sabemos que  devemos primeiro  multiplicar e depois  adicionar. (Viu  por que
+   precisamos da pilha?)
+
+   Nos tempos antigos da tecnologia  de compiladores, as pessoas usavam técnicas
+   bastante  complexas  para assegurar  que  a  precedência dos  operadores  era
+   obedecida. Acaba sendo  que, porém, nada disso é necessário.  As regras podem
+   ser acomodadas belamente por nossa técnica  de análise top-down. Até agora, a
+   única  forma que  consideramos  para  um termo  tem  sido  um dígito  decimal
+   simples.
+
+   Mais geralmente, podemos definir um termo como produto de fatores:
+
+   #+begin_example
+   <term> ::= <factor>  [ <mulop> <factor> ]*
+   #+end_example
+
+   O que é um fator? Por ora, é o que o termo costumava ser: um dígito simples.
+   
+   Note a simetria:  um termo tem a  mesma forma de uma  expressão. A propósito,
+   podemos adicionar isto a nosso analisador  com um pouco de cópia e renomeação
+   bem  feitas. Mas,  para  evitar  confusão, a  listagem  abaixo  é o  conjunto
+   completo das  rotinas de análise. (Note  a forma como lidamos  com a reversão
+   dos operandos em =Divide=.)
+
+   #+begin_src pascal
+     {---------------------------------------------------------------}
+     { Parse and Translate a Math Factor }
+
+     procedure Factor;
+     begin
+        EmitLn('MOVE #' + GetNum + ',D0')
+     end;
+
+
+     {--------------------------------------------------------------}
+     { Recognize and Translate a Multiply }
+
+     procedure Multiply;
+     begin
+        Match('*');
+        Factor;
+        EmitLn('MULS (SP)+,D0');
+     end;
+
+
+     {-------------------------------------------------------------}
+     { Recognize and Translate a Divide }
+
+     procedure Divide;
+     begin
+        Match('/');
+        Factor;
+        EmitLn('MOVE (SP)+,D1');
+        EmitLn('DIVS D1,D0');
+     end;
+
+
+     {---------------------------------------------------------------}
+     { Parse and Translate a Math Term }
+
+     procedure Term;
+     begin
+        Factor;
+        while Look in ['*', '/'] do begin
+           EmitLn('MOVE D0,-(SP)');
+           case Look of
+            '*': Multiply;
+            '/': Divide;
+           else Expected('Mulop');
+           end;
+        end;
+     end;
+
+
+
+
+     {--------------------------------------------------------------}
+     { Recognize and Translate an Add }
+
+     procedure Add;
+     begin
+        Match('+');
+        Term;
+        EmitLn('ADD (SP)+,D0');
+     end;
+
+
+     {-------------------------------------------------------------}
+     { Recognize and Translate a Subtract }
+
+     procedure Subtract;
+     begin
+        Match('-');
+        Term;
+        EmitLn('SUB (SP)+,D0');
+        EmitLn('NEG D0');
+     end;
+
+
+     {---------------------------------------------------------------}
+     { Parse and Translate an Expression }
+
+     procedure Expression;
+     begin
+        Term;
+        while Look in ['+', '-'] do begin
+           EmitLn('MOVE D0,-(SP)');
+           case Look of
+            '+': Add;
+            '-': Subtract;
+           else Expected('Addop');
+           end;
+        end;
+     end;
+     {--------------------------------------------------------------}
+   #+end_src
+
+   Que beleza! Um analisador/tradutor quase funcionando em apenas 55 linhas de
+   Pascal! A saída está começando a parecer realmente útil, se você fizer vista
+   grossa para a ineficiência, o que eu assim espero. Lembre-se, não estamos
+   tentando produzir código justo aqui.
+
+** Parênteses
+
+   Podemos arrematar esta parte do analisador  com a adição de parênteses com as
+   expressões matemáticas. Como você sabe, parênteses são um mecanismo de forçar
+   uma determinada precedência de operações. Então, por exemplo, na expressão
+
+   #+begin_example
+   2*(3+4)
+   #+end_example
+
+   os parênteses forçam a adição  antes da multiplicação. Muito mais importante,
+   porém, parênteses  nos dão um  mecanismo para definir expressões  de qualquer
+   grau de complexidade, como
+
+   #+begin_example
+   (1+2)/((3+4)+(5-6))
+   #+end_example
+
+   A  chave para  incorporar  parênteses em  nosso analisador  é  notar que  não
+   importa quão  complicada uma expressão  encerrada em parênteses seja,  para o
+   resto do mundo  ela se parece um mero  fator. Isto é, uma das  formas para um
+   fator é
+
+   #+begin_example
+   <factor> ::= (<expression>)
+   #+end_example
+
+   É aqui que  a recursão dá as  caras. Uma expressão pode conter  um fator, que
+   pode conter outra expressão que contém um fator, e assim ad infinitum.
+
+   Complicado ou  não, podemos  cuidar deste  caso apenas  acrescentando algumas
+   linhas de Pascal ao procedimento =Factor=:
+
+   #+begin_src pascal
+     {---------------------------------------------------------------}
+     { Parse and Translate a Math Factor }
+
+     procedure Expression; Forward;
+
+     procedure Factor;
+     begin
+        if Look = '(' then begin
+           Match('(');
+           Expression;
+           Match(')');
+           end
+        else
+           EmitLn('MOVE #' + GetNum + ',D0');
+     end;
+     {--------------------------------------------------------------}
+   #+end_src
+
+   Note novamente  como foi  fácil estender  o analisador, e  quão bem  o código
+   Pascal casa com a sintaxe BNF.
+
+   Como  usual,  compile   a  nova  versão  e  certifique-se   que  ela  analisa
+   corretamente sentenças legais e alerta  sentenças ilegais com uma mensagem de
+   erro.
+
+** Menos Unário
+
+   Neste  ponto, temos  um analisador  que  pode lidar  com qualquer  expressão,
+   correto? OK, tente esta sentença:
+
+   #+begin_example
+   -1
+   #+end_example
+
+   Epa! Não funcionou, não é mesmo?  O procedimento =Expression= espera que tudo
+   comece com um inteiro,  então ele engasga no sinal de  menos à esquerda. Você
+   descobrirá que =+3= também não vai funcionar, nem algo como
+
+   #+begin_example
+   -(3-2)
+   #+end_example
+
+   Há duas maneiras de resolver este problema. A mais fácil (apesar de não ser a
+   melhor) é inserir um zero imaginário  à esquerda de expressões deste tipo, de
+   forma  que =-3=  torna-se =0-3=.  Podemos  facilmente emendar  isto em  nossa
+   versão existente de =Expression=:
+
+   #+begin_src pascal
+     {---------------------------------------------------------------}
+     { Parse and Translate an Expression }
+
+     procedure Expression;
+     begin
+        if IsAddop(Look) then
+           EmitLn('CLR D0')
+        else
+           Term;
+        while IsAddop(Look) do begin
+           EmitLn('MOVE D0,-(SP)');
+           case Look of
+            '+': Add;
+            '-': Subtract;
+           else Expected('Addop');
+           end;
+        end;
+     end;
+     {--------------------------------------------------------------}
+   #+end_src 
+
+   Eu te  disse que  fazer mudanças é  fácil! Desta vez  nos custou  apenas três
+   linhas de  Pascal. Note a nova  referência à função =IsAddop=.  Dado que este
+   teste  para uma  addop aparece  duas vezes,  eu escolhi  embuti-la numa  nova
+   função. A forma de =IsAddop= deve ser aparente daquela de =IsAlpha=. Eis:
+
+   #+begin_src pascal   
+     {--------------------------------------------------------------}
+     { Recognize an Addop }
+
+     function IsAddop(c: char): boolean;
+     begin
+        IsAddop := c in ['+', '-'];
+     end;
+     {--------------------------------------------------------------}
+   #+end_src
+
+   OK, faça  estas mudanças ao  programa e  recompile. Você deve  também incluir
+   IsAddop em  sua cópia base  do berço. Vamos  precisar dela mais  tarde. Agora
+   tente mais  uma vez  a entrada  -1. Opa! A  eficiência do  código é  bem ruim
+   ... seis linhas de código para carregar uma mera constante ... mas pelo menos
+   está correto. Lembre-se,  nós não estamos tentando substituir  o Turbo Pascal
+   aqui.
+   
+   Neste ponto  nós finalizamos a  estrutura do nosso analisador  de expressões.
+   Esta versão do programa deve analisar  e compilar qualquer expressão que você
+   pensar em atirar nela. O programa ainda está limitado, dado que só pode lidar
+   com fatores  envolvendo dígitos decimais simples.  Mas eu espero que  por ora
+   você comece  a captar  a mensagem que  podemos acomodar  extensões realizando
+   pequenas mudanças no  analisador. Você provavelmente não  ficaria surpreso em
+   ouvir que uma variável ou mesmo uma  chamada de função é apenas outro tipo de
+   fator.
+
+   Na seção  seguinte, eu te  mostrarei quão  fácil é estender  nosso analisador
+   para lidar  com estas coisas  também, e  eu também mostrarei  quão facilmente
+   podemos acomodar números de múltiplos  caracteres e nomes de variáveis. Então
+   você pode ver que não estamos tão distantes de um analisador útil.
+
+** Uma Palavra Sobre Otimização
+
+   Anteriormente nesta  seção eu  prometi dar  a você  algumas dicas  sobre como
+   podemos melhorar a  qualidade do código gerado. Como eu  disse, a produção de
+   código eficiente não é o propósito principal desta série de artigos. Mas você
+   precisa ao  menos saber que  não estamos apenas  perdendo tempo aqui  ... que
+   podemos de fato modificar mais o  analisador a fim de produzir código melhor,
+   sem ter que  jogar fora nada do  que fizemos até aqui. Como  usual, acaba que
+   algumas otimizações  não são  tão difíceis  de fazer  ... elas  apenas exigem
+   algum código extra no analisador.
+
+   Há duas abordagens básicas que podemos tomar:
+
+   - Tentar consertar o código após ser gerado.
+
+     Este é o conceito de "otimização de  buraco de fechadura".  A ideia geral é
+     que  sabemos quais  combinações de  instruções  o compilador  irá gerar,  e
+     sabemos  quais delas  são muito  ruins  (tais como  o código  para -1,  por
+     exemplo). Então tudo o que fazemos  é varrer o código produzido, procurando
+     por estas  combinações, e substituindo-as  por melhores.  É uma  espécie de
+     expansão de  macro feita  de forma  reversa, e um  exercício bem  direto em
+     casamento de padrões.  A única complicação,  realmente, é que pode haver um
+     monte dessas otimizações  para vasculhar. O nome é otimização  de buraco de
+     fechadura  simplesmente  porque  ela  só  olha para  um  grupo  pequeno  de
+     instruções por  vez. Otimização de buraco  de fechadura pode ter  um efeito
+     dramático  na  qualidade do  código,  com  pouca  mudança na  estrutura  do
+     compilador.   Há  um  preço  a  pagar,  porém,  em  tamanho,  desempenho  e
+     complexidade do compilador. Observar todas essas combinações exige um monte
+     de testes IF, cada um deles sendo uma possível fonte de erro. E claro, isso
+     leva tempo.
+
+     Na implementação  clássica de um otimizador  de buraco de fechadura,  ele é
+     feito como um segundo  passo do compilador. O código de  saída é escrito em
+     disco, e daí  o otimizador lê e processa o  arquivo novamente. Como matéria
+     de  fato, você  pode até  mesmo enxergar  que o  otimizador poderia  ser um
+     *programa separado* do compilador propriamente  dito. Dado que o otimizador
+     só observa o código  por um pequeno trecho de instruções  (daí o nome), uma
+     implementação  melhor  seria simplesmente  manter  em  um /buffer/  algumas
+     linhas de saída, e escanear este buffer após cada =EmitLn=.
+
+   - Tentar gerar código melhor já no começo
+
+     Esta  abordagem   nos  chama   a  olhar  por   casos  especiais   antes  de
+     emiti-los. Como um exemplo trivial,  devemos ser capazes de identificar uma
+     constante nula e  emitir um =CLR= em  vez de um =load=, ou  mesmo não fazer
+     nada afinal, como em uma adição de zero por exemplo. Mais perto de casa, se
+     tivéssemos  decidido  reconhecer o  menos  unário  em  =Factor= em  vez  de
+     =Expression=,  poderíamos  tratar  constantes  como  =-1=  como  constantes
+     ordinárias, em  vez de gerá-las  a partir de constantes  positivas. Nenhuma
+     dessas coisas é difícil de lidar...  elas apenas adicionam testes extras ao
+     código, razão pela qual eu não as incluí no nosso programa. Da forma que eu
+     vejo, uma  vez que você  chega ao ponto  de ter um  compilador funcionando,
+     gerando  código útil  que executa,  podemos  sempre voltar  e modificar  as
+     coisas para melhorar o código produzido. É para isso que existem as "Versão
+     2.0" no mundo.
+
+   Existe mais um  tipo de otimização digna de nota,  que parece prometer código
+   bastante compacto sem muita complicação. É minha "invenção" no sentido de que
+   eu não  tenho visto  isso sugerido em  lugar algum, apesar  de que  não tenho
+   ilusões de que seja uma ideia original.
+
+   Esta ideia  é para evitar  um uso tão acentuado  da pilha, realizando  um uso
+   melhor dos registradores  da CPU.  Lembra de quando  estávamos fazendo apenas
+   adições e subtrações, quando usávamos os registradores D0 e D1 em vez de usar
+   a pilha?  Isso funcionou  porque com  apenas duas  operações a  "pilha" nunca
+   precisou de mais do que duas entradas.
+
+   Bem, o 68000 tem oito registradores de dados. Por que não utilizá-los como
+   uma "pilha privada"? A chave é reconhecer que, em qualquer ponto de seu
+   processamento, o analisador *sabe* quantos itens há na pilha, portanto ele
+   pode de fato gerenciá-la apropriadamente. Podemos definir um ponteiro para a
+   pilha privada que mantém o registro de em que nível de pilha estamos, e
+   endereça o registrador correspondente. O procedimento =Factor=, por exemplo,
+   não faria o dado ser carregado no registrador D0, mas em qualquer local onde
+   o registrador atual de "topo de pilha" estivesse.
+
+   O que estamos efetivamente fazendo é substituir a pilha de RAM da CPU por uma
+   pilha  localmente gerenciada  feita  de registradores.   Para  a maioria  das
+   expressões, o nível  da pilha nunca excedeu oito, então  conseguiremos um bom
+   código como resultado. É claro, nós precisamos também lidar com aqueles casos
+   estranhos  onde  o  nível  da  pilha  excede oito,  mas  isso  também  não  é
+   problema.  Nós simplesmente  deixamos  a  pilha esparramar  para  a pilha  de
+   memória da CPU. Para  níveis maiores que oito, o código não é  pior que o que
+   estamos gerando  agora, e  para níveis menores  que oito  é consideravelmente
+   melhor.
+
+   Que fique  registrado, eu implementei  esse conceito, apenas  para certificar
+   que ele  funciona antes de mencionar  para vocês. Sim, funciona.  Na prática,
+   acaba que você não usa totalmente todos  os oito níveis ... Você precisa pelo
+   menos de  um registrador  livre para  reverter a ordem  dos operandos  para a
+   divisão  (ah,  como  eu  queria  que  o 68000  tivesse  um  XTHL  que  nem  o
+   8080!). Para expressões que incluem  chamadas de função, também precisamos de
+   um  registrador reservado  para elas.  Ainda assim,  é uma  bela melhoria  em
+   tamanho de código para a maioria das expressões.
+
+   Então,  veja você,  obter  código  melhor não  é  tão  difícil, mas  adiciona
+   complexidade para  nosso tradutor,  complexidade que  podemos deixar  de lado
+   neste ponto. Por  esta razão, eu sugiro fortemente que  continuemos a ignorar
+   questões  de eficiência  pelo resto  da  série, seguros  do conhecimento  que
+   podemos  de fato  melhorar a  qualidade do  código sem  jogar fora  o que  já
+   fizemos.
+
+   Na lição seguinte, eu vou mostrar como lidar com fatores variáveis e chamadas
+   de função. Eu também  vou mostrar quão fácil é lidar  com tokens de múltiplos
+   caracteres e espaço em branco embutido.
