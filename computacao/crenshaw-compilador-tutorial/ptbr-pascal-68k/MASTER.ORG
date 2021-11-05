@@ -1,0 +1,5 @@
+# -*- mode: org; coding: utf-8-unix; fill-column: 80 -*-
+
+#+language: pt_BR
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="static/style.css" />
+#+title: Vamos Fazer um Compilador! por Jack Crenshaw
