@@ -1,0 +1,382 @@
+\chapter{Sequências de Inteiros}
+
+\quoting{Uma peculiaridade da aritmética superior é a grande dificuldade que
+  geralmente se tem experimentado ao demonstrar simples teoremas gerais que são
+  sugeridos muito naturalmente pela evidência numérica.}{Harold Davenport}
+
+\textbf{G 1. } Uma sequência de inteiros $\{a_n\}_{n \ge 1}$ é definida por
+$$ a_{0}=0, \; a_{1}=1, \; a_{n+2}=2a_{n+1}+a_{n} $$ Mostre que $2^k$ é divisor
+de $a_n$ se e somente se $2^k$ é divisor de $n$. \source{IMO Short List 1988}
+
+\textbf{G 2. } A sequência de Fibonacci $\{F_n\}$ é definida por
+$$ F_{1}=1, \; F_{2}=1, \; F_{n+2}=F_{n+1}+F_{n}. $$ Mostre que
+$\gcd (F_{m}, F_{n})=F_{\gcd (m, n)}$ para todo $m, n \in
+\mathbb{N}$. \source{[Nv pp.58]}
+
+\textbf{G 3. } A sequência de Fibonacci $\{F_n\}$ é definida por
+$$ F_{1}=1, \; F_{2}=1, \; F_{n+2}=F_{n+1}+F_{n}. $$ Mostre que
+$F_{mn-1}-F_{n-1}^{m}$ é múltiplo de $F_{n}^2$ para todo $m \ge 1$ e
+$n>1$. \source{[Nv pp.74]}
+
+\textbf{G 4. } A sequência de Fibonacci $\{F_n\}$ é definida por
+$$ F_{1}=1, \; F_{2}=1, \; F_{n+2}=F_{n+1}+F_{n}. $$ Mostre que
+$F_{mn}-F_{n+1}^{m} +F_{n-1}^{m}$ é múltiplo de $F_{n}^3$ para todo $m \ge 1$ e
+$n>1$. \source{[Nv pp.75]}
+
+\textbf{G 5. } A sequência de Fibonacci $\{F_n\}$ é definida por
+$$ F_{1}=1, \; F_{2}=1, \; F_{n+2}=F_{n+1}+F_{n}. $$ Mostre que
+$F_{2n-1}^2 +F_{2n+1}^{2} +1=3F_{2n-1}F_{2n+1}$ para todo $n \ge
+1$. \source{[Eb1 pp.21]}
+
+\textbf{G 6. } Prove que nenhum número de Fibonacci pode ser fatorado em um
+produto de dois números de Fibonacci menores, cada um deles maior que 1.
+\source{MM, Problem 1390, J. F. Stephany}
+
+\textbf{G 7. } Seja $m$ um inteiro positivo. Defina a sequência
+$\{a_n\}_{n \ge 0}$ por
+$$ a_{0}=0, \; a_{1}=m, \; a_{n+1}=m^2 a_{n} -a_{n-1}. $$ Prove que um par
+ordenado $(a, b)$ de inteiros não-negativos, com $a \le b$, dá solução para a
+equação $$ \frac{a^2 + b^2}{ab + 1} = m^2 $$ se e somente se if $(a, b)$ é da
+forma $(a_n, a_{n+1})$ para algum $n \ge 0$. \source{Canada 1998}
+
+\textbf{G 8. } Sejam $\{x_n\}_{n\ge0}$ e $\{y_n\}_{n\ge0}$ duas sequências
+definidas recursivamente como se segue:
+$$ x_{0}=1, \; x_{1}=4, \; x_{n+2}=3 x_{n+1} -x_{n},$$
+$$ y_{0}=1, \; y_{1}=2, \; y_{n+2}=3 y_{n+1} -y_{n}.$$
+
+\begin{enumerate}
+\item Prove que ${x_{n}}^2 -5{y_{n}}^2 +4=0$ para todos os inteiros
+  não-negativos.
+\item Suponha que $a$, $b$ são dois inteiros positivos tais que $a^2 -5b^2
+  +4=0$. Prove que existe um inteiro não-negativo $k$ tal que $a=x_k $ e
+  $b=y_{k}$.
+\end{enumerate} \source{Vietnam 1999}
+
+\textbf{G 9. } Seja $\{u_{n}\}_{n \ge 0}$ uma sequência de inteiros positivos
+definida por $$ u_{0} = 1, \;u_{n+1} = au_{n} + b, $$ onde $a, b \in
+\mathbb{N}$. Prove que para qualquer escolha de $a$ e $b$, a sequência
+$\{u_{n}\}_{n \ge 0}$ contém infinitos números compostos. \source{Germany 1995}
+
+\textbf{G 10. } A sequência $\{y_{n}\}_{n \ge 1}$ é definida por
+$$ y_{1}=y_{2}=1,\;\; y_{n+2} = (4k-5)y_{n+1} - y_n + 4-2k. $$
+Determine todos os inteiros $k$ tais que cada termo desta sequência é
+quadrado perfeito. \source{Bulgaria 2003}
+
+\textbf{G 11. } Seja a sequência $\{K_{n}\}_{n \ge 1}$ definida por
+$$ K_{1}=2, K_{2}=8, K_{n+2} =3K_{n+1}-K_{n}+5(-1)^{n}. $$
+Prove que se $K_{n}$ é primo, então $n$ deve ser potência de $3$.
+\source{MM, Problem 1558, Mansur Boase}
+
+\textbf{G 12. } A sequência $\{a_{n}\}_{n \ge 1}$ é definida por
+$$ a_{1}=1, \; a_{2}=12, \; a_{3}=20, \; a_{n+3} = 2a_{n+2}+2a_{n+1}-a_{n}. $$
+Prove que $1+4a_{n}a_{n+1}$ é um quadrado para todo $n \in \mathbb{N}$.
+\source{[Ae, pp. 226]}
+
+\textbf{G 13. } A sequência $\{x_{n}\}_{n \ge 1}$ é definida por
+$$x_{1}=x_{2}=1, \; x_{n+2} = 14x_{n+1}-x_{n}-4. $$ Prove que $x_n$ é sempre
+quadrado perfeito. \source{[Rh2, pp. 197]}
+
+\textbf{G 14. } A sequência de Fibonacci $\{F_n\}$ é definida por
+$$ F_{1}=1, \; F_{2}=1, \; F_{n+2}=F_{n+1}+F_{n}. $$
+Sejam $A,B$ inteiros positivos tais que $A^19|B^93$ e $B^19|A^93$. Mostre que
+$(AB)^{F_n}|(A^4 + B^8)^{F_{n+1}}$ para todos $n\ge1$. \source{APMC 1993}
+
+\textbf{G 15. } Seja $P(x)$ um polinômio não nulo de coeficientes inteiros. Seja
+$a_{0}=0$ e para $i \ge 0$ defina $a_{i+1}=P(a_{i})$. Mostre que
+$\gcd ( a_{m}, a_{n})=a_{ \gcd (m, n)}$ para todo $m, n \in \mathbb{N}$.
+\source{}
+
+\textbf{G 16. } Uma sequência de inteiros $\{a_n\}_{n \ge 1}$ é definida por
+$$ a_{1}=1, \; a_{n+1}=a_{n}+\lfloor \sqrt{a_{n}}\rfloor. $$
+Mostre que $a_n$ é quadrado se e somente se $n=2^k +k-2$ para algum
+$k \in \mathbb{N}$.
+\source{AMM, Problem E2619, Thomas C. Brown}
+
+\textbf{G 17. } Seja $f(n)=n+\lfloor \sqrt{n}\rfloor $. Prove que, para cada
+inteiro positivo $m$, a sequência
+$$ m, f(m), f(f(m)), f(f(f(m))), \cdots $$
+contém pelo menos um quadrado de um inteiro. \source{Putnam 1983}
+
+\textbf{G 18. } A sequência $\{a_n\}_{n \ge 1}$ é definida por
+$$ a_{1}=1, \; a_{2}=2, \; a_{3}=24, \; a_{n}=\frac{ 6a_{n-1}^2 a_{n-3}-8a_{n-1}
+  a_{n-2}^2 }{a_{n-2}a_{n-3}} \ \ \ \ (n\ge4). $$ Mostre que $a_n$ é um inteiro
+para todo $n$, e mostre que $n|a_n$ para cada $n\in\mathbb{N}$. \source{Putnam
+  1999}
+
+\textbf{G 19. } Mostre que existe uma única sequência de inteiros $\{a_n\}_{n
+  \ge 1}$ com
+$$ a_{1}=1, \; a_{2}=2, \; a_{4}=12, \; a_{n+1}a_{n-1}=a_{n}^2 \pm1 \;\; (n \ge
+2). $$ \source{United Kingdom 1998}
+
+\textbf{G 20. } A sequência $\{a_n\}_{n \ge 1}$ é definida por
+$$ a_{1}=1, \; a_{n+1}=2a_{n}+\sqrt{3a_n^{2}+1}.$$
+Mostre que $a_n$ é um inteiro para cada $n$. \source{Serbia 1998}
+
+\textbf{G 21. } Prove que a sequência $\{y_n\}_{n \ge 1}$ definida por
+$$y_{0}=1, \; y_{n+1}= \frac{1}{2} \left( 3y_{n}+\sqrt{5y_n^{2}-4} \right)$$
+consiste somente de inteiros. \source{United Kingdom 2002}
+
+\textbf{G 22. } Uma sequência de inteiros $\{a_n\}_{n \ge 1}$ é definida por
+$$ a_{1}=2, \; a_{n+1}=\left\lfloor \frac{3}{2} a_{n} \right\rfloor.$$
+Mostre que ela contém infinitos inteiros pares e infinitos inteiros ímpares.
+\source{Putnam 1983}
+
+\textbf{G 23. } Uma sequência de inteiros satisfaz $a_{n+1}={a_n}^3+1999$.
+Mostre que ela contém no máximo um quadrado. \source{APMC 1999}
+
+\textbf{G 24. } Seja $a_{1}={11}^{11}$, $a_{2}={12}^{12}$, $a_{3}={13}^{13}$, e
+$$ a_{n}= \vert a_{n-1} -a_{n-2} \vert + \vert a_{n-2} -a_{n-3} \vert, n \ge 4. 
+$$ Determine $a_{{14}^{14}}$. \source{IMO Short List 2001 N3}
+
+\textbf{G 25. } Seja $k$ um inteiro positivo fixo. A sequência
+$\{a_{n}\}_{n\ge1}$ é definida por
+$$ a_{1}=k+1, a_{n+1}=a_{n}^{2}-ka_{n}+k.$$
+Mostre que se $m \neq n$, então os números $a_{m}$ e $a_{n}$ são primos entre
+si. \source{Poland 2002}
+
+\textbf{G 26. } A sequência $\{x_n\}$ é definida por
+$$ x_{0} \in [0, 1], \; x_{n+1}=1-\vert 1-2 x_{n} \vert. $$ 
+Prove que a sequência é periódica se e somente se $x_{0}$ é irracional.
+\source{[Ae pp.228]}
+
+\textbf{G 27. } Sejam $x_{1}$ e $x_{2}$ inteiros positivos primos entre si. Para
+$n \ge 2$, defina $x_{n+1}=x_{n}x_{n-1}+1$.
+
+\begin{enumerate}
+\item Prove que para todo $i>1$, existe $j>i$ tal que ${x_{i}}^{i}$ é divisor de
+  ${x_{j}}^{j}$. 
+\item É verdade que $x_{1}$ deve ser divisor de ${x_{j}}^{j}$ para algum $j>1$?
+\end{enumerate} \source{IMO Short List 1994 N6}
+
+\textbf{G 28. } Para um dado inteiro positivo $k$ denote o quadrado da soma de
+seus dígitos por $f_{1}(k)$ e seja $f_{n+1}(k)=f_{1}(f_{n}(k))$. Determine o
+valor de $f_{1991}(2^{1990})$. \source{IMO Short List 1990 HUN1}
+
+\textbf{G 29. } Defina a sequência $\{a_i\}$ por $a_1=3$ e $a_{i+1}=3^{a_i}$
+para $i\geq 1$. Que inteiros entre $00$ e $99$ inclusive ocorrem como os dois
+últimos dígitos da expansão decimal de infinitos $a_i$? \source{Putnam 1985/A4}
+
+\textbf{G 30. } Uma sequência de inteiros, $\{a_{n}\}_{n \ge 1}$ with $a_{1}>0$,
+é definida por
+
+$$ a_{n+1}=\frac{a_{n}}{2} \;\;\; \text{se} \;\; n \equiv 0 \;\; \pmod{4}, $$
+$$ a_{n+1}=3 a_{n} +1 \;\;\; \text{se} \;\; n \equiv 1 \; \pmod{4}, $$
+$$ a_{n+1}=2 a_{n} -1 \;\;\; \text{se} \;\; n \equiv 2 \; \pmod{4}, $$
+$$ a_{n+1}=\frac{a_{n} +1}{4} \;\;\; \text{se} \;\; n \equiv 3 \; \pmod{4}. $$
+
+Prove que existe um inteiro $m$ tal que $a_{m}=1$. \source{CRUX, Problem 2446,
+  Carherine Shevlin}
+
+\textbf{G 31. } Dada uma sequência de inteiros $\{a_n\}_{n \ge 0}$ tal que
+$a_{0}=2$, $a_{1}=3$ e, para todos os inteiros positivos $n \ge 1$,
+$a_{n+1}=2a_{n-1}$ ou $a_{n+1}= 3a_{n} - 2a_{n-1}$. Existe um inteiro positivo
+$k$ tal que $1600 < a_{k} < 2000$? \source{Netherlands 1994}
+
+\textbf{G 32. } Uma sequência com os primeiros dois termos iguais a $1$ e $24$
+respectivamente é definida pela regra a seguir: cada termo subsequente é igual
+ao menor inteiro positivo que ainda não ocorreu na sequência e não é primo com o
+termo anterior. Prove que todos os inteiros positivos aparecem nesta sequência.
+\source{[Tt] Tournament of the Towns 2002 Fall/A-Level}
+
+\textbf{G 33. } Cada termo de uma sequência de números naturais é obtido a
+partir do anterior adicionando a ele seu maior dígito. Qual é o maior número de
+termos ímpares sucessivos em tal sequência? \source{[Tt] Tournament of the Towns
+  2003 Spring/O-Level}
+
+\textbf{G 34. } Na sequência $1, 0, 1, 0, 1, 0, 3, 5, \cdots$, cada membro a
+partir do sexto é igual ao último dígito da soma dos seis membros que o
+precedem. Prove que nesta sequência não é possível encontrar o seguinte grupo de
+seis membros consecutivos: $$ 0, 1, 0, 1, 0, 1 $$ \source{[JtPt, pp. 93] Russia
+  1984}
+
+\textbf{G 35. } Sejam $\, a$, e $b \,$ inteiros positivos ímpares. Defina a
+sequência $\{f_n\}_{n\ge 1}$ por $\, f_1 = a,$ $f_2 = b, \,$ e sendo $\, f_n \,$
+para $\, n \geq 3 \,$ o maior divisor ímpar de $\, f_{n-1} + f_{n-2}$. Mostre
+que $\, f_n \,$ é constante para $\, n \,$  suficientemente grande, e determine
+este eventual valor como função de $\, a \,$ e $\, b$. \source{USA 1993}
+
+\textbf{G 36. } Defina
+
+$$\begin{cases}
+  d(n, 0)=d(n, n)=1&(n \ge 0),\\ 
+  md(n, m)=md(n-1, m)+(2n-m)d(n-1,m-1)&(0<m<n).
+\end{cases}$$ 
+
+Prove que $d(n, m)$ são inteiros para todos $m, n \in \mathbb{N}$. 
+\source{IMO Long List 1987 (GB)}
+
+\textbf{G 37. } Seja $k$ um inteiro positivo dado. A sequência $x_n$ é definida
+como se segue: $x_1 =1$ e $x_{n+1}$ é o menor inteiro positivo que não está em
+$\{x_{1}, x_{2},..., x_{n}, x_{1}+k, x_{2}+2k,..., x_{n}+nk \}$. Mostre que
+existe um número real $a$ tal que $x_n = \lfloor an\rfloor$ para todos os
+inteiros positivos $n$. \source{Vietnam 2000}
+
+\textbf{G 38. } Seja $\{a_{n}\}_{n \ge 1}$ uma sequência de inteiros positivos
+tal que
+$$ 0 < a_{n+1}-a_{n} \le 2001 \;\; \text{para todo} \;\; n \in \mathbb{N}. $$ 
+Mostre que existem infinitos pares $(p, q)$ de inteiros positivos tais que $p>q$
+e $a_{q} \; \vert \; a_{p}$. \source{Vietnam 1999}
+
+\textbf{G 39. } Seja $p$ um inteiro ímpar $p$ tal que $2h \neq 1 \; \pmod{p}$
+para todo $h \in \mathbb{N}$ com $h< p-1$, e seja $a$ um inteiro par com  $a \in
+] \tfrac{p}{2}, p [$. A sequência $\{a_n\}_{n \ge 0}$ é definida por $a_{0}=a$,
+$a_{n+1}=p -b_{n}$ \; $(n \ge 0)$, onde $b_{n}$ é o maior divisor ímpar de
+$a_n$. Mostre que a sequência $\{a_n\}_{n \ge 0}$ é periódica, e encontre seu
+período mínimo (positivo). \source{Poland 1995}
+
+\textbf{G 40. } Seja $p \ge 3$ um número primo. A sequência
+$\{a_{n}\}_{n \ge 0}$ é definida por $a_{n}=n$ para todo $0 \le n \le p-1$, e
+$a_{n}=a_{n-1}+a_{n-p}$ para todo $n \ge p$. Compute $a_{p^3} \; \pmod{p}$.
+\source{Canada 1986}
+
+\textbf{G 41. } Seja $\{u_{n}\}_{n \ge 0}$ uma sequência de inteiros
+satisfazendo a relação de recorrência $u_{n+2}=u_{n+1}^2 -u_{n}$ $(n \in
+\mathbb{N})$. Suponha que $u_{0}=39$ e $u_{1}=45$. Prove que $1986$ é divisor de
+infinitos termos desta sequência. \source{China 1991}
+
+\textbf{G 42. } A sequência $\{a_{n}\}_{n \ge 1}$ é definida por $a_{1}=1$ e
+$$ a_{n+1} = \frac{a_{n}}{2}+ \frac{1}{4a_{n}} \; (n \in \mathbb{N}). $$ 
+Prove que $\sqrt{\frac{2}{2a_{n}^2 -1}}$ é um inteiro positivo para $n>1$.
+\source{MM, Problem 1545, Erwin Just}
+
+\textbf{G 43. } Seja $k$ um inteiro positivo. Prove que existe uma sequência
+infinita monótona crescente de inteiros $\{a_{n}\}_{n \ge 1}$ tal que
+$$ a_{n} \; \text{é divisor de} \; a_{n+1}^2 +k \;\; \text{e} \;\; a_{n+1} \;
+\text{é divisor de} \; a_{n}^2 +k $$ para todo $n \in \mathbb{N}$. 
+\source{[Rh,pp. 276]}
+
+\textbf{G 44. } Cada termo de uma sequência infinita de números naturais é
+obtido a partir do termo anterior adicionando a ele um de seus dígitos
+não-nulos. Prove que a sequência contém um número par. \source{[Tt] Tournament
+  of the Towns 2002 Fall/O-Level}
+
+\textbf{G 45. } Numa sequência infinita crescente de inteiros positivosm cada
+termo começando do $2002$ - ésimo é divisor da soma de todos os termos
+precedentes. Prove que cada termo a partir de algum termo é igual à soma de
+todos os termos precedentes. \source{[Tt] Tournament of the Towns 2002
+  Spring/A-Level}
+
+\textbf{G 46. } A sequência $\{x_{n}\}_{n \ge 1}$ é definida por
+
+$$ x_{1}=2, x_{n+1} = \frac{2+x_{n}}{1-2x_{n}} \;\; (n \in \mathbb{N}). $$
+
+Prove que
+
+\begin{enumerate}
+\item $x_{n} \not= 0$ para todo $n \in \mathbb{N}$,
+\item $\{x_{n}\}_{n \ge 1}$ não é periódica.
+\end{enumerate} \source{[Ae, pp. 227]}
+
+\textbf{G 47. } A sequência de inteiros $\{ x_{n} \}_{n\ge1}$ é definida como se
+segue:
+$$ x_{1}=1, \;\; x_{n+1}=1+{x_{1}}^{2}+ \cdots + {x_{n}}^{2} \;(n=1,2,3
+\cdots). $$
+
+Prove que não existem quadrados de naturais nesta sequência exceto
+$x_{1}$. \source{(A. Perlin) [Ams, pp. 104]}
+
+\textbf{G 48. } Os primeiros termos da sequência infinita $S$ de dígitos
+decimais são $1$, $9$, $8$, $2$, e termos seguintes são dados pelo dígito final
+da soma dos quatro termos imediatamente precedentes. Portanto, $S$ começa $1$,
+$9$, $8$, $2$, $0$, $9$, $9$, $0$, $8$, $6$, $3$, $7$, $4$, $\cdots$. Os dígitos
+$3$, $0$, $4$, $4$ aparecem em algum momento consecutivamente em $S$?
+\source{[Rh3, pp. 103]}
+
+\textbf{G 49. } Mostre que a sequência $\{a_{n}\}_{n \ge 1}$ definida por
+$a_{n}=\lfloor n\sqrt{2}\rfloor$ contém um número infinito de potências de
+$2$. \source{IMO Long List 1985 (RO3)}
+
+\textbf{G 50. } Seja $a_{n}$ o último dígito não-nulo na representação decimal
+do número $n!$. A sequência $a_{1}$, $a_{2}$, $a_{3}$, $\cdots$ torna-se
+periódica após um número finito de termos? \source{IMO Short List 1991 P14 (USS
+  2)}
+
+\textbf{G 51. } Seja $\,n>6\,$ um inteiro, e $\,a_{1},a_{2},\ldots,a_{k}\,$
+todos os números naturais menores que $n$ e primos com $n$. Se
+$$ a_{2}-a_{1}=a_{3}-a_{2}=\cdots =a_{k}-a_{k-1}>0, $$
+prove que $\,n\,$ deve ser ou um número primo ou uma potência de
+$\,2$. \source{IMO 1991/2}
+
+\textbf{G 52. } Mostre que se uma progressão aritmética infinita de inteiros
+positivos contém um quadrado e um cubo, então ela deve conter uma sexta
+potência. \source{IMO Short List 1997}
+
+\textbf{G 53. } Prove que existem duas sequências estritamente crescentes
+$a_{n}$ e $b_{n}$ tais que $a_{n}(a_{n} +1)$ é divisor de $b_{n}^2 +1$ para todo
+natural $n$. \source{IMO Short List 1999 N3}
+
+\textbf{G 54. } Seja $\{a_n\}$ uma sequência estritamente crescente de inteiros
+positivos tal que $\gcd(a_i, a_j)=1$ e $a_{i+2}-a_{i+1}>a_{i+1}-a_{i}$. Mostre
+que a série infinita
+$$ \sum^{\infty}_{i=1} \frac{1}{a_i} $$
+converge. \source{Pi Mu Epsilon Journal, Problem 339, Paul Erd\"os}
+
+\textbf{G 55. } Seja $\{n_k\}_{k \ge 1}$ uma sequência de números naturais tal
+que para $i<j$, a representação decimal de $n_i$ não ocorre como os dígitos mais
+à esquerda da representação decimal de $n_j$. Prove que
+$$ \sum^{\infty}_{k=1} \frac{1}{n_k} \le \frac{1}{1} + \frac{1}{2} + \cdots+
+\frac{1}{9}. $$ \source{Iran 1998}
+
+\textbf{G 56. } Uma sequência de inteiros $\{a_n\}_{n \ge 1}$ é dada tal que
+$$ 2^{n}=\sum_{d \vert n} a_d $$ 
+para todo $n \in \mathbb{N}$. Mostre que $a_n$ é múltiplo de $n$ para todo
+$n \in \mathbb{N}$. \source{IMO Short List 1989}
+
+\textbf{G 57. } Seja $q_{0}, q_{1}, \cdots $ uma sequência de inteiros tal que
+\begin{itemize}
+\item para todo $m>n$, $m-n$ é um divisor de $q_{m}-q_{n}$,
+\item $|q_n| \le n^{10} $ para todos os inteiros $n \ge 0$.
+\end{itemize}
+Mostre que existe um polinômio $Q(x)$ satisfazendo $q_{n}=Q(n)$ para todo $n$. \source{Taiwan 1996}
+
+\textbf{G 58. } Seja, $a,b$ inteiros maiores que 2. Prove que existe um inteiro
+positivo $k$ e uma sequência finita $n_1, n_2, \dots, n_k$ de inteiros positivos
+tal que $n_1 = a$, $n_k = b$, e $n_i n_{i+1}$ é múltiplo de $n_i + n_{i+1}$ para
+cada $i$ ($1 \leq i < k$). \source{USA 2002}
+
+\textbf{G 59. } A sequência infinita de 2's e 3's
+\begin{align*} 
+&2,3,3,2,3,3,3,2,3,3,3,2,3,3,2,3,3, \\ 
+&3,2,3,3,3,2,3,3,3,2,3,3,2,3,3,3,2,\dots 
+\end{align*}
+tem a propriedade que, se formarmos uma segunda sequência que anota o número de
+3's entre sucessivos 2's, o resultado é idêntico à sequência dada. Mostre que
+existe um número real $r$ tal que, para todo $n$, o $n$ - ésimo termo da
+sequência é 2 se e somente se $n = 1 + \lfloor rm \rfloor $ para algum inteiro
+não negativo $m$. \source{Putnam 1993/A6}
+
+\textbf{G 60. } A sequência $\{a_{n}\}_{n \ge 1}$ é definida por 
+$$ a_{n} = 1+2^2 +3^3 + \cdots  +n^n. $$ 
+Prove que a sequência contém infinitos números compostos. \source{Russia 1988}
+
+\textbf{G 61. } Um membro de uma progressão aritmética de números naturais é
+quadrado perfeito. Mostre que existem infinitos membros desta sequência tendo
+esta propriedade. \source{Croatia 1994}
+
+\textbf{G 62. } Na sequência $00$, $01$, $02$, $03$, $\cdots$, $99$ os termos
+são rearranjados tal que cada termo é obtido do anterior aumentando ou
+diminuindo um de seus dígitos de $1$ (por exemplo, $29$ pode ser seguido por
+$19$, $39$, ou $28$, mas não por $30$ ou $20$). Qual é o maior número de termos
+que podem permanecer em seus lugares?
+\source{[Tt] Tournament of the Towns 2003 Spring/O-Level}
+
+\textbf{G 63. } Existem inteiros positivos $a_{1}<a_{2}<\cdots<a_{100}$ tais que
+para $2 \le k \le 100$, o menor múltiplo comum de $a_{k-1}$ e $a_{k}$ é maior
+que o menor múltiplo comum de $a_{k}$ e $a_{k+1}$? \source{[Tt] Tournament of
+  the Towns 2001 Fall/A-Level}
+
+\textbf{G 64. } Existem inteiros positivos $a_{1}<a_{2}<\cdots<a_{100}$ tais que
+para $2 \le k \le 100$, o maior divisor comum de $a_{k-1}$ e $a_{k}$ é maior
+que o maior divisor comum de $a_{k}$ e $a_{k+1}$? \source{[Tt] Tournament of
+  the Towns 2001 Fall/A-Level}
+
+\textbf{G 65. } Suponha que $a$ e $b$ são reais distintos tais que $$ a-b, \;
+a^{2}-b^{2}, \; \cdots, \;  a^{k}-b^{k}, \; \cdots $$ são todos inteiros. Mostre
+que $a$ e $b$ são inteiros. \source{[GML, pp. 173]}
+
+%%% Local Variables:
+%%% mode: latex
+%%% coding: utf-8-unix
+%%% fill-column: 80
+%%% TeX-master: "MASTER"
+%%% End:

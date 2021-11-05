@@ -1,0 +1,415 @@
+\chapter{Teoria Combinatória dos Números}
+
+\quoting{Na grande matemática existe um grau alto de inesperado, combinado à
+  inevitabilidade e economia.}{Godfrey Harold Hardy}
+
+\textbf{I 1. } Seja $n$ um inteiro com $n \ge 2$. Mostre que $\phi(2^{n}-1)$ é
+múltiplo de $n$. \source{}
+
+\textbf{I 2. } Mostre que para todo $n \in \mathbb{N}$,
+$$ n = \sum_{d \vert n} \phi(d). $$ \source{Gauss}
+
+\textbf{I 3. } Se $p$ é um primo e $n$ é um inteiro tal que  $1<n \le p$, então
+$$ \phi \left( \sum_{k=0}^{p-1} n^k \right) \equiv 0 \; \pmod{p}. $$ \source{MM,
+  Problem 1376, Eric Canning}
+
+\textbf{I 4. } Sejam $m$, $n$ inteiros positivos. Prove que, para algum inteiro
+positivo $a$, cada um dos $\phi(a)$, $\phi(a+1)$, $\cdots$, $\phi(a+n)$ é um
+múltiplo de $m$. \source{AMM, Problem 10837, Hojoo Lee}
+
+\textbf{I 5. } Se $n$ é composto, prove que $\phi(n) \le n-
+\sqrt{n}$. \source{[Km, Problems Sheet 1-11]}
+
+\textbf{I 6. } Mostre que se $m$ e $n$ são primos entre si, então
+$\phi( 5^m -1) \neq 5^{n}-1$. \source{AMM, Problem 10626, Florian Luca}
+
+\textbf{I 7. } Prove que para todo $\delta\in[0,1]$ e qualquer $\varepsilon>0$,
+existe um $n\in\mathbb{N}$ tal que $\left |\frac{\phi (n)}{n} -\delta\right|
+<\varepsilon$. \source{[PeJs, pp. 237]}
+
+\textbf{I 8. } Prove que $\left\{d\left((n^2 +1)^2\right)\right\}_{n\ge1}$ não
+se torna monótona a partir de algum ponto. \source{Russia 1998}
+
+\textbf{I 9. } Determine todos os inteiros positivos $n$ tais que
+$n={d(n)}^2$. \source{Canada 1999}
+
+\textbf{I 10. } Determine todos os inteiros positivos $k$ tais que
+$$\frac{d(n^2)}{d(n)} = k$$ for some $n \in \mathbb{N}$. \source{IMO 1998/3}
+
+\textbf{I 11. } Encontre todos os inteiros positivos $n$ tais que
+${d(n)}^{3} =4n$. \source{IMO Short List 2000 N2}
+
+\textbf{I 12. } Determinete todos os inteiros positivos para os quais
+$d(n)=\frac{n}{3}$ vale. \source{Canada 1992}
+
+\textbf{I 13. } Dizemos que um inteiro $m \ge 1$ é super-abundante se
+$$ \frac{\sigma(m)}{m}>\frac{\sigma(k)}{k}$$
+para todo $k \in \{1, 2,\cdots, m-1 \}$. Prove que existem infinitos números
+super-abundantes. \source{IMO Short List 1983 (Belgium)}
+
+\textbf{I 14. } Mostre que $\phi(n)+\sigma(n) \ge 2n$ para todos os inteiros
+positivos $n$. \source{[Rh pp.104] Quantum, Problem M59, B. Martynov}
+
+\textbf{I 15. } Prove que para todo $\delta$ maior que 1 e qualquer $\epsilon$,
+existe um $n$ tal que
+$\left \vert \frac{\sigma (n)}{n} -\delta \right \vert <
+\epsilon$. \source{[PeJs, pp. 237]}
+
+\textbf{I 16. } Prove que $\sigma(n)\phi(n) < n^2$, mas existe uma constante
+positiva $c$ tal que $\sigma(n)\phi(n) \ge c n^2$ vale para todos os inteiros
+positivos $n$. \source{[PeJs, pp. 237]}
+
+\textbf{I 17. } Mostre que $\sigma (n) -d(m)$ é par para todos os inteiros
+positivos $m$ e $n$ onde $m$ é o maior divisor ímpar de $n$. \source{[Jjt,
+  pp. 95]}
+
+\textbf{I 18. } Mostre que para qualquer inteiro positivo $n$,
+$$ \frac{\sigma(n!)}{n!} \ge \sum_{k=1}^{n} \frac{1}{k}. $$
+\source{[Dmb, pp. 108]}
+
+\textbf{I 19. } Seja $n$ um inteiro positivo ímpar. Prove que
+$\sigma(n)^3 <n^4$. \source{Belarus 1999, D. Bazylev}
+
+\textbf{I 20. } Suponha que todos os pares dos inteiros positivos de uma coleção
+finita
+$$ A=\{a_{1}, a_{2}, \cdots \} $$ são somados a fim de formar uma nova coleção
+$$ A^{*}=\{a_{i}+a_{j} \;\; \vert \; 1 \le i < j \le n \}. $$
+Por exemplo, $A=\{ 2, 3, 4, 7 \}$ resultaria $A^{*}=\{ 5, 6, 7, 9, 10, 11 \}$ e
+$B=\{ 1, 4, 5, 6 \}$ resultaria $B^{*}=\{ 5, 6, 7, 9, 10, 11 \}$. Estes exemplos
+mostram que é possível que diferentes coleções $A$ e $B$ gerem as mesmas
+coleções $A^{*}$ e $B^{*}$. Mostre que se $A^{*}=B^{*}$ para conjuntos
+diferentes $A$ e $B$, então $|A|=|B|$ e $|A|=|B|$ deve ser potência de $2$.
+\source{(Erd\"os) [Rh2, pp. 243]}
+
+\textbf{I 21. } Seja $p$ um primo. Para quais $k$ o conjunto $\left\{1,\ 2,\
+  \ldots,\ k\right\}$ pode ser particionado em $p$ subconjuntos com mesma soma
+dos elementos? \source{IMO Long List 1985 (PL2)}
+
+\textbf{I 22. } Prove que a sequência $2^{n}-3$ ($n > 1$) contém uma
+subsequência de números primos entre si dois a dois. \source{IMO 1971/3}
+
+\textbf{I 23. } O conjunto dos inteiros positivos é particionado em um número
+finito de subconjuntos. Mostre que algum subconjunto $S$ tem a seguinte
+propriedade: para cada inteiro positivo $n$, $S$ contém infinitos múltiplos de
+$n$. \source{Berkeley Math Circle Monthly Contest 1999-2000}
+
+\textbf{I 24. } Seja $M$ um inteiro positivo e considere o conjunto
+$$ S=\{n \in \mathbb{N} \; \vert \; M^2 \le n <(M+1)^2 \}. $$
+Prove que os produtos da forma $ab$ com $a, b \in S$ são
+distintos. \source{India 1998}
+
+\textbf{I 25. } Seja $S$ um conjunto de inteiros (não necessariamente
+positivos) tal que
+\begin{itemize}
+\item existem $a,b \in S$ com $\gcd(a,b) = \gcd(a - 2,b - 2) = 1$;
+\item se $x$ e $y$ são elementos de $S$ (possivelmente iguais), então $x^2 - y$
+  também pertence a $S$.
+\end{itemize}
+Prove que $S$ é o conjunto de todos os inteiros. \source{USA 2001}
+
+\textbf{I 26. } Mostre que para cada $n \ge 2$ existe um conjunto $S$ de $n$
+inteiros tal que $(a-b)^2$ é divisor de $ab$ para cada $a, b\in S$. \source{USA
+  1998}
+
+\textbf{I 27. } Sejam $a$ e $b$ inteiros positivos maiores que $2$. Prove que
+existe um inteiro positivo $k$ e uma sequência finita $n_1$, $\cdots$, $n_k$ de
+inteiros positivos tal que $n_1 =a$, $n_k =b$, e $n_i n_{i+1}$ é múltiplo de
+$n_{i}+n_{i+1}$ para cada $i$ $(1 \le i \le k)$. \source{Romania 1998}
+
+\textbf{I 28. } Seja $n$ um inteiro, e seja $X$ um conjunto de $n+2$ inteiros,
+cada um com valor absoluto no máximo $n$. Mostre que existem três números
+distintos $a, b, c \in X$ tais que $c=a+b$. \source{India 2000}
+
+\textbf{I 29. } Seja $m \ge 2$ um inteiro. Encontre o menor inteiro $n>m$ tal
+que para qualquer partição do conjunto $\{m,m+1,\cdots,n\}$ em dois
+subconjuntos, pelo menos um subconjunto contém três números $a, b, c$ tais que
+$c=a^{b}$. \source{Romania 1998}
+
+\textbf{I 30. } Seja $S=\{1,2,3,\ldots,280\}$. Encontre o menor inteiro $n$ tal
+que cada subconjunto de $n$ elementos de $S$ contém cinco números primos entre
+si dois a dois.\source{IMO 1991/3}
+
+\textbf{I 31. } Seja $m$ e $n$ inteiros positivos. Se $x_1$, $x_2$, $\cdots$,
+$x_m$ são inteiros positivos cuja média aritmética é menor que $n+1$ e se $y_1$,
+$y_2$, $\cdots$, $y_n$ são inteiros positivos cuja média aritmética é menor que
+$m+1$, prove que a soma de um ou mais $x$ é igual à soma de um ou mais $y$.
+\source{MM, Problem 1466, David M. Bloom}
+
+\textbf{I 32. } Sejam $n$ e $k$ inteiros positivos primos entre si com $k <
+n$. Cada número no conjunto $M = \{1,2,3,\ldots,n - 1\}$ é colorido de azul ou
+branco. Para cada  $i$ em $M$, ambos $i$ e $n - i$ têm a mesma cor. Para cada
+$i\ne k$ em $M$ ambos $i$ e $|k - i|$ têm a mesma cor. Prove que todos os
+números em $M$ devem ter a mesma cor. \source{IMO 1985/2}
+
+\textbf{I 33. } Seja $p$ um número primo, $p \ge 5$, e $k$ um dígito na
+representação $p$-ádica dos inteiros positivos. Encontre o comprimento maximal
+de uma progressão aritmética não-constante cujos termos não contêm o dígito $k$
+em sua representação $p$-ádica. \source{Romania 1997, Marian Andronache and Ion
+  Savu}
+
+\textbf{I 34. } É possível escolher $1983$ inteiros positivos distintos, todos
+menores que ou iguais a $10^{5}$, nunca três deles termos consecutivos de uma
+progressão aritmética? \source{IMO 1983/5}
+
+\textbf{I 35. } É possível encontrar $100$ inteiros positivos não excedendo
+$25000$ tais que as somas dois a dois deles sejam todas diferentes? \source{IMO
+  Short List 2001}
+
+\textbf{I 36. } Encontre o maior número de conjuntos disjuntos dois a dois da
+forma
+$$ S_{a,b}=\{n^2 +an+b \; \vert \; n \in \mathbb{Z}\}, $$
+com $a,b \in \mathbb{Z}$. \source{Turkey 1996}
+
+\textbf{I 37. } Seja $p$ um primo ímpar. Quantos subconjuntos de $p$ elementos
+$A$ de $\{1,2,\ldots \ 2p\}$ existem cuja soma dos elementos é múltipla de $p$?
+\source{IMO 1995/6}
+
+\textbf{I 38. } Sejam $m, n \ge 2$ inteiros positivos, e sejam
+$a_{1}, a_{2}, \cdots,a_{n}$ inteiros, nenhum dos quais múltiplo de
+$m^{n-1}$. Mostre que existem inteiros $e_{1}, e_{2}, \cdots, e_{n}$, não todos
+nulos, com $\vert e_i \vert<m$ for all $i$, tais que
+$e_{1}a_{1}+e_{2}a_{2}+ \cdots +e_{n}a_{n}$ é múltiplo de $m^n$. \source{IMO
+  Short List 2002 N5}
+
+\textbf{I 39. } Determine o menor inteiro $n \ge 4$ para o qual se pode escolher
+quatro números diferentes $a, b, c, $ e $d$ de quaisquer $n$ inteiros diferentes
+tal que $a+b-c-d$ é múltiplo de $20$ . \source{IMO Short List  1998 P16}
+
+\textbf{I 40. } Uma sequência de inteiros $a_{1}, a_{2}, a_{3}, \cdots$ é
+definida como se segue: $a_{1}=1$, e para $n \ge 1$, $a_{n+1}$ é o menor inteiro
+maior que $a_{n}$ tal que $a_{i}+a_{j} \neq 3a_{k}$ para todo $i, j, $ and $k$
+em $\{1, 2, 3, \cdots, n+1 \}$, não necessariamente distinto. Determine
+$a_{1998}$. \source{IMO Short List 1998 P17}
+
+\textbf{I 41. } Prove que para cada inteiro positivo $n$, existe um inteiro
+positivo com as seguintes propriedades:
+
+\begin{itemize}
+\item tem exatamente $n$ dígitos,
+\item nenhum deles é igual a zero,
+\item ele é divisível pela soma de seus dígitos
+\end{itemize} \source{IMO ShortList 1998 P20}
+
+\textbf{I 42. } Sejam $k, m, n$ inteiros tais que $1<n\le m-1 \le k$. Determine
+o tamanho máximo de um subconjunto $S$ do conjunto $\{ 1,2, \cdots, k \}$ tal
+que jamais ocorre que $n$ elementos distintos $S$ somem $m$. \source{IMO Short
+  List 1996}
+
+\textbf{I 43. } Encontre o número de subconjuntos de $\{1, 2, \cdots, 2000 \}$,
+cuja soma dos elementos é múltipla de $5$. \source{[TaZf pp.10] High-School
+  Mathematics (China) 1994/1}
+
+\textbf{I 44. } Seja $A$ um conjunto não vazio de inteiros positivos. Suponha
+que existam inteiros positivos $b_{1}$, $\cdots$, $b_{n}$ e $c_{1}$, $\cdots$,
+$c_{n}$ tais que
+
+\begin{itemize}
+\item para cada $i$ o conjunto $b_{i}A+c_{i}=\{b_{i}a+c_{i} \vert a \in A \}$ é
+  um subconjunto de $A$,
+\item os conjuntos $b_{i}A+c_{i}$ e $b_{j}A+c_{j}$ são disjuntos se $i \neq j$.
+\end{itemize}
+
+Prove que
+$$ \frac{1}{b_{1}}+ \cdots + \frac{1}{b_{n}} \le 1. $$ \source{IMO Short List
+  2002 A6}
+
+\textbf{I 45. } Um conjunto de três inteiros não negativos $\{x, y, z \}$ com
+$x<y<z$ é chamado de histórico se $\{z-y, y-x\}=\{1776,2001\}$. Mostre que o
+conjunto de todos os inteiros não negativos pode ser escrito como a união de
+conjuntos históricos disjuntos dois a dois. \source{IMO Short List 2001 C4}
+
+\textbf{I 46. } Sejam $p$ e $q$ inteiros positivos primos entre si. Um
+subconjunto $S\subseteq \mathbb{N}_0$ é chamado ideal se $0 \in S$ e, para cada
+elemento $n \in S$, os inteiros $n+p$ e $n+q$ pertencem a $S$. Determine o
+número de subconjuntos ideais de $\mathbb{N}_0$. \source{IMO Short List 2000 C6}
+
+\textbf{I 47. } Prove que o conjunto dos inteiros positivos não pode ser
+particionado em três subconjuntos não vazios tais que, para quaisquer dois
+inteiros $x$, $y$ tomados de dois subconjuntos diferentes, o número
+$x^{2}-xy+y^{2}$ pertence ao terceiro subconjunto. \source{IMO Short List 1999
+  A4}
+
+\textbf{I 48. } Seja $A$ um conjunto de $N$ resíduos $\pmod{N^2}$. Prove que
+existe um conjunto $B$ de $N$ resíduos $\pmod{N^2}$ tal que o conjunto
+$A+B=\{a+b \vert a \in A, b \in B \}$ contém pelo menos metade dos resíduos
+$\pmod{N^2}$. \source{IMO Short List 1999 C4}
+
+\textbf{I 49. } Determine o maior inteiro positivo $n$ para o qual existe um
+conjunto $S$ com exatamente $n$ números tal que
+\begin{itemize}
+\item cada membro em $S$ é um inteiro positivo que não excede $2002$,
+\item se $a,b\in S$ (não necessariamente diferentes), então $ab\not\in S$.
+\end{itemize} \source{Australia 2002}
+
+\textbf{I 50. } Prove que, para qualquer inteiro $a_{1}>1$, existe uma sequência
+crescente de inteiros positivos $a_{1}, a_{2}, a_{3}, \cdots$ tal que
+$$ a_{1}+ a_{2}+ \cdots +a_{n} \; \vert \; a_{1}^{2}+ a_{2}^{2}+ \cdots
++a_{n}^{2} $$ para todo $n \in \mathbb{N}$. \source{[Ae pp.228]}
+
+\textbf{I 51. } Um inteiro ímpar $n \ge 3$ é dito ser legal se e somente se
+existe pelo menos uma permutação $a_{1}, \cdots, a_{n}$ of $1, \cdots, n$ tal
+que as $n$ somas $a_{1}-a_{2}+a_{3}-\cdots -a_{n-1}+a_{n}$,
+$a_{2}-a_{3}+a_{3}-\cdots -a_{n}+a_{1}$,
+$a_{3}-a_{4}+a_{5}-\cdots -a_{1}+a_{2}$, $\cdots$,
+$a_{n}-a_{1}+a_{2}-\cdots -a_{n-2}+a_{n-1}$ são todas positivas. Determine o
+conjunto de todos os inteiros legais. \source{IMO ShortList 1991 P24 (IND 2)}
+
+\textbf{I 52. } Assuma que o conjunto de todos os inteiros positivos é
+decomposto em $r$ subconjuntos disjuntos $A_{1}, A_{2}, \cdots, A_{r}$,
+$A_{1} \cup A_{2} \cup \cdots \cup A_{r}= \mathbb{N}$. Prove que um deles,
+digamos $A_{i}$, tem a seguinte propriedade: Existe um inteiro positivo $m$ tal
+que para qualquer $k$ podemos encontrar números $a_{1}, \cdots, a_{k}$ em
+$A_{i}$ com $0 < a_{j+1}-a_{j} \le m \; (1\le j \le k-1)$. \source{IMO Short
+  List 1990 CZE2}
+
+\textbf{I 53. } Determine para quais inteiros positivos $k$ o conjunto
+$$ X=\{1990, 1990+1, 1990+2, \cdots, 1990+k \} $$ pode ser particionado em dois
+subconjuntos disjuntos $A$ e $B$ tais que a soma dos elementos de $A$ é igual à
+soma dos elementos de $B$. \source{IMO Short List 1990 MEX2}
+
+\textbf{I 54. } Seja $n \ge 3$ um número primo e $a_{1}<a_{2}<\cdots<a_{n}$
+inteiros. Prove que $a_{1}, \cdots,a_{n}$ é uma progressão aritmática se e
+somente se existe uma partição de $\{0, 1, 2, \cdots \}$ em conjuntos
+$A_{1},A_{2},\cdots,A_{n}$ tal que
+$$ a_{1}+A_{1}=a_{2}+A_{2}=\cdots=a_{n}+A_{n}, $$
+onde $x+A$ denota o conjunto $\{x+a \vert a \in A \}$. \source{Romania TST 1998}
+
+\textbf{I 55. } Sejam, $a,b$ inteiros não-negativos tais que $ab \ge c^2$ onde
+$c$ é um inteiro. Prove que existe um inteiro positivo $n$ e inteiros $x_1$,
+$x_2$, $\cdots$, $x_n$, $y_1$, $y_2$, $\cdots$, $y_n$ tais que
+$${x_{1}}^{2} + \cdots + {x_{n}}^{2}=a,\;
+{y_{1}}^{2} + \cdots + {y_{n}}^{2}=b,\;
+x_{1}y_{1} + \cdots + x_{n}y_{n}=c $$
+\source{IMO Short List 1995}
+
+\textbf{I 56. } Sejam $n$, $k$ inteiros positivos tais que $n$ não é múltiplo de
+$3$ e $k\ge n$. Prove que existe um inteiro positivo $m$ que é múltiplo de $n$ e
+a soma de seus dígitos na representação decimal é $k$. \source{IMO Short List
+  1999}
+
+\textbf{I 57. } Prove que para todo número real $M$ existe uma progressão
+aritmética infinita de inteiros positivos tal que
+\begin{itemize}
+\item a razão não é múltipla de $10$,
+\item a soma dos dígitos de cada termo excede $M$.
+\end{itemize} \source{IMO Short List 1999}
+
+\textbf{I 58. } Encontre o menor inteiro positivo  $n$ para o qual existem $n$
+inteiros positivos diferentes $a_{1}, a_{2}, \cdots, a_{n}$ satisfazendo
+\begin{itemize}
+\item $\text{mmc}(a_1,a_2,\cdots,a_n)=1995$,
+\item para cada $i, j \in \{1, 2, \cdots, n \}$, $\text{mdc}(a_i,a_j)\not=1$,
+\item o produto $a_{1}a_{2} \cdots a_{n}$ é um quadrado perfeito e é múltiplo de
+  $243$,
+\end{itemize}
+e encontre todas as tais $n$-tuplas $(a_{1}, \cdots, a_{n})$. \source{Romania
+  1995}
+
+\textbf{I 59. } Seja $X$ um conjunto não-vazio de inteiros positivos que
+satisfaz o seguinte:
+
+\begin{itemize}
+\item se $x \in X$, então $4x \in X$,
+\item se $x \in X$, então $\lfloor \sqrt{x}\rfloor \in X$.
+\end{itemize}
+Prove que $X=\mathbb{N}$. \source{Japan 1990}
+
+\textbf{I 60. } Prove qua para todo inteiro positivo $n$ existe um número de $n$
+dígitos divisível por $5^n$ com todos os seus dígitos ímpares. \source{USA 2003}
+
+\textbf{I 61. } Seja $N_n$ o número de $n$-tuplas ordenadas de inteiros
+positivos $(a_1,a_2,\ldots,a_n)$ tais que $$ 1/a_1 + 1/a_2 +\ldots +1/a_n=1. $$
+Determine se $N_{10}$ é par ou ímpar. \source{Putnam 1997/A5}
+
+\textbf{I 62. } É possível encontrar um conjunto $A$ de onze inteiros positivos
+tais que seis elementos de $A$ nunca tenham uma soma que é múltipla de $6$?
+\source{British Mathematical Olympiad 2000}
+
+\textbf{I 63. } Um conjunto $C$ de inteiros positivos é chamado de bom se para
+todo inteiro $k$ existem diferentes $a, b \in C$ tais que os números $a+k$ e
+$b+k$ não são primos entre si. Prove que se a soma dos elementos de um conjunto
+bom $C$ é igual a $2003$, então existe $c \in C$ tal que o conjunto $C-\{c\}$ é
+bom. \source{Bulgaria 2003}
+
+\textbf{I 64. } Encontre todos os inteiros positivos $n$ com a propriedade que
+o conjunto
+$$ \{n,n+1,n+2,n+3,n+4,n+5\} $$
+pode ser particionado em dois conjuntos tais que o produto dos números de um
+conjunto é igual ao produto dos números do outro conjunto. \source{IMO 1970/4}
+
+\textbf{I 65. } Suponha que $p$ é um primo com $p \equiv 3 \; \pmod{4}$. Mostre
+que para qualquer conjunto de $p-1$ inteiros consecutivos, o conjunto não pode
+ser dividido em dois subconjuntos tal que o produto dos membros de um conjunto é
+igual ao produto dos elementos do outro conjunto. \source{CRUX, Problem A233,
+  Mohammed Aassila}
+
+\textbf{I 66. } Seja $S$ o conjunto de todos os inteiros positivos ímpares
+compostos menores que $79$.
+\begin{enumerate}
+\item Mostre que $S$ pode ser escrito como união de três progressões aritméticas
+  (não necessariamente disjuntas).
+\item Mostre que $S$ não pode ser escrita como união de duas progressões
+  aritméticas.
+\end{enumerate} \source{[KhKw, pp. 12]}
+
+\textbf{I 67. } Considere o conjunto de todos os números de cinco dígitos cuja
+representação decimal é uma permutação dos dígitos $1, 2, 3, 4, 5$. Prove que
+este conjunto pode ser dividido em dois grupos de tal forma que a soma dos
+quadrados dos números de cada grupo seja a mesma. \source{(D. Fomin) [Ams,
+  pp. 12]}
+
+\textbf{I 68. } Qual é o maior número de elementos que um conjunto de inteiros
+positivos entre $1$ e $100$ inclusive pode ter se este conjunto tem a
+propriedade que nenhum deles é múltiplo de outro? \source{}
+
+\textbf{I 69. } Prove que entre $16$ inteiros consecutivos é sempre possível
+encontrar um que é primo com todos os outros. \source{[DNI, 19]}
+
+\textbf{I 70. } Existe um conjunto $S$ de inteiros positivos tal que um número
+está em $S$ se e somente se é a soma de dois elementos distintos de $S$ ou a
+soma de dois elementos distintos fora de $S$? \source{[JDS, pp. 31]}
+
+\textbf{I 71. } Suponha que o conjunto $M=\{1,2,\cdots,n\}$ é particionado em
+$t$ subconjuntos $M_{1}$, $\cdots$, $M_{t}$ onde a cardinalidade de $M_i$ é
+$m_{i}$, e $m_{i} \ge m_{i+1}$, para $i=1,\cdots,t-1$. Mostre que se
+$n>t!\cdot e$ então pelo menos uma classe $M_z$ contém três elementos $x_{i}$,
+$x_{j}$, $x_{k}$ tais que $x_{i}-x_{j}=x_{k}$. \source{Schur's theorem, [Her,
+  pp. 16]}
+
+\textbf{I 72. } Seja $S$ um subconjunto de $\{1, 2, 3, \cdots, 1989 \}$ no qual
+dois termos nunca diferem de exatamente $4$ ou exatamente $7$. Qual o maior
+número de elementos que pode haver em $S$? \source{[Rh2, pp. 89]}
+
+\textbf{I 73. } O conjunto $M$ consiste de inteiros, o menor deles sendo $1$ e o
+maior $100$. Cada membro de $M$, exceto $1$, é a soma de dois elementos
+(possivelmente idênticos) de $M$. De todos os conjuntos dessa forma, encontre
+aquele com o menor número possível de elementos. \source{[Rh2, pp. 125]}
+
+\textbf{I 74. } Mostre que é possível colorir o conjunto de inteiros
+$$ M=\{ 1, 2, 3, \cdots, 1987 \}, $$ usando quatro cores, de tal forma que
+nenhuma progressão aritmética de $10$ termos tenha todos os seus termos com a
+mesma cor. \source{[Rh2, pp. 145]}
+
+\textbf{I 75. } Prove que toda seleção de $1325$ inteiros de
+$M=\{1, 2, \cdots, 1987 \}$ deve conter três números $\{a, b, c\}$ que são
+primos entre si dois a dois, mas isso pode ser evitado se apenas $1324$ inteiros
+forem selecionados. \source{[Rh2, pp. 202]}
+
+\textbf{I 76. } Prove que toda sequência infinita $S$ de inteiros positivos
+distintos contém ou uma subsequência infinita tal que para cada par de termos,
+nenhum termo é divisor de outro, ou uma sequência infinita tal que em cada par
+de termos, um deles é divisor do outro. \source{[Rh3, pp. 213]}
+
+\textbf{I 77. } Seja $a_{1} < a_{2} < a_{3} < \cdots $ uma sequência crescente
+infinita de inteiros positivos nos quais o número de fatores primos de cada
+termo, contando repetições, nunca é maior que $1987$. Prove que é sempre
+possível extrair de $A$ uma subsequência infinita $b_{1} < b_{2} < b_{3} <
+\cdots $ tal que o maior divisor comum $\gcd (b_i, b_j)$ é o mesmo para cada
+par de seus termos. \source{[Rh3, pp. 51]}
+
+%%% Local Variables:
+%%% mode: latex
+%%% coding: utf-8-unix
+%%% fill-column: 80
+%%% TeX-master: "MASTER"
+%%% End:

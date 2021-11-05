@@ -1,0 +1,134 @@
+\chapter{Congruências}
+
+\quoting{Matemática é a rainha das ciências e Teoria dos Números é a rainha da
+  Matemática.}{Johann Carl Friedrich Gauss}
+
+\textbf{B 1. } Se $p$ é um primo ímpar, prove que
+$$ \binom{k}{p} \equiv \left\lfloor \frac{k}{p} \right\rfloor \pmod{p}. $$
+\source{[Tma, pp. 127]}
+
+\textbf{B 2. } Suponha que $p$ é um primo ímpar. Prove que
+$$ \sum_{j=0}^p \binom{p}{j} \binom{p+j}{j} \equiv 2^p + 1\pmod{p^2}. $$
+\source{Putnam 1991/B4}
+
+\textbf{B 3. } Mostre que
+$$ (-1)^{\frac{p-1}{2}}\binom{p-1}{\frac{p-1}{2}} \equiv 4^{p-1} \pmod{p^3} $$
+para todos os números primos $p$ com $p \ge 5$.  \source{Morley}
+
+\textbf{B 4. } Seja $n$ um inteiros positivo. Prove que $n$ é primo se e somente
+se $$ \binom{n-1}{k} \equiv (-1)^{k} \pmod{n} $$ para todos
+$k \in \{ 0, 1, \cdots, n-1 \}$.  \source{MM, Problem 1494, Emeric Deutsch and
+  Ira M.Gessel}
+
+\textbf{B 5. } Prove que para $n\geq 2$,
+$$ \underbrace{2^{2^{\cdots^{2}}}}_{n\text{ terms}} \equiv
+\underbrace{2^{2^{\cdots^{2}}}}_{n-1\text{ terms}} \; \pmod{n}. $$
+\source{Putnam 1997/B5}
+
+\textbf{B 6. } Mostre que, para qualquer inteiro fixo $\,n \geq 1,\,$ a
+sequência $$ 2, \; 2^2, \; 2^{2^2}, \; 2^{2^{2^2}}, \cdots \pmod{n} $$ é
+eventualmente constante. \source{USA 1991}
+
+\textbf{B 7. } Alguém incorretamente lembrou-se do Pequeno Teorema de Fermat
+como dizendo que a congruência $a^{n+1} \equiv a \; \pmod{n}$ é válida para todo
+$a$ se $n$ é primo. Descreva o conjunto de inteiros $n$ para os quais esta
+propriedade é de fato verdadeira. \source{[DZ] posed by Don Zagier at the St
+  AndrewsColloquium 1996}
+
+\textbf{B 8. } Caracterize o conjunto de inteiros positivos $n$ tais que para
+todo inteiro $a$ a sequência $a$, $a^2$, $a^3$, $\cdots$ é periódica módulo $n$.
+\source{MM Problem Q889, Michael McGeachie and StanWagon}
+
+\textbf{B 9. } Mostre que existe um número composto $n$ tal que
+$a^n \equiv a \; \pmod{n}$ para todo $a \in \mathbb{Z}$. \source{}
+
+\textbf{B 10. } Seja $p$ um número primo da forma $4k+1$. Suponha que $2p+1$ é
+primo. Mostre que não existe $k \in \mathbb{N}$ com $k<2p$ e
+$2^k \equiv 1 \; \pmod{2p+1}$. \source{}
+
+\textbf{B 11. } Durante um intervalo, $n$ crianças numa escola sentam-se em
+círculo em volta do seu professor para brincar de um jogo. O professor caminha
+no sentido horário próximo às crianças e dá doces a algumas delas de acordo com
+a regra a seguir. Ele seleciona uma criança e dá a ela um doce, então salta a
+próxima criança e dá um doce à próxima, então salta duas crianças e dá um doce à
+próxima, então salta três e assim por diante. Determine os valores de $n$ para
+os quais eventualmente, possivelmente após muitas rodadas, todas as crianças
+terão pelo menos um doce cada. \source{APMO 1991/4}
+
+\textbf{B 12. } Suponha que $m>2$, e seja $P$ o produto dos inteiros positivos
+menores que $m$ que são primos com $m$. Mostre que $P \equiv -1 \pmod{m}$ se
+$m=4$, $p^n$, ou $2p^{n}$, onde $p$ é um primo ímpar, e  $P \equiv 1 \pmod{m}$
+caso contrário. \source{[AaJc, pp. 139]}
+
+\textbf{B 13. } Seja $\Gamma$ consistindo de todos os polinômios em $x$ com
+coeficientes inteiros. Para $f$ e $g$ em $\Gamma$ m $m$ um inteiro positivo,
+seja $f \equiv g \pmod{m}$ implicando que todo coeficiente de $f-g$ é um
+múltiplo inteiro de $m$. Seja $n$ e $p$ inteiros positivos com $p$ primo. Dado
+que $f,g,h,r$ e $s$ estão em $\Gamma$ com $rf+sg\equiv 1 \pmod{p}$ e
+$fg \equiv h \pmod{p}$, prove que existem $F$ e $G$ em $\Gamma$ com
+$F \equiv f \pmod{p}$, $G \equiv g \pmod{p}$, e $FG \equiv h
+\pmod{p^n}$. \source{Putnam 1986/B3}
+
+\textbf{B 14. } Determine o número de inteiros $n \ge 2$ para os quais a
+congruência $$ x^{25} \equiv x \; \pmod{n} $$ é verdadeira para todos os
+inteiros $x$. \source{Bulgaria 1995}
+
+\textbf{B 15. } Sejam $n_{1}, \cdots, n_{k}$  $a$ inteiros positivos que
+satisfazem as seguintes condições:
+
+\begin{itemize}
+\item para todo $i \neq j$, $(n_{i}, n_{j})=1$,
+\item para todo $i$, $a^{n_{i}} \equiv 1 \pmod{n_i}$,
+\item para todo $i$, $n_{i}$ não é divisor de $a-1$. 
+\end{itemize}
+
+Mostre que existem pelo menos $2^{k+1}-2$ inteiros $x>1$ com
+$a^{x} \equiv 1 \pmod{x}$. \source{Turkey 1993}
+
+\textbf{B 16. } Determine todos os inteiros positivos $n \ge 2$ que satisfazem a
+seguinte condição: Para todos os inteiros $a, b$ primos com $n$,
+$$ a \equiv b \; \pmod{n} \Longleftrightarrow ab \equiv 1 \; \pmod{n}. $$
+\source{IMO Short List 2000 N1}
+
+\textbf{B 17. } Determine todos os inteiros positivos $n$ tais que
+$ xy+1 \equiv 0 \; \pmod{n} $ implica $ x+y \equiv 0 \; \pmod{n}$.  \source{AMM,
+  Problem S9, M. S. Klamkin and A.Liu}
+
+\textbf{B 18. } Seja $p$ um número primo. Determine o grau maximal de um
+polinômio $T(x)$ cujos coeficientes pertencem a $\{ 0,1,\cdots,p-1 \}$, cujo
+grau é menor que $p$, e que satisfaz
+$$ T(n)=T(m) \; \pmod{p} \Longrightarrow n=m \; \pmod{p} $$ para todos os
+inteiros $n, m$. \source{Turkey 2000}
+
+\textbf{B 19. } Sejam $a_{1}$, $\cdots$, $a_{k}$ e $m_{1}$, $\cdots$, $m_{k}$
+inteiros com $2 \le m_1$ e $2m_{i} \le m_{i+1}$ for $1 \le i \le k-1$. Mostre
+que existem infinitos inteiros $x$ que não satisfazem nenhuma das
+congruências
+$$ x \equiv a_{1} \; \pmod{m_{1}}, x \equiv a_{2} \; \pmod{m_{2}}, \cdots, x
+\equiv a_{k} \; \pmod{m_{k}}. $$ \source{Turkey 1995}
+
+\textbf{B 20. } Mostre que $1994$ é divisor de
+$10^{900}-2^{1000}$. \source{Belarus 1994}
+
+\textbf{B 21. } Determine os últimos três dígitos de $$ 2003^{2002^{2001}}. $$
+\source{Canada 2003}
+
+\textbf{B 22. } Prove que $1980^{1981^{1982}} + 1982^{1981^{1980}}$ é múltiplo
+de $1981^{1981}$. \source{China 1981}
+
+\textbf{B 23. } Seja $p$ um primo ímpar da forma $p=4n+1$. 
+
+\begin{enumerate}
+\item Mostre que $n$ é um resíduo quadrático $\pmod{p}$.
+\item Calcule o valor $n^{n}$  $\pmod{p}$.
+\end{enumerate} \source{}
+
+\textbf{B 24. } Existem 16 números de três dígitos, usando somente três dígitos
+diferentes, tais que cada um deixa um resto diferente módulo 16? \source{}
+
+%%% Local Variables:
+%%% mode: latex
+%%% coding: utf-8-unix
+%%% fill-column: 80
+%%% TeX-master: "MASTER"
+%%% End:
