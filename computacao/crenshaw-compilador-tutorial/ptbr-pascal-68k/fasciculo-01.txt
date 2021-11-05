@@ -1,0 +1,312 @@
+# -*- mode: org; coding: utf-8-unix; fill-column: 80 -*-
+
+* Fascículo 01 - Introdução
+
+  Esta  série  de  artigos  é  um  tutorial sobre  teoria  e  prática  de  como
+  desenvolver analisadores  e compiladores de linguagem.  Antes de terminarmos,
+  teremos coberto  cada aspecto  da construção  de compiladores,  projetado uma
+  linguagem de programação, e construído um compilador que funciona.
+
+  Apesar de eu  não ser um cientista  da computação por educação (meu  PhD é em
+  uma área  diferente, Física),  eu tenho me  interessado por  compiladores por
+  muitos anos. Eu já comprei e  tentei digerir o conteúdo de virtualmente todos
+  os livros sobre o assunto já escritos. Não me importo em dizer que isso foi a
+  passos lentos. Textos de compiladores são escritos para mestres em Ciência da
+  Computação, e são uma jornada dura para o resto de nós. Mas ao longo dos anos
+  um pouco  disso um pouco  disso passou a escoar  melhor. O que  realmente fez
+  isso fluir foi quando  eu comecei a trilhar por mim mesmo  e tentar as coisas
+  no meu  próprio computador.  Agora planejo  compartilhar com  vocês o  que eu
+  aprendi.  Ao  fim dessa  série  você  certamente  não  será um  cientista  de
+  computação, nem  conhecerá todo  o esoterismo da  teoria de  compiladores. Eu
+  pretendo ignorar  completamente os aspectos  mais teóricos do assunto.  O que
+  você vai  aprender são  todos os  aspectos práticos  que alguém  precisa para
+  saber como fazer um sistema que funciona.
+
+  Esta  é uma  série de  aprendizado com  a  mão na  massa. Ao  longo da  série
+  realizarei experimentos em  um computador. É esperado que  você os acompanhe,
+  repetindo os  experimentos que eu  farei, e fazendo  alguns por si  mesmo. Eu
+  usarei  o Turbo  Pascal  4.0  em um  clone  de  PC. Periodicamente  inserirei
+  exemplos escritos  em Pascal. Eles  são código  executável, e é  esperado que
+  você os  copie e  execute em seu  próprio computador. Se  você não  tiver uma
+  cópia do  Turbo Pascal, ficará  severamente limitado no  prosseguimento desta
+  série; neste caso,  insisto que você obtenha uma cópia.  Afinal, é um produto
+  excelente, bom para diversos outros usos!
+
+  Alguns artigos sobre compiladores te mostram exemplo, ou (no caso do Small-C)
+  um produto finalizado, que você pode  então copiar e utilizar sem entender um
+  montão  de coisa  sobre como  ele funciona.  Eu espero  fazer muito  mais que
+  isso. Eu espero te ensinar como as  coisas são feitas, de forma que você pode
+  seguir seu próprio caminho e não apenas  reproduzir o que eu tenho feito, mas
+  também melhorá-lo.
+
+  Admitidamente,  esta é  uma empreitada  ambiciosa, e  não será  feita em  uma
+  página  somente.  Eu espero  fazer  isso  no decurso  de  um  certo tanto  de
+  artigos. Cada  artigo cobrirá um  aspecto da  teoria de compiladores,  e será
+  bastante auto-contido.  Se tudo o  que te interessa em  um dado momento  é um
+  aspecto, então  você só precisa olhar  aquele único artigo. Cada  artigo será
+  carregado quando estiver  completo, portanto você terá que  esperar pelo mais
+  recente antes de se considerar pronto. Por favor tenha paciência.
+                              
+  O texto  médio de  teoria de  compiladores cobre muito  terreno que  não será
+  visto aqui. A sequência corriqueira é:
+
+  - Um capítulo introdutório descrevendo o que é um compilador;
+  - Um ou dois capítulos sobre equações de sintaxe, usando a Forma Normal de
+    Backus-Naur (para os íntimos, BNF);
+  - Um ou dois capítulos sobre varredura léxica, com ênfase em autômatos finitos
+    determinísticos e não-determinísticos;
+  - Diversos capítulos na teoria de análise sintática (/parsing/), começando com
+    o modelo recursivo descendente top-down, e encerrando com o modelo LALR;
+  - Um capítulo sobre linguagens intermediárias, com ênfase em código P e
+    representações semelhantes ao estilo polonês reverso;
+  - Muitos capítulos sobre formas alternativas de lidar com sub-rotinas e
+    passagem de parâmetros, declarações de tipos e por aí vai;
+  - Um capítulo perto do fim sobre geração de código, geralmente para um
+    processador imaginário com um conjunto simples de instruções. A maioria dos
+    leitores (e  de fato a maioria  das classes de estudantes)  nunca chega tão
+    longe;
+  - Um capítulo final sobre otimização. Este costuma não ser lido também.
+
+  Eu tomarei uma abordagem bastante diferente nesta série. Para começar, eu não
+  vou me alongar em  opcionais. Eu vou te dar um caminho  que funciona. Se você
+  quer explorar opções, muito bem... eu te  encorajo a fazer isso... Mas eu vou
+  ficar com o que eu sei. Eu também  vou saltar a maior parte da teoria que faz
+  as pessoas dormirem. Não me entenda mal: eu não estou menosprezando a teoria,
+  e  a  teoria  é  vitalmente  importante  quando  se  chega  nas  partes  mais
+  complicadas de  uma dada linguagem. Mas  eu acredito em colocar  as coisas em
+  ordem. Aqui vamos  lidar com o grosso,  os 95% de técnicas  de compilação que
+  não exigem um montão de teoria para se lidar.
+
+  Eu  também  só  discutirei  uma  abordagem de  análise  sintática:  o  modelo
+  recursivo descendente top-down, que é a  única técnica que é tratável para um
+  compilador  artesanal. As  outras abordagens  só são  úteis se  você tem  uma
+  ferramenta como o YACC/Bison, e também não se importa com quanto de espaço em
+  memória o produto final ocupa.
+
+  Eu  também tomarei  uma página  do trabalho  de Ron  Cain, autor  do Small  C
+  original.   Enquanto   a  enorme   maioria   dos   autores  de   compiladores
+  historicamente  tem usado  uma  linguagem  intermediária como  o  código P  e
+  dividido o compilador em duas partes  (uma parte dianteira que gera código P,
+  e uma traseira  que processa código P para gerar  código executável), Ron nos
+  mostrou  que é  uma questão  direta fazer  o compilador  gerar código  objeto
+  executável  diretamente,  na forma  de  instruções  em linguagem  de  máquina
+  (assembly). O código não será o  mais adequado... produzir código otimizado é
+  um  trabalho  muito mais  complicado.  Mas  vai  funcionar, e  vai  funcionar
+  razoavelmente bem. Só para  que eu não te deixe com a  impressão de que nosso
+  produto final  seja de  pouco valor,  eu pretendo  mostrar como  "acelerar" o
+  compilador com alguma otimização.
+  
+  Finalmente eu  vou usar  alguns truques  que descobri  serem majoritariamente
+  úteis em me fazer entender o que está acontecendo sem ter que caminhar por um
+  monte de  código-padrão. O  principal entre  estes é  o uso  de tokens  de um
+  caractere só, sem  espaços embutidos, para o trabalho inicial  de projeto. Eu
+  noto que  se eu  posso obter um  analisador que reconhece  e lida  com I-T-L,
+  então  eu posso  fazer o  mesmo com  IF-THEN-ELSE. E  eu posso.  Numa segunda
+  "lição", eu mostrarei quão fácil é  estender um analisador simples para lidar
+  com  tokens  de   comprimento  arbitrário.  Como  outro   truque,  eu  ignoro
+  completamente entrada  e saída  de arquivo,  notando que se  eu posso  ler os
+  fontes do  teclado e emitir  objeto para a tela,  eu também posso  fazer isso
+  de/para  arquivos no  disco. A  experiência tem  provado que  uma vez  que um
+  tradutor está funcionando  corretamente, é uma questão  direta redirecionar a
+  E/S para  arquivos. O último  truque é que eu  não farei tentativa  alguma de
+  realizar  correção  e   recuperação  de  erros.  Os   programas  que  faremos
+  *reconhecerão* erros,  e não  vão quebrar, mas  eles simplesmente  pararão no
+  primeiro erro... bem  como o bom e velho Turbo.  Existirão outros truques que
+  você verá  enquanto prossegue.  A maioria  deles não  pode ser  encontrada em
+  livro-texto algum de compiladores, mas funciona.
+
+  Uma palavra  sobre estilo e eficiência.  Como você verá, eu  tendo a escrever
+  programas  em peças  bem  pequenas e  facilmente  compreensíveis. Nenhum  dos
+  procedimentos que trabalharemos terá mais de 15 ou 20 linhas. Sou um ardoroso
+  devoto  da  escola  KISS  (Keep  It Simple,  Sidney)  de  desenvolvimento  de
+  software. Eu  tento nunca fazer  nada obscuro  ou complexo, quando  algo mais
+  simples  pode  fazê-lo.   Ineficiente?  Talvez,  mas  você   vai  gostar  dos
+  resultados. Como  diria Brian Kernighan,  primeiro faça funcionar,  só depois
+  faça funcionar rápido. Se, mais tarde, você quiser voltar e melhorar o código
+  em um de nossos produtos, você será capaz disso, dado que o código é bastante
+  inteligível.  Se você  for  fazê-lo,  porém, insisto  que  espere  até que  o
+  programa esteja fazendo tudo que você quer.
+
+  Eu também tenho uma tendência a adiar a construção de um módulo até descobrir
+  que preciso dele. Tentar antecipar  cada possível contingência futura pode te
+  deixar maluco,  e você geralmente  chutará errado  de toda forma.  Nos tempos
+  modernos de editores  de tela e compiladores rápidos, eu  não hesito em mudar
+  um módulo quando  sinto que preciso de  um mais poderoso. Até  lá, eu escrevo
+  apenas o que preciso.
+
+  Uma precaução  final: um dos  princípios que eu manterei  aqui é que  não vou
+  ficar de bobeira com código P ou  CPUs imaginárias, mas vamos começar desde o
+  primeiro dia  produzindo código objeto  executável que funciona, ao  menos em
+  forma de código-fonte  em linguagem de máquina. Porém, talvez  você não goste
+  da minha escolha de  linguagem assembly... É código de 68k, que  é o que roda
+  em meu  sistema (por baixo  de um SK*DOS). Eu  acredito, porém, que  você vai
+  achar  a tradução  para qualquer  outro assembly  como 80x86  bastante óbvia,
+  então eu não vejo um problema aqui. De  fato, eu espero que alguém por aí que
+  conheça a linguagem do x86 melhor que  eu nos ofereça os fragmentos de código
+  objeto à medida que precisarmos.
+
+** O Berço
+
+   Todo programa  precisa de algum gabarito...  rotinas de E/S, de  mensagens de
+   erro etc. Os programas que  desenvolveremos aqui não serão exceções. Todavia,
+   eu  tentei manter  esta  parte em  um  absoluto mínimo,  de  tal maneira  que
+   possamos  nos concentrar  nas  coisas  importantes sem  nos  perder entre  as
+   árvores. O  código dado abaixo  representa o  mínimo que precisamos  para ter
+   qualquer coisa feita.  Ele consiste de algumas rotinas de  E/S, de tratamento
+   de erros  e um programa principal  vazio como esqueleto.  Eu vou dar a  ele o
+   nome   de   berço.   Enquanto   vamos  desenvolvendo   outras   rotinas,   as
+   acrescentaremos  ao  berço,  e  acrescentaremos as  chamadas  a  elas  quando
+   necessário. Faça  uma cópia do berço  e salve-a, porque precisaremos  mais de
+   uma vez.
+
+   Existem muitas maneiras diferentes de organizar as atividades de varredura de
+   um analisador  sintático. Em  sistemas Unix, autores  costumam usar  =getc= e
+   =ungetc=. Eu tenho tido muita sorte com a abordagem mostrada aqui, que é a de
+   usar um simples  caractere global de memória  antecipada (/lookahead/). Parte
+   do procedimento de  inicialização (o único até agora) serve  para "preparar a
+   bomba" ao ler o primeiro caractere da entrada. Nenhuma outra técnica especial
+   é exigida com o Turbo 4.0. Cada chamada sucessiva ao =GetChar= lerá o próximo
+   caractere do fluxo (/stream/).
+
+   #+begin_src pascal
+     {--------------------------------------------------------------}
+     program Cradle;
+
+     {--------------------------------------------------------------}
+     { Constant Declarations }
+
+     const TAB = ^I;
+
+     {--------------------------------------------------------------}
+        { Variable Declarations }
+
+     var Look: char;              { Lookahead Character }
+
+     {--------------------------------------------------------------}
+        { Read New Character From Input Stream }
+
+     procedure GetChar;
+     begin
+        Read(Look);
+     end;
+
+     {--------------------------------------------------------------}
+     { Report an Error }
+
+     procedure Error(s: string);
+     begin
+        WriteLn;
+        WriteLn(^G, 'Error: ', s, '.');
+     end;
+
+
+     {--------------------------------------------------------------}
+     { Report Error and Halt }
+
+     procedure Abort(s: string);
+     begin
+        Error(s);
+        Halt;
+     end;
+
+
+     {--------------------------------------------------------------}
+     { Report What Was Expected }
+
+     procedure Expected(s: string);
+     begin
+        Abort(s + ' Expected');
+     end;
+
+     {--------------------------------------------------------------}
+     { Match a Specific Input Character }
+
+     procedure Match(x: char);
+     begin
+        if Look = x then GetChar
+        else Expected('''' + x + '''');
+     end;
+
+
+     {--------------------------------------------------------------}
+     { Recognize an Alpha Character }
+
+     function IsAlpha(c: char): boolean;
+     begin
+        IsAlpha := upcase(c) in ['A'..'Z'];
+     end;
+
+
+     {--------------------------------------------------------------}
+
+     { Recognize a Decimal Digit }
+
+     function IsDigit(c: char): boolean;
+     begin
+        IsDigit := c in ['0'..'9'];
+     end;
+
+
+     {--------------------------------------------------------------}
+     { Get an Identifier }
+
+     function GetName: char;
+     begin
+        if not IsAlpha(Look) then Expected('Name');
+        GetName := UpCase(Look);
+        GetChar;
+     end;
+
+
+     {--------------------------------------------------------------}
+     { Get a Number }
+
+     function GetNum: char;
+     begin
+        if not IsDigit(Look) then Expected('Integer');
+        GetNum := Look;
+        GetChar;
+     end;
+
+
+     {--------------------------------------------------------------}
+     { Output a String with Tab }
+
+     procedure Emit(s: string);
+     begin
+        Write(TAB, s);
+     end;
+
+
+
+
+     {--------------------------------------------------------------}
+     { Output a String with Tab and CRLF }
+
+     procedure EmitLn(s: string);
+     begin
+        Emit(s);
+        WriteLn;
+     end;
+
+     {--------------------------------------------------------------}
+     { Initialize }
+
+     procedure Init;
+     begin
+        GetChar;
+     end;
+
+
+     {--------------------------------------------------------------}
+     { Main Program }
+
+     begin
+        Init;
+     end.
+     {--------------------------------------------------------------}
+   #+end_src
+
+   E  para  a  introdução  é  isso.  Copie   o  código  acima  para  o  Turbo  e
+   compile-o.  Certifique-se  de  que  ele compila  e  roda  corretamente.  Daí,
+   prossiga para a lição seguinte, que falará de análise de expressões.

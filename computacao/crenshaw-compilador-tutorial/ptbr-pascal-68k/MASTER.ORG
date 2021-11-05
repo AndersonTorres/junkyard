@@ -5,3 +5,4 @@
 #+title: Vamos Fazer um Compilador! por Jack Crenshaw
 
 #+include: readme.txt
+#+include: fasciculo-01.txt
