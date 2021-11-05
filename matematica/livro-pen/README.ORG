@@ -1,0 +1,17 @@
+#+options: toc:nil
+#+language: pt_BR
+
+#+author: Anderson Torres
+#+title: PEN em Português Brasileiro
+
+Depois de um longo tempo, retomei e completei a tradução do infame PEN (Problems
+in Elementary Number Theory), uma coletânea de problemas de teoria dos números
+criada e distribuída por Hojoo Lee e pelo
+[[https://artofproblemsolving.com/community/c89][AOPS]] (antigamente
+[[https://mathlinks.ro][Mathlinks]]).
+
+# Local Variables:
+# mode:org
+# coding:utf-8-unix
+# fill-column:80
+# End:
