@@ -1,0 +1,22 @@
+#+options: toc:nil
+#+language: pt_BR
+
+#+author: Anderson Torres
+#+title: Lista de Exercícios - README
+
+Aqui eu reúno uma coleção antiga de listas de exercícios de matemática olímpica
+que eu colecionava lá pelos idos de 2004.
+
+Os problemas estão separados por assunto, cada um em um arquivo na pasta
+=enunciados=. O arquivo =MASTER.tex= funciona como um agregador, reunido-os e
+apresentando-os de maneira ordenada.
+
+Ainda falta decidir alguma forma de geração do arquivo final. LaTeX costuma ser
+algo bastante trabalhoso de se adaptar para plataformas de compilação modernas
+como o Meson!
+
+# Local Variables:
+# mode:org
+# coding:utf-8-unix
+# fill-column:80
+# End:
