@@ -1,0 +1,750 @@
+\documentclass[a4paper,11pt]{report}
+\usepackage{amsmath, amssymb, a4wide, url, xspace} 
+\setlength{\parskip}{-1.5pt} \setlength{\parindent}{0pt} 
+\newcommand{\source}[1] { \emph{\begin{flushright} #1\end{flushright}} } 
+\newcommand{\quoting}[2] {\textit{#1} \hfill #2 \\\bigskip\\\bigskip} 
+\newcommand{\lcm}{\text{lcm}} \renewcommand{\labelenumi}{(\alph{enumi})} 
+
+\title{Problems in Elementary Number Theory\\[0.5in]}\date{\today \\[1.5in] 
+{\bf \centerline{ \textit{God does arithmetic.} $\;\;\;\;\;\;$ C. F. Gauss }}} 
+\author{Peter Vandendriessche\\[0.1in] Hojoo Lee \\[1.8in] } 
+
+\begin{document}
+\maketitle 
+
+\chapter{Introduction} 
+\textit{The heart of Mathematics is its problems.} \hfill Paul Halmos 
+
+\bigskip \bigskip 
+
+Number Theory is a beautiful branch of Mathematics. The purpose of this book is to present a collection of interesting problems in elementary Number Theory. 
+Many of the problems are mathematical competition problems from all over the world like IMO, APMO, APMC, Putnam and many others. The book has a supporting 
+website at SKIP which has some extras to offer, including problem discussion and (where available) 
+solutions, as well as some history on the book. If you like the book, you'll probably like the website. \bigskip \bigskip I would like to stress that this 
+book is {\bf unfinished}. Any and all feedback, especially about errors in the book (even minor typos), is appreciated. I also appreciate it if you tell me 
+about any challenging, interesting, beautiful or historical problems in elementary number theory (by email or via the website) that you think might belong 
+in the book. On the website you can also help me collecting solutions for the problems in the book (all available solutions will be on the website only). 
+You can send all comments to both authors at \bigskip \centerline{peter.vandendriessche at gmail.com \ \ and \ \ ultrametric at gmail.com} \bigskip or 
+(preferred) through the website. 
+
+\bigskip \bigskip 
+
+The author is very grateful to \textbf{\textit{Hojoo Lee}}, the previous author and founder of the book, for the great work put into PEN. The author also 
+wishes to thank \textbf{\textit{Daniel Harrer}} and \textbf{\textit{Prasad Chebolu}} for contributing many corrections and solutions to the problems and 
+\textbf{\textit{Arne Smeets}}, \textbf{\textit{Ha Duy Hung}}, \textbf{\textit{Orlando Doehring}}, \textbf{\textit{Tom Verhoeff}}, \textbf{\textit{Tran 
+Nam Dung}} for their nice problem proposals and comments. 
+
+\bigskip \bigskip 
+
+Lastly, note that I will use the following notations in the book: $$\begin{array}{ll} \mathbb{Z}& \text{the set of integers,} \\ \mathbb{N}& \text{the set 
+of (strictly) positive integers,} \\ \mathbb{N}_{0}& \text{the set of nonnegative integers.} \\ \end{array}$$ 
+
+\bigskip Enjoy your journey! 
+\tableofcontents\chapter{Divisibility Theory}\quoting{Why are numbers beautiful? It's like asking why is Beethoven's Ninth Symphony beautiful. If you don't see why, someone can't tell you. I know numbers are beautiful. If they aren't beautiful, nothing is.}{Paul Erd\"os}
+\textbf{A 1. } Show that if $x, y, z$ are positive integers, then $(xy+1)(yz+1)(zx+1)$ is a perfect square if and only if $xy+1$, $yz+1$, $zx+1$ are all perfect squares. \source{Kiran S. Kedlaya}
+\textbf{A 2. } Find infinitely many triples $(a, b, c)$ of positive integers such that $a$, $b$, $c$ are in arithmetic progression and such that $ab+1$, $bc+1$, and $ca+1$ are perfect squares. \source{AMM, Problem 10622, M. N. Deshpande}
+\textbf{A 3. } Let $a$ and $b$ be positive integers such that $ab + 1$ divides $a^2 + b^2$. Show that $$\frac{a^2 + b^2}{ab + 1}$$ is the square of an integer. \source{IMO 1988/6}
+\textbf{A 4. } If $a, b, c$ are positive integers such that $$ 0 \le a^2 +b^2 -abc \le c, $$ show that $a^2 +b^2 -abc$ is a perfect square. \source{CRUX, Problem 1420, Shailesh Shirali}
+\textbf{A 5. } Let $x$ and $y$ be positive integers such that $xy$ divides $x^{2}+y^{2}+1$. Show that $$ \frac{x^2 +y^2 +1}{xy}=3. $$ \source{}
+\textbf{A 6. } \begin{enumerate}\item Find infinitely many pairs of integers $a$ and $b$ with $1<a<b$, so that $ab$ exactly divides $a^2 +b^2 -1$. \item With $a$ and $b$ as above, what are the possible values of $$ \frac{a^2 +b^2 -1}{ab}? $$ \end{enumerate} \source{CRUX, Problem 1746, K. Guy and Richard J.Nowakowki}
+\textbf{A 7. } Let $n$ be a positive integer such that $2+2\sqrt{28n^2 +1}$ is an integer. Show that $2+2\sqrt{28n^2 +1}$ is the square of an integer. \source{1969 E\"otv\"os-K\"ursch\'ak Mathematics Competition}
+\textbf{A 8. } The integers $a$ and $b$ have the property that for every nonnegative integer $n$ the number of $2^n{a}+b$ is the square of an integer. Show that $a=0$. \source{Poland 2001}
+\textbf{A 9. } Prove that among any ten consecutive positive integers at least one is relatively prime to the product of the others. \source{[IHH, pp. 211]}
+\textbf{A 10. } Let $n$ be a positive integer with $n \ge 3$. Show that $$ n^{n^{n^{n}}}-n^{n^{n}} $$ is divisible by $1989$. \source{[UmDz pp.13] Unused Problem for the Balkan MO}
+\textbf{A 11. } Let $a, b, c, d$ be integers. Show that the product $$ (a-b)(a-c)(a-d)(b-c)(b-d)(c-d) $$ is divisible by $12$. \source{Slovenia 1995}
+\textbf{A 12. } Let $k,m,$ and $n$ be natural numbers such that $m+k+1$ is a prime greater than $n+1$. Let $c_{s}=s(s+1).$ Prove that the product $$ (c_{m+1}-c_{k})(c_{m+2}-c_{k})\cdots (c_{m+n}-c_{k}) $$ is divisible by the product $c_{1}c_{2}\cdots c_{n}$. \source{Putnam 1972}
+\textbf{A 13. } Show that for all prime numbers $p$, $$ Q(p)=\prod^{p-1}_{k=1} k^{2k-p-1} $$ is an integer. \source{AMM, Problem E2510, Saul Singer}
+\textbf{A 14. } Let $n$ be an integer with $n \ge 2$. Show that $n$ does not divide $2^{n}-1$. \source{}
+\textbf{A 15. } Suppose that $k \ge 2$ and $n_{1}, n_{2}, \cdots, n_{k} \ge 1$ be natural numbers having the property $$ n_{2} \; |  \; 2^{n_1} -1, n_{3}  \; | \; 2^{n_2} -1, \cdots, n_{k}  \; |  \; 2^{n_{k-1}} -1, n_{1}  \; |  \; 2^{n_k} -1. $$ Show that $n_{1}=n_{2}=\cdots=n_{k}=1$. \source{IMO Long List 1985 P (RO2)}
+\textbf{A 16. } Determine if there exists a positive integer $n$ such that $n$ has exactly $2000$ prime divisors and $2^{n}+1$ is divisible by $n$. \source{IMO 2000/5}
+\textbf{A 17. } Let $m$ and $n$ be natural numbers such that $$A=\frac{(m+3)^n +1}{3m}$$ is an integer. Prove that $A$ is odd. \source{Bulgaria 1998}
+\textbf{A 18. } Let $m$ and $n$ be natural numbers and let $mn+1$ be divisible by $24$. Show that $m+n$ is divisible by $24$. \source{Slovenia 1994}
+\textbf{A 19. } Let $f(x)=x^3 +17$. Prove that for each natural number $n \ge 2$, there is a natural number $x$ for which $f(x)$ is divisible by $3^n$ but not $3^{n+1}$. \source{Japan 1999}
+\textbf{A 20. } Determine all positive integers $n$ for which there exists an integer $m$ such that $2^{n}-1$ divides $m^{2}+9$. \source{IMO Short List 1998}
+\textbf{A 21. } Let n be a positive integer. Show that the product of $n$ consecutive positive integers is divisible by $n!$ \source{}
+\textbf{A 22. } Prove that the number $$ \sum_{k=0}^{n}\binom{2n+1}{2k+1}2^{3k} $$ is not divisible by $5$ for any integer $n\geq 0$. \source{IMO 1974/3}
+\textbf{A 23. } (Wolstenholme's Theorem) Prove that if $$ 1+\frac{1}{2}+\frac{1}{3}+\cdots+\frac{1}{p-1} $$ is expressed as a fraction, where $p \ge 5$ is a prime, then $p^2$ divides the numerator. \source{[GhEw pp.104]}
+\textbf{A 24. } Let $p>3$ is a prime number and $k=\lfloor\frac{2p}{3}\rfloor $. Prove that $$ \binom{p}{1}+\binom{p}{2}+\cdots +\binom{p}{k}$$ is divisible by $p^2$. \source{Putnam 1996}
+\textbf{A 25. } Show that $\binom{2n}{n} \; | \; \text{lcm}(1,2, \cdots, 2n)$ for all positive integers $n$. \source{}
+\textbf{A 26. } Let $m$ and $n$ be arbitrary non-negative integers. Prove that $$ \frac{(2m)!(2n)!}{m! n!(m+n)!} $$ is an integer. \source{IMO 1972/3}
+\textbf{A 27. } Show that the coefficients of a binomial expansion $(a+b)^n$ where $n$ is a positive integer, are all odd, if and only if $n$ is of the form $2^{k}-1$ for some positive integer $k$. \source{}
+\textbf{A 28. } Prove that the expression $$ \frac{\gcd(m, n)}{n}\binom{n}{m} $$ is an integer for all pairs of positive integers $(m, n)$ with $n \ge m \ge 1$. \source{Putnam 2000}
+\textbf{A 29. } For which positive integers $k$, is it true that there are infinitely many pairs of positive integers $(m, n)$ such that $$ \frac{(m+n-k)!}{m! \; n!} $$ is an integer? \source{AMM Problem E2623, Ivan Niven}
+\textbf{A 30. } Show that if $n \ge 6$ is composite, then $n$ divides $(n-1)!$. \source{}
+\textbf{A 31. } Show that there exist infinitely many positive integers $n$ such that $n^{2}+1$ divides $n!$. \source{Kazakhstan 1998}
+\textbf{A 32. } Let $a$ and $b$ be natural numbers such that $$ \frac{a}{b}=1-\frac{1}{2}+\frac{1}{3}-\frac{1}{4}+\cdots -\frac{1}{1318}+ \frac{1}{1319}. $$ Prove that $a$ is divisible by $1979$. \source{IMO 1979/1}
+\textbf{A 33. } Let $a,b,n\in \mathbb{N}$ with $b>1$ and such that $b^{n}-1$ divides $a$. Show that in base $b$, the number $a$ has at least $n$ non-zero digits. \source{IMO Short List 1993}
+\textbf{A 34. } Let $p_{1}, p_{2}, \cdots, p_{n}$ be distinct primes greater than $3$. Show that $$ 2^{p_{1} p_{2} \cdots p_{n}} +1 $$ has at least $4^n$ divisors. \source{IMO Short List 2002 N3}
+\textbf{A 35. } Let $p \ge 5$ be a prime number. Prove that there exists an integer $a$ with $1 \le a \le p-2$ such that neither $a^{p-1} -1$ nor $(a+1)^{p-1} -1$ is divisible by $p^2$. \source{IMO Short List 2001 N4}
+\textbf{A 36. } Let $n$ and $q$ be integers with $n \ge 5$, $2 \le q \le n$. Prove that $q-1$ divides $\left\lfloor \frac{(n-1)!}{q}\right\rfloor $. \source{Australia 2002}
+\textbf{A 37. } If $n$ is a natural number, prove that the number $(n+1)(n+2)\cdots(n+10)$ is not a perfect square. \source{Bosnia and Herzegovina 2002}
+\textbf{A 38. } Let $p$ be a prime with $p>5$, and let $S=\{p-n^2 \vert n \in \mathbb{N}, {n}^{2}<p \}$. Prove that $S$ contains two elements $a$ and $b$ such that $a \vert b$ and $1<a<b$. \source{MM, Problem 1438, David M. Bloom}
+\textbf{A 39. } Let $n$ be a positive integer. Prove that the following two statements are equivalent. \begin{itemize}\item $n$ is not divisible by $4$ \item There exist $a, b \in \mathbb{Z}$ such that $a^{2}+b^{2}+1$ is divisible by $n$. \end{itemize} \source{}
+\textbf{A 40. } Determine the greatest common divisor of the elements of the set $$ \{n^{13}-n \; \vert \; n \in \mathbb{Z} \}. $$ \source{[PJ pp.110] UC Berkeley Preliminary Exam 1990}
+\textbf{A 41. } Show that there are infinitely many composite numbers $n$ such that $3^{n-1}-2^{n-1}$ is divisible by $n$. \source{[Ae pp.137]}
+\textbf{A 42. } Suppose that $2^n +1$ is an odd prime for some positive integer $n$. Show that $n$ must be a power of $2$. \source{}
+\textbf{A 43. } Suppose that $p$ is a prime number and is greater than $3$. Prove that $7^{p}-6^{p}-1$ is divisible by $43$. \source{Iran 1994}
+\textbf{A 44. } Suppose that $4^{n}+2^{n}+1$ is prime for some positive integer $n$. Show that $n$ must be a power of $3$. \source{Germany 1982}
+\textbf{A 45. } Let $b,m,n\in\mathbb{N}$ with $b>1$ and $m\not=n$. Suppose that $b^{m}-1$ and $b^{n}-1$ have the same set of prime divisors. Show that $b+1$ must be a power of $2$. \source{IMO Short List 1997}
+\textbf{A 46. } Let $a$ and $b$ be integers. Show that $a$ and $b$ have the same parity if and only if there exist integers $c$ and $d$ such that $a^2 +b^2 +c^2 +1 = d^2$. \source{Romania 1995, I. Cucurezeanu}
+\textbf{A 47. } Let $n$ be a positive integer with $n>1$. Prove that $$ \frac{1}{2} + \cdots+ \frac{1}{n} $$ is not an integer. \source{[Imv, pp. 15]}
+\textbf{A 48. } Let $n$ be a positive integer. Prove that $$ \frac{1}{3} + \cdots+ \frac{1}{2n+1} $$ is not an integer. \source{[Imv, pp. 15]}
+\textbf{A 49. } Prove that there is no positive integer $n$ such that, for $k=1, \ldots, 9$ the leftmost digit (base 10) of $(n+k)!$ equals $k$. \source{IMO Short List 2001 N1}
+\textbf{A 50. } Show that every integer $k\ge 1$ has a multiple less than $k^4$ whose decimal expansion (base 10) has at most four distinct digits. \source{Germany 2000}
+\textbf{A 51. } Let $a,b,c$ and $d$ be odd integers such that $0<a<b<c<d$ and $ad=bc$. Prove that if $a+d=2^{k}$ and $b+c=2^{m}$ for some integers $k$ and $m$, then $a=1$. \source{IMO 1984/6}
+\textbf{A 52. } Let $d$ be any positive integer not equal to 2, 5, or 13. Show that one can find distinct $a$ and $b$ in the set $\{2,5,13,d\}$ such that $ab - 1$ is not a perfect square. \source{IMO 1986/1}
+\textbf{A 53. } Suppose that $x, y,$ and $z$ are positive integers with $xy=z^2 +1$. Prove that there exist integers $a, b, c,$ and $d$ such that $x=a^2 +b^2$, $y=c^2 +d^2$, and $z=ac+bd$. \source{Iran 2001}
+\textbf{A 54. } A natural number $n$ is said to have the property $P$, if whenever $n$ divides $a^{n}-1$ for some integer $a$, $n^2$ also necessarily divides $a^{n}-1$. \begin{enumerate} \item Show that every prime number $n$ has the property $P$. \item Show that there are infinitely many composite numbers $n$ that possess the property $P$. \end{enumerate} \source{IMO ShortList 1993 IND5}
+\textbf{A 55. } Show that for every natural number $n$ the product $$ \left( 4 -\frac{2}{1} \right) \left( 4 -\frac{2}{2} \right) \left( 4 -\frac{2}{3} \right) \cdots \left( 4 -\frac{2}{n} \right) $$ is an integer. \source{Czech and Slovak Mathematical Olympiad 1999}
+\textbf{A 56. } Let $a, b$, and  $c$ be integers such that $a+b+c$ divides $a^2 +b^2 +c^2$. Prove that there are infinitely many positive integers $n$ such that $a+b+c$ divides $a^n +b^n +c^n$. \source{Romania 1987, L. Panaitopol}
+\textbf{A 57. } Prove that for every $n \in \mathbb{N}$ the following proposition holds: $7|3^n +n^3$ if and only if $7|3^{n} n^3 +1$. \source{Bulgaria 1995}
+\textbf{A 58. } Let $k\ge 14$ be an integer, and let $p_k$ be the largest prime number which is strictly less than $k$. You may assume that $p_k\ge \tfrac{3k}{4}$. Let $n$ be a composite integer. Prove that \begin{enumerate} \item if $n=2p_k$, then $n$ does not divide $(n-k)!$, \item  if $n>2p_k$, then $n$ divides $(n-k)!$. \end{enumerate} \source{APMO 2003/3}
+\textbf{A 59. } Suppose that $n$ has (at least) two essentially distinct representations as a sum of two squares. Specifically, let $n=s^{2}+t^{2}=u^{2}+v^{2}$, where $s \ge t \ge 0$, $u \ge v \ge 0$, and $s>u$. Show that $\gcd(su-tv, n)$ is a proper divisor of $n$. \source{[AaJc, pp. 250]}
+\textbf{A 60. } Prove that there exist an infinite number of ordered pairs $(a,b)$ of integers such that for every positive integer $t$, the number $at+b$ is a triangular number if and only if $t$ is a triangular number. \source{Putnam 1988/B6}
+\textbf{A 61. } For any positive integer $n>1$, let $p(n)$ be the greatest prime divisor of $n$. Prove that there are infinitely many positive integers $n$ with $$ p(n)<p(n+1)<p(n+2). $$ \source{Bulgaria 1995}
+\textbf{A 62. } Let $p(n)$ be the greatest odd divisor of $n$. Prove that $$ \frac{1}{2^n} \sum_{k=1}^{2^n} \frac{p(k)}{k} > \frac{2}{3}. $$ \source{Germany 1997}
+\textbf{A 63. } There is a large pile of cards. On each card one of the numbers $1$, $2$, $\cdots$, $n$ is written. It is known that the sum of all numbers of all the cards is equal to $k \cdot n!$ for some integer $k$. Prove that it is possible to arrange cards into $k$ stacks so that the sum of numbers written on the cards in each stack is equal to $n!$. \source{[Tt] Tournament of the Towns 2002 Fall/A-Level}
+\textbf{A 64. } The last digit (base 10) of the number $x^2 +xy+y^2$ is zero (where $x$ and $y$ are positive integers). Prove that two last digits of this numbers are zeros. \source{[Tt] Tournament of the Towns 2002 Spring/O-Level}
+\textbf{A 65. } Clara computed the product of the first $n$ positive integers and Valerid computed the product of the first $m$ even positive integers, where $m \ge 2$. They got the same answer. Prove that one of them had made a mistake. \source{[Tt] Tournament of the Towns 2001 Fall/O-Level}
+\textbf{A 66. } (Four Number Theorem) Let $a, b, c,$ and $d$ be positive integers such that $ab=cd$. Show that there exists positive integers $p, q, r,s$ such that $$ a=pq, \;\; b=rs, \;\; c=ps,  \;\; d=qr. $$ \source{[PeJs, pp. 5]}
+\textbf{A 67. } Suppose that $S=\{a_{1}, \cdots, a_{r}\}$ is a set of positive integers, and let $S_k$ denote the set of subsets of $S$ with $k$ elements. Show that $$ \text{lcm}(a_{1}, \cdots, a_{r})=\prod_{i=1}^r \prod_{s\in S_i}\gcd(s)^{\left((-1)^i\right)}.$$ \source{[Her, pp. 14]}
+\textbf{A 68. } Prove that if the odd prime $p$ divides $a^{b}-1$, where $a$ and $b$ are positive integers, then $p$ appears to the same power in the prime factorization of $b(a^{d}-1)$, where $d=\gcd(b,p-1)$. \source{MM, June 1986, Problem 1220, Gregg Partuno}
+\textbf{A 69. } Suppose that $m=nq$, where $n$ and $q$ are positive integers. Prove that the sum of binomial coefficients $$ \sum_{k=0}^{n-1} \binom{\gcd(n, k)q}{\gcd(n, k)} $$ is divisible by $m$. \source{MM, Sep. 1984, Problem 1175}
+\textbf{A 70. } Determine all integers $n > 1$ such that $$\frac{2^n + 1}{n^2}$$ is an integer. \source{IMO 1990/3 (ROM5)}
+\textbf{A 71. } Determine all pairs $(n,p)$ of nonnegative integers such that \begin{itemize} \item $p$ is a prime, \item $n<2p$, \item $(p-1)^{n} + 1$ is divisible by $n^{p-1}$. \end{itemize} \source{IMO 1999/4}
+\textbf{A 72. } Determine all pairs $(n,p)$ of positive integers such that \begin{itemize}\item $p$ is a prime, $n\ge 1$, \item  $(p-1)^{n} + 1$ is divisible by $n^{p-1}$.\end{itemize} \source{}
+\textbf{A 73. } Find an integer $n$, where $100 \leq n \leq 1997$, such that $$\frac{2^n+2} {n}$$ is also an integer. \source{APMO 1997/2}
+\textbf{A 74. } Find all triples $(a,b,c)$ of positive integers such that $2^{c}-1$ divides $2^{a}+2^{b}+1$. \source{APMC 2002}
+\textbf{A 75. } Find all integers $\,a,b,c\,$ with $\,1<a<b<c\,$ such that $$ (a-1)(b-1)(c-1)\hspace{0.2in}\text{is a divisor of}\hspace{0.2in}abc-1. $$ \source{IMO 1992/1}
+\textbf{A 76. } Find all positive integers, representable uniquely as $$\frac{x^2 + y}{xy + 1},$$ where $x$ and $y$ are positive integers. \source{Russia 2001}
+\textbf{A 77. } Determine all ordered pairs $(m, n)$ of positive integers such that $$ \frac{n^3 + 1}{mn - 1} $$ is an integer. \source{IMO 1994/4}
+\textbf{A 78. } Determine all pairs of integers $(a, b)$ such that $$ \frac{a^2}{2ab^2 - b^3 +1} $$ is a positive integer. \source{IMO 2003/2}
+\textbf{A 79. } Find all pairs of positive integers $m, n \ge 3$ for which there exist infinitely many positive integers $a$ such that $$ \frac{a^m +a-1}{a^n +a^2 -1} $$ is itself an integer. \source{IMO 2002/3}
+\textbf{A 80. } Determine all triples of positive integers $(a, m, n)$ such that $a^m +1$ divides $(a+1)^n$. \source{IMO Short List 2000 N4}
+\textbf{A 81. } Which integers can be represented as $$\frac{(x+y+z)^2}{xyz}$$ where $x$, $y$, and $z$ are positive integers? \source{AMM, Problem 10382, Richard K. Guy}
+\textbf{A 82. } Find all $n \in \mathbb{N}$ such that $ \lfloor  \sqrt{n}\rfloor$ divides $n$. \source{[Tma pp. 73]}
+\textbf{A 83. } Determine all $n \in \mathbb{N}$ for which \begin{itemize}\item $n$ is not the square of any integer, \item $\lfloor \sqrt{n}\rfloor ^3$ divides $n^2$. \end{itemize} \source{India 1989}
+\textbf{A 84. } Find all $n \in \mathbb{N}$ such that $ 2^{n-1}$ divides $n!$. \source{[ElCr pp. 11]}
+\textbf{A 85. } Find all positive integers $(x, n)$ such that $x^{n}+2^{n}+1$ divides $x^{n+1}+2^{n+1}+1$. \source{Romania 1998}
+\textbf{A 86. } Find all positive integers $n$ such that $3^{n}-1$ is divisible by $2^n$. \source{Romania 2005}
+\textbf{A 87. } Find all positive integers $n$ such that $9^{n}-1$ is divisible by $7^n$. \source{}
+\textbf{A 88. } Determine all pairs $(a, b)$ of integers for which $a^{2}+b^{2}+3$ is divisible by $ab$. \source{Turkey 1994}
+\textbf{A 89. } Determine all pairs $(x, y)$ of positive integers with $y \vert x^2 +1$ and $x \vert y^3 +1$. \source{Mediterranean Mathematics Competition 2002}
+\textbf{A 90. } Determine all pairs $(a, b)$ of positive integers such that $ab^2+b+7$ divides $a^2 b+a+b$. \source{IMO 1998/4}
+\textbf{A 91. } Let $a$ and $b$ be positive integers. When $a^{2}+b^{2}$ is divided by $a+b,$ the quotient is $q$ and the remainder is $r.$ Find all pairs $(a,b)$ such that $q^{2}+r=1977$. \source{IMO 1977/5}
+\textbf{A 92. } Find the largest positive integer $n$ such that $n$ is divisible by all the positive integers less than $\sqrt[3]{n}$. \source{APMO 1998}
+\textbf{A 93. } Find all $n \in \mathbb{N}$ such that $3^{n}-n$ is divisible by $17$. \source{}
+\textbf{A 94. } Suppose that $a$ and $b$ are natural numbers such that $$ p=\frac{b}{4}\sqrt{\frac{2a-b}{2a+b}} $$ is a prime number. What is the maximum possible value of $p$? \source{Iran 1998}
+\textbf{A 95. } Find all positive integers $n$ that have exactly $16$ positive integral divisors $d_{1},d_{2} \cdots, d_{16}$ such that $1=d_{1}<d_{2}<\cdots<d_{16}=n$, $d_6=18$, and $d_{9}-d_{8}=17$. \source{Ireland 1998}
+\textbf{A 96. } Suppose that $n$ is a positive integer and let $$ d_{1}<d_{2}<d_{3}<d_{4} $$ be the four smallest positive integer divisors of $n$. Find all integers $n$ such that $$ n={d_1}^{2}+{d_2}^{2}+{d_3}^{2}+{d_4}^{2}. $$ \source{Iran 1999}
+\textbf{A 97. } Let $n$ be a positive integer with $k\ge22$ divisors $1=d_{1} < d_{2} < \cdots < d_{k} =n$, all different. Determine all $n$ such that $$ {d_{7}}^2 +{d_{10}}^2 = \left( \frac{n}{d_{22}} \right)^2. $$ \source{Belarus 1999, I. Voronovich}
+\textbf{A 98. } Let $n \ge 2$ be a positive integer, with divisors $$ 1=d_{1} < d_{2} < \cdots < d_{k} =n \;. $$ Prove that $$ d_{1}d_{2}+d_{2}d_{3}+\cdots+d_{k-1}d_{k} $$ is always less than $n^2$, and determine when it divides $n^2$. \source{IMO 2002/4}
+\textbf{A 99. } Find all positive integers $n$ such that $n$ has exactly $6$ positive divisors $1<d_{1}<d_{2}<d_{3}<d_{4}<n$ and $1+n=5(d_{1}+d_{2}+d_{3}+d_{4})$. \source{Singapore 1997}
+\textbf{A 100. } Find all composite numbers $n$ having the property that each proper divisor $d$ of $n$ has $n-20 \le d \le n-12$. \source{Belarus 1998, E. Barabanov, I. Voronovich}
+\textbf{A 101. } Determine all three-digit numbers $N$ having the property that $N$ is divisible by $11,$ and $\frac{N}{11}$ is equal to the sum of the squares of the digits of $N.$ \source{IMO 1960/1}
+\textbf{A 102. } When $4444^{4444}$ is written in decimal notation, the sum of its digits is $ A.$ Let $B$ be the sum of the digits of $A.$ Find the sum of the digits of $ B.$ ($A$ and $B$ are written in decimal notation.) \source{IMO 1975/4}
+\textbf{A 103. } A wobbly number is a positive integer whose $digits$ in base $10$ are alternatively non-zero and zero the units digit being non-zero. Determine all positive integers which do not divide any wobbly number. \source{IMO Short List 1994 N7}
+\textbf{A 104. } Find the smallest positive integer $n$ such that \begin{itemize}\item $n$ has exactly $144$ distinct positive divisors, \item there are ten consecutive integers among the positive divisors of $n$. \end{itemize} \source{IMO Long List 1985 (TR5)}
+\textbf{A 105. } Determine the least possible value of the natural number $n$ such that $n!$ ends in exactly $1987$ zeros. \source{IMO Long List 1987}
+\textbf{A 106. } Find four positive integers, each not exceeding $70000$ and each having more than $100$ divisors. \source{IMO Short List 1986 P10 (NL1)}
+\textbf{A 107. } For each integer $n>1$, let $p(n)$ denote the largest prime factor of $n$. Determine all triples $(x, y, z)$ of distinct positive integers satisfying \begin{itemize} \item $x, y, z$ are in arithmetic progression, \item $p(xyz) \le 3$. \end{itemize} \source{British Mathematical Olympiad 2003, 2-1}
+\textbf{A 108. } Find all positive integers $a$ and $b$ such that $$\frac{a^2+b}{b^2-a}\text{    and    }\frac{b^2+a}{a^2-b}$$ are both integers. \source{APMO 2002/2}
+\textbf{A 109. } For each positive integer $n$, write the sum $\sum_{m=1}^n 1/m$ in the form $p_n/q_n$, where $p_n$ and $q_n$ are relatively prime positive integers.  Determine all $n$ such that 5 does not divide $q_n$. \source{Putnam 1997/B3}
+\textbf{A 110. } Find all natural numbers $n$ such that the number $n(n+1)(n+2)(n+3)$ has exactly three different prime divisors. \source{Spain 1993}
+\textbf{A 111. } Prove that there exist infinitely many pairs $(a, b)$ of relatively prime positive integers such that $$ \frac{a^2 -5}{b} \;\;  \text{and} \;\; \frac{b^2 -5}{a} $$ are both positive integers. \source{Germany 2003}
+\textbf{A 112. } Find all triples $(l, m, n)$ of distinct positive integers satisfying $$ {\gcd(l, m)}^2 = l+m, \; {\gcd(m, n)}^2 = m+n, \; \text{and} \;\; {\gcd(n, l)}^2 = n+l. $$ \source{Russia 1997}
+\textbf{A 113. } What is the greatest common divisor of the set of numbers $$ \{ {16}^n + 10n-1 \; \vert \; n=1,2,\cdots \}? $$ \source{[EbMk, pp. 16]}
+\textbf{A 114. } Does there exist a $4$-digit integer (in decimal form) such that no replacement of three of its digits by any other three gives a multiple of $1992$? \source{[Ams, pp. 102], I. Selishev}
+\textbf{A 115. } What is the smallest positive integer that consists base 10 of each of the ten digits, each used exactly once, and is divisible by each of the digits $2$ through $9$? \source{[JDS, pp. 27]}
+\textbf{A 116. } Find the smallest positive integer $n$ such that $$ 2^{1989} \; \vert \; m^n -1 $$ for all odd positive integers $m>1$. \source{[Rh2, pp. 98]}
+\textbf{A 117. } Determine the highest power of $1980$ which divides $$ \frac{(1980n)!}{(n!)^{1980}}. $$ \source{MM, Jan. 1981, Problem 1089, M. S. Klamkin}
+\textbf{A 118. } Find $\gcd\{a^4-b^4|a,b\in P\}$, with $P$ the set of primes with at least $2$ digits. \source{Flanders 1990}
+\textbf{A 119. } Let $a,b$ be two positive integers $an$ and $bn$ have the same sum of digits for all $n\in\mathbb{N}$. Prove that $\frac ab=10^k$ for some integer $k$. \source{Harazi \& Dzeta from MathLinks}
+\textbf{A 120. } Let $b>5$ be an integer. For each positive integer $n$, define $$x_n=\underbrace{11\cdots1}_{n-1}\underbrace{22\cdots2}_{n}5,$$ written in base $b$. Prove that the following condition holds if and only if $b=10$: \textit{there exists a positive integer $M$ such that for any integer $n>M$, $x_n$ is a perfect square.} \source{IMO Shortlist 2003}
+\chapter{Congruences}\quoting{Mathematics is the queen of the sciences and number theory is the queen of Mathematics. }{Johann Carl Friedrich Gauss}
+\textbf{B 1. } If $p$ is an odd prime, prove that $$ \binom{k}{p} \equiv \left\lfloor \frac{k}{p} \right\rfloor \pmod{p}. $$ \source{[Tma, pp. 127]}
+\textbf{B 2. } Suppose that $p$ is an odd prime. Prove that $$ \sum_{j=0}^p \binom{p}{j} \binom{p+j}{j} \equiv 2^p + 1\pmod{p^2}. $$ \source{Putnam 1991/B4}
+\textbf{B 3. } Show that $$ (-1)^{\frac{p-1}{2}}\binom{p-1}{\frac{p-1}{2}} \equiv 4^{p-1} \pmod{p^3} $$ for all prime numbers $p$ with $p \ge 5$. \source{Morley}
+\textbf{B 4. } Let $n$ be a positive integer. Prove that $n$ is prime if and only if $$ \binom{n-1}{k} \equiv (-1)^{k} \pmod{n} $$ for all $k \in \{ 0, 1, \cdots, n-1 \}$. \source{MM, Problem 1494, Emeric Deutsch and Ira M.Gessel}
+\textbf{B 5. } Prove that for $n\geq 2$, $$ \underbrace{2^{2^{\cdots^{2}}}}_{n\text{ terms}} \equiv \underbrace{2^{2^{\cdots^{2}}}}_{n-1\text{ terms}} \; \pmod{n}. $$ \source{Putnam 1997/B5}
+\textbf{B 6. } Show that, for any fixed integer $\,n \geq 1,\,$ the sequence $$ 2, \; 2^2, \; 2^{2^2}, \; 2^{2^{2^2}}, \cdots  \pmod{n} $$ is eventually constant. \source{USA 1991}
+\textbf{B 7. } Somebody incorrectly remembered Fermat's little theorem as saying that the congruence $a^{n+1} \equiv a \; \pmod{n}$ holds for all $a$ if $n$ is prime. Describe the set of integers $n$ for which this  property is in fact true. \source{[DZ] posed by Don Zagier at the St AndrewsColloquium 1996}
+\textbf{B 8. } Characterize the set of positive integers $n$ such that, for all integers $a$, the sequence $a$, $a^2$, $a^3$, $\cdots$ is periodic modulo $n$. \source{MM Problem Q889, Michael McGeachie and StanWagon}
+\textbf{B 9. } Show that there exists a composite number $n$ such that $a^n \equiv a \; \pmod{n}$ for all $a \in \mathbb{Z}$. \source{}
+\textbf{B 10. } Let $p$ be a prime number of the form $4k+1$. Suppose that $2p+1$ is prime. Show that there is no $k \in \mathbb{N}$ with $k<2p$ and $2^k \equiv 1 \; \pmod{2p+1}$. \source{}
+\textbf{B 11. } During a break, $n$ children at school sit in a circle around their teacher to play a game.  The teacher walks clockwise close to the children and hands out candies to some of them according to the following rule. He selects one child and gives him a candy, then he skips the next child and gives a candy to the next one, then he skips 2 and gives a candy to the next one, then he skips 3, and so on.  Determine the values of $n$ for which eventually, perhaps after many rounds, all children will have at least one candy each. \source{APMO 1991/4}
+\textbf{B 12. } Suppose that $m>2$, and let $P$ be the product of the positive integers less than $m$ that are relatively prime to $m$. Show that $P \equiv -1 \pmod{m}$ if $m=4$, $p^n$, or $2p^{n}$, where $p$ is an odd prime, and  $P \equiv 1 \pmod{m}$ otherwise. \source{[AaJc, pp. 139]}
+\textbf{B 13. } Let $\Gamma$ consist of all polynomials in $x$ with integer coefficients. For $f$ and $g$ in $\Gamma$ and $m$ a positive integer, let $f \equiv g \pmod{m}$ mean that every coefficient of $f-g$ is an integral multiple of $m$. Let $n$ and $p$ be positive integers with $p$ prime. Given that $f,g,h,r$ and $s$ are in $\Gamma$ with $rf+sg\equiv 1 \pmod{p}$ and $fg \equiv h \pmod{p}$, prove that there exist $F$ and $G$ in $\Gamma$ with $F \equiv f \pmod{p}$, $G \equiv g \pmod{p}$, and $FG \equiv h \pmod{p^n}$. \source{Putnam 1986/B3}
+\textbf{B 14. } Determine the number of integers $n \ge 2$ for which the congruence $$ x^{25} \equiv x \; \pmod{n} $$ is true for all integers $x$. \source{Bulgaria 1995}
+\textbf{B 15. } Let $n_{1}, \cdots, n_{k}$ and $a$ be positive integers which satify the following conditions:\begin{itemize}\item for any $i \neq j$, $(n_{i}, n_{j})=1$, \item  for any $i$, $a^{n_{i}} \equiv 1 \pmod{n_i}$, \item for any $i$, $n_{i}$ does not divide $a-1$. \end{itemize} Show that there exist at least $2^{k+1}-2$ integers $x>1$ with $a^{x} \equiv 1 \pmod{x}$. \source{Turkey 1993}
+\textbf{B 16. } Determine all positive integers $n \ge 2$ that satisfy the following condition; For all integers $a, b$ relatively prime to $n$, $$ a \equiv b \; \pmod{n}  \Longleftrightarrow  ab \equiv 1 \; \pmod{n}. $$ \source{IMO Short List 2000 N1}
+\textbf{B 17. } Determine all positive integers $n$ such that $ xy+1 \equiv 0 \; \pmod{n} $ implies that $ x+y \equiv 0 \; \pmod{n}$. \source{AMM, Problem S9, M. S. Klamkin and A.Liu}
+\textbf{B 18. } Let $p$ be a prime number. Determine the maximal degree of a polynomial $T(x)$ whose coefficients belong to $\{ 0,1,\cdots,p-1 \}$, whose degree is less than $p$, and which satisfies $$ T(n)=T(m) \; \pmod{p} \Longrightarrow n=m \; \pmod{p} $$ for all integers $n, m$. \source{Turkey 2000}
+\textbf{B 19. } Let $a_{1}$, $\cdots$, $a_{k}$ and $m_{1}$, $\cdots$, $m_{k}$ be integers with $2 \le m_1$ and $2m_{i} \le m_{i+1}$ for $1 \le i \le k-1$. Show that there are infinitely many integers $x$ which do not satisfy any of congruences $$ x \equiv a_{1} \; \pmod{m_{1}}, x \equiv a_{2} \; \pmod{m_{2}}, \cdots, x \equiv a_{k} \; \pmod{m_{k}}. $$ \source{Turkey 1995}
+\textbf{B 20. } Show that $1994$ divides $10^{900}-2^{1000}$. \source{Belarus 1994}
+\textbf{B 21. } Determine the last three digits of $$ 2003^{2002^{2001}}. $$ \source{Canada 2003}
+\textbf{B 22. } Prove that $1980^{1981^{1982}} + 1982^{1981^{1980}}$ is divisible by $1981^{1981}$. \source{China 1981}
+\textbf{B 23. } Let $p$ be an odd prime of the form $p=4n+1$. \begin{enumerate}\item Show that $n$ is a quadratic residue $\pmod{p}$. \item Calculate the value $n^{n}$  $\pmod{p}$. \end{enumerate} \source{}
+\textbf{B 24. } Do there exist $16$ $3$-digit numbers, using only three different digits alltogether, such that each number gives a different residu modulo $16$? \source{}
+\chapter{Primes and Composite Numbers}\quoting{Wherever there is number, there is beauty.}{Proclus Diadochus}
+\textbf{C 1. } Prove that the number $512^{3} +675^{3}+ 720^{3}$ is composite \source{[DfAk, pp. 50] Leningrad Mathematical Olympiad 1991}
+\textbf{C 2. } Let $a, b, c, d$ be integers with $a>b>c>d>0$. Suppose that $ac+bd=(b+d+a-c)(b+d-a+c)$. Prove that $ab+cd$ is not prime. \source{IMO 2001/6}
+\textbf{C 3. } Find the sum of all distinct positive divisors of the number $104060401$. \source{MM, Problem Q614, Rod Cooper}
+\textbf{C 4. } Prove that $1280000401$ is composite. \source{}
+\textbf{C 5. } Prove that $\frac{5^{125}-1}{5^{25}-1}$ is a composite number. \source{IMO Short List 1992 P16}
+\textbf{C 6. } Find a factor of $2^{33}-2^{19}-2^{17}-1$ that lies between $1000$ and $5000$. \source{MM, Problem Q684, Noam Elkies}
+\textbf{C 7. } Show that there exists a positive integer $k$ such that $k \cdot 2^{n}+1$ is composite for all $n \in \mathbb{N}_{0}$. \source{USA 1982}
+\textbf{C 8. } Show that for all integer $k>1$, there are  infinitely many natural numbers $n$ such that $k \cdot 2^{2^n} + 1$ is composite. \source{[VsAs]}
+\textbf{C 9. } Four integers are marked on a circle. On each step we simultaneously replace each number by the difference between this number and next number on the circle in a given direction (that is, the numbers $a$, $b$, $c$, $d$ are replaced by $a-b$, $b-c$, $c-d$, $d-a$). Is it possible after $1996$ such steps to have numbers $a$, $b$, $c$ and $d$ such that the numbers $|bc-ad|$, $|ac-bd|$ and $|ab-cd|$ are primes? \source{IMO Short List 1996 N1}
+\textbf{C 10. } Represent the number $989 \cdot 1001 \cdot 1007 +320$ as a product of primes. \source{[DfAk, pp. 9] Leningrad Mathematical Olympiad 1987}
+\textbf{C 11. } In 1772 Euler discovered the curious fact that $n^2 +n+41$ is prime when $n$ is any of $0,1,2, \cdots, 39$. Show that there exist $40$ consecutive integer values of $n$ for which this polynomial is \textit{not} prime. \source{[JDS, pp. 26]}
+\textbf{C 12. } Show that there are infinitely many primes. \source{}
+\textbf{C 13. } Find all natural numbers $n$ for which every natural number whose decimal representation has $n-1$ digits $1$ and one digit $7$ is prime. \source{IMO Short List 1990 USS1}
+\textbf{C 14. } Prove that there do not exist polynomials $P$ and $Q$ such that $$ \pi(x)=\frac{P(x)}{Q(x)} $$ for all $x \in \mathbb{N}$. \source{[Tma, pp. 101]}
+\textbf{C 15. } Show that there exist two consecutive squares such that there are at least $1000$ primes between them. \source{MM, Problem Q789, Norman Schaumberger}
+\textbf{C 16. } Prove that for any prime $p$ in the interval $\left]n, \frac{4n}{3} \right]$, $p$ divides $$ \sum^{n}_{j=0} {\binom{n}{j}}^4. $$ \source{MM, Problem 1392, George Andrews}
+\textbf{C 17. } Let $a$, $b$, and $n$ be positive integers with $\gcd (a, b)=1$. Without using Dirichlet's theorem, show that there are infinitely many $k \in \mathbb{N}$ such that $\gcd(ak+b, n)=1$. \source{[AaJc pp.212]}
+\textbf{C 18. } Without using Dirichlet's theorem, show that there are infinitely many primes ending in the digit $9$. \source{}
+\textbf{C 19. } Let $p$ be an odd prime. Without using Dirichlet's theorem, show that there are infinitely  many primes of the form $2pk+1$. \source{[AaJc pp.176]}
+\textbf{C 20. } Verify that, for each $r \ge 1$, there are infinitely many primes $p$ with $p \equiv 1 \; \pmod{2^r}$. \source{[GjJj pp.140]}
+\textbf{C 21. } Prove that if $p$ is a prime, then $p^{p}-1$ has a prime factor that is congruent to $1$ modulo $p$. \source{[Ns pp.176]}
+\textbf{C 22. } Let $p$ be a prime number. Prove that there exists a prime number $q$ such that for every integer $n$, $n^p -p$ is not divisible by $q$. \source{IMO 2003/6}
+\textbf{C 23. } Let $p_{1}=2, p_{2}={3}, p_{3}=5, \cdots, p_{n}$ be the first $n$ prime numbers, where $n \ge 3$. Prove that $$ \frac{1}{{p_1}^2}+\frac{1}{{p_2}^2}+\cdots+\frac{1}{{p_n}^2}+\frac{1}{p_1 p_2 \cdots p_n} < \frac{1}{2}. $$ \source{Yugoslavia 2001}
+\textbf{C 24. } Let $p_n$ again denote the $n$th prime number. Show that the infinite series $$ \sum^{\infty}_{n=1} \frac{1}{p_n} $$ diverges. \source{}
+\textbf{C 25. } Prove that for each positive integer $n$, there exist $n$ consecutive positive integers none of which is an integral power of a prime number. \source{IMO 1989/5}
+\textbf{C 26. } Show that $n^{\pi(2n)-\pi(n)}<4^{n}$ for all positive integer $n$. \source{[GjJj pp.36]}
+\textbf{C 27. } Let $s_n$ denote the sum of the first $n$ primes. Prove that for each $n$ there exists an integer whose square lies between $s_n$ and $s_{n+1}$. \source{[Tma, pp. 102]}
+\textbf{C 28. } Given an odd integer $n>3$, let $k$ and $t$ be the smallest positive integers such that both $kn+1$ and $tn$ are squares. Prove that $n$ is prime if and only if both $k$ and $t$ are greater than $\frac{n}{4}$ \source{[Tma, pp. 128]}
+\textbf{C 29. } Let $n \ge 5$ be an integer. Show that $n$ is prime if and only if $n_{i} n_{j} \neq n_{p} n_{q}$ for every partition of $n$ into $4$ integers, $n=n_{1}+n_{2}+n_{3}+n_{4}$, and for each permutation $(i, j, p, q)$ of $(1, 2, 3, 4)$. \source{Singapore 1989}
+\textbf{C 30. } Prove that there are no positive integers $a$ and $b$ such that for all different primes $p$ and $q$ greater than $1000$, the number $ap+bq$ is also prime. \source{Russia 1996}
+\textbf{C 31. } Let $p_{n}$ denote the $n$th prime number. For all $n \ge 6$, prove that $$ \pi \left( \sqrt{p_1 p_2 \cdots p_n} \right) > 2n. $$ \source{[Rh, pp. 43]}
+\textbf{C 32. } There exists a block of $1000$ consecutive positive integers containing no prime numbers, namely, $1001!+2$, $1001!+3$, $\cdots$, $1001!+1001$. Does there exist a block of $1000$ consecutive positive integers containing exactly five prime numbers? \source{[Tt] Tournament of the Towns 2001 Fall/O-Level}
+\textbf{C 33. } Prove that there are infinitely many twin primes if and only if there are infinitely many integers that cannot be written in any of the following forms: $$ 6uv+u+v, \;\; 6uv+u-v, \;\; 6uv-u+v, \;\; 6uv-u-v, $$ for some positive integers $u$ and $v$. \source{[PeJs, pp. 160], S. Golomb}
+\textbf{C 34. } It's known that there is always a prime between $n$ and $2n-7$ for all $n \ge 10$. Prove that, with the exception of $1$, $4$, and $6$, every natural number can be written as the sum of distinct primes. \source{[PeJs, pp. 174]}
+\textbf{C 35. } Prove that there do not exist eleven primes, all less than $20000$, which form an arithmetic progression. \source{[DNI, 19]}
+\chapter{Rational Numbers}\quoting{God made the integers, all else is the work of man.}{Leopold Kronecker }
+\textbf{D 1. } Suppose that a rectangle with sides $a$ and $b$ is arbitrarily cut into $n$ squares with sides $x_{1},\ldots,x_n$. Show that $\frac{x_{i}}{a} \in \mathbb{Q}$  and $\frac{x_{i}}{b} \in \mathbb{Q}$ for all $i \in \{1, \cdots, n \}$. \source{[Vvp, pp. 40]}
+\textbf{D 2. } Find all $x$ and $y$ which are rational multiples of $\pi$ with $0<x<y<\frac{\pi}{2}$ and $\tan x+\tan y =2$. \source{CRUX, Problem 1632, Stanley Rabinowitz}
+\textbf{D 3. } Let $\alpha$ be a rational number with $0<\alpha<1$ and $\cos (3 \pi \alpha)+2\cos(2 \pi \alpha)=0$. Prove that $\alpha=\frac{2}{3}$. \source{IMO ShortList 1991 P19 (IRE 5)}
+\textbf{D 4. } Suppose that $\tan \alpha =\frac{p}{q}$, where $p$ and $q$ are integers and $q \neq 0$. Prove the number $\tan \beta$ for which $\tan 2\beta =\tan 3\alpha$ is rational only when $p^2 +q^2$ is the square of an integer. \source{IMO Long List 1967 P20 (DDR)}
+\textbf{D 5. } Prove that there is no positive rational number $x$ such that $$ x^{\lfloor x\rfloor  }=\frac{9}{2}. $$ \source{Austria 2002}
+\textbf{D 6. } Let $x, y, z$ non-zero real numbers such that $xy$, $yz$, $zx$ are rational. \begin{enumerate} \item Show that the number $x^{2}+y^{2}+z^{2}$ is rational. \item If the number $x^{3}+y^{3}+z^{3}$ is also rational, show that $x$, $y$, $z$ are rational. \end{enumerate} \source{Romania 2001, Marius Ghergu}
+\textbf{D 7. } If $x$ is a positive rational number, show that $x$ can be uniquely expressed in the form $$ x=a_{1}+\frac{a_2}{2!}+\frac{a_3}{3!}+\cdots, $$ where $a_1a_2,\cdots$ are integers, $0 \le a_n \le n-1$ for $n>1$, and the series terminates. Show also that $x$ can be expressed as the sum of reciprocals of different integers, each of which is greater than $10^6$. \source{IMO Long List 1967 (GB)}
+\textbf{D 8. } Find all polynomials $W$ with real coefficients possessing the following property: if $x+y$ is a rational number, then $W(x)+W(y)$ is rational. \source{Poland 2002}
+\textbf{D 9. } Prove that every positive rational number can be represented in the form $$ \frac{a^3 + b^3}{c^3 + d^3} $$ for some positive integers $a, b, c$, and $d$. \source{IMO Short List 1999}
+\textbf{D 10. } The set $S$ is a finite subset of $[0,1]$ with the following property: for all $s \in S$, there exist $a,b\in S \cup \{0,1\}$ with $a, b \neq s$ such that $s=\frac{a+b}{2}$. Prove that all the numbers in $S$ are rational. \source{Berkeley Math Circle Monthly Contest 1999-2000}
+\textbf{D 11. } Let $S=\{x_0, x_1, \cdots, x_n\} \subset [0,1]$ be a finite set of real numbers with $x_{0}=0$ and $x_{1}=1$, such that every distance between pairs of elements occurs at least twice, except for the distance $1$. Prove that all of the $x_i$ are rational. \source{Iran 1998}
+\textbf{D 12. } Does there exist a circle and an infinite set of points on it such that the distance between any two points of the set is rational? \source{[Zh, PP. 40] Mediterranean MC 1999 (Proposed by Ukraine)}
+\textbf{D 13. } Let $k$ and $m$ be positive integers. Show that $$ S(m, k)=\sum_{n=1}^{\infty} \frac{1}{n(mn+k)} $$ is rational if and only if $m$ divides $k$. \source{[PbAw, pp. 2]}
+\textbf{D 14. } Prove that for any distinct rational numbers $a, b, c$, the number $$ \frac{1}{(b-c)^2}+ \frac{1}{(c-a)^2}+ \frac{1}{(a-b)^2} $$ is the square of some rational number. \source{[EbMk, pp. 23]}
+\textbf{D 15. } Let $a_i,b_i\in\mathbb{Q}$ $(i=1,2, \cdots, n)$ such that $\forall x\in\mathbb{R}$ we have that $$x^2+x+4= \sum_{i=1}^{n} (a_ix+b)^2.$$ Find the least possible value of n. \source{China TST 2006}
+\textbf{D 16. } Prove that for any positive integers $a$ and $b$ $$ \left\vert a\sqrt{2} -b \right\vert > \frac{1}{2(a+b)}. $$ \source{(A. Mirotin) Belarus 2002}
+\textbf{D 17. } Prove that there exist positive integers $m$ and $n$ such that $$ \left\vert \frac{m^2}{n^3} - \sqrt{2001} \right\vert < \frac{1}{10^{8}}. $$ \source{(V. Bernik) Belarus 2001}
+\textbf{D 18. } Let $a, b, c$ be integers, not all zero and each of absolute value less than one million. Prove that $$ \left\vert a+b\sqrt{2}+c\sqrt{3} \right\vert > \frac{1}{10^{21}}. $$ \source{Putnam 1980}
+\textbf{D 19. } Let $a, b, c$ be integers, not all equal to $0$. Show that $$ \frac{1}{4a^2 +3b^2 +2c^2} \le \vert \sqrt[3]{4} a + \sqrt[3]{2} b +c \vert. $$ \source{CRUX(No. 7, Volume 25, 1999), Problem A240, Mohammed Aassila}
+\textbf{D 20. } Prove that for any irrational number $\xi$, there are infinitely many rational numbers $\frac{m}{n}$ $\left( (m,n) \in \mathbb{Z} \times \mathbb{N} \right)$ such that $$ \left\vert \xi - \frac{n}{m} \right\vert < \frac{1}{\sqrt{5} m^2}. $$ \source{}
+\textbf{D 21. } Show that $e=\sum^{\infty}_{n=0} \frac{1}{n!}$ is irrational. \source{}
+\textbf{D 22. } Show that $\cos \frac{\pi}{7}$ is irrational. \source{}
+\textbf{D 23. } Show that $\frac{1}{\pi} \arccos \left( \frac{1}{\sqrt{2003}} \right)$ is irrational. \source{}
+\textbf{D 24. } Show that $\cos 1^{\circ}$ is irrational. \source{}
+\textbf{D 25. } An integer-sided triangle has angles $p \theta$ and $q \theta$, where $p$ and $q$ are relatively prime integers. Prove that $\cos \theta$ is irrational. \source{CRUX(No. 1. Vol. 24, 1998), Problem 2305, Richard I. Hess}
+\textbf{D 26. } It is possible to show that $\csc \frac{3 \pi}{29} -\csc \frac{10 \pi}{29}=1.999989433...$. Prove that there are no integers $j$, $k$, $n$ with odd $n$ satisfying $\csc \frac{j \pi}{n} -\csc \frac{k \pi}{n}=2$. \source{AMM, Problem 10630, Richard Strong}
+\textbf{D 27. } For which angles $\theta$, with $\theta$ a rational number of degrees, is ${\tan}^2 \theta + {\tan}^2 2\theta $ is irrational? \source{}
+\textbf{D 28. } Show that the cube roots of three distinct primes cannot be terms in an arithmetic progression. \source{[KhKw, pp. 11]}
+\textbf{D 29. } Let $n$ be an integer greater than or equal to $3$.  Prove that there is a set of $n$ points in the plane such that the distance between any two points is irrational and each set of three points determines a non-degenerate triangle with a rational area. \source{[AI, pp. 116] For a proof, See [KaMr].}
+\textbf{D 30. } You are given three lists A, B, and C.  List A contains the numbers of the form $10^k$ in base 10, with $k$ any integer greater than or equal to 1.  Lists B and C contain the same numbers translated into base 2 and 5 respectively:  $$\begin{array}{lll} A & B & C \\ 10 & 1010 & 20 \\ 100 & 1100100 & 400 \\ 1000 & 1111101000 & 13000 \\ \vdots & \vdots & \vdots \end{array}.$$ Prove that for every integer $n > 1$, there is exactly one number in exactly one of the lists B or C that has exactly $n$ digits. \source{APMO 1994/5}
+\textbf{D 31. } Prove that if $\alpha$ and $\beta$ are positive irrational numbers satisfying $\frac{1}{\alpha}+\frac{1}{\beta}=1$, then the sequences $$ \lfloor\alpha\rfloor, \lfloor 2\alpha\rfloor, \lfloor 3\alpha\rfloor, \cdots $$ and $$ \lfloor\beta\rfloor, \lfloor 2\beta\rfloor, \lfloor 3\beta\rfloor, \cdots $$ together include every positive integer exactly once.    \source{}
+\textbf{D 32. } For a positive real number $\alpha$, define $$ S(\alpha)=\{ \lfloor n\alpha\rfloor   \; \vert \; n=1,2,3,\cdots \}. $$ Prove that $\mathbb{N}$ cannot be expressed as the disjoint union of three sets $S(\alpha)$, $S(\beta)$, and $S(\gamma)$. \source{Putnam 1995/B6}
+\textbf{D 33. } Let $f(x)=\prod_{n=1}^{\infty} \left( 1 + \frac{x}{2^n} \right)$. Show that at the point $x=1$, $f(x)$ and all its derivatives are irrational. \source{}
+\textbf{D 34. } Let $\{a_n\}_{n \ge 1}$ be a sequence of positive numbers such that $$ a_{n+1}^2 = a_{n}+1, \;\; n \in \mathbb{N}. $$ Show that the sequence contains an irrational number. \source{}
+\textbf{D 35. } Show that $\tan \left(  \frac{\pi}{m} \right)$ is irrational for all positive integers $m \ge 5$. \source{MM, Problem 1385, Howard Morris}
+\textbf{D 36. } Prove that if $g \ge 2$ is an integer, then two series $$ \sum_{n=0}^{\infty} \frac{1}{g^{n^2}} \;\; \text{and} \;\; \sum_{n=0}^{\infty} \frac{1}{g^{n!}} $$ both converge to irrational numbers. \source{[Ae, pp. 226]}
+\textbf{D 37. } Let $1<a_{1}<a_{2}<\cdots$ be a sequence of positive integers. Show that $$ \frac{2^{a_1}}{{a_{1}}!} +\frac{2^{a_2}}{{a_{2}}!} +\frac{2^{a_3}}{{a_{3}}!} + \cdots $$ is irrational. \source{[PeJs, pp. 95]}
+\textbf{D 38. } Do there exist real numbers $a$ and $b$ such that \begin{enumerate}\item $a+b$ is rational and $a^n +b^n $ is irrational for all $n \in \mathbb{N}$ with  $n \ge 2$? \item $a+b$ is irrational and $a^n +b^n $ is rational for all $n \in \mathbb{N}$ with $n \ge 2$?\end{enumerate} \source{(N. Agahanov) [PeJs, pp. 99]}
+\textbf{D 39. } Let $p(x)=x^{3}+a_{1}x^{2}+a_{2}x+a_{3}$ have rational coefficients and have roots $r_{1}$, $r_{2}$, and $r_{3}$. If $r_{1}-r_{2}$ is rational, must $r_{1}$, $r_{2}$, and $r_{3}$ be rational? \source{[PbAw, pp. 2]}
+\textbf{D 40. } Let $\alpha=0.d_{1}d_{2}d_{3} \cdots$ be a decimal representation of a real number between $0$ and $1$. Let $r$ be a real number with $\vert r \vert<1$. \begin{enumerate}\item If $\alpha$ and $r$ are rational, must $\sum_{i=1}^{\infty} d_{i}r^{i}$ be rational? \item If $\sum_{i=1}^{\infty} d_{i}r^{i}$ and $r$ are rational, $\alpha$ must be rational? \end{enumerate} \source{[Ams, pp. 14]}
+\chapter{Diophantine Equations}\quoting{To divide a cube into two other cubes, a fourth power or in general any power whatever into two powers of the same denomination above the second is impossible, and I have assuredly found an admirable proof of this, but the margin is too narrow to contain it.}{Pierre de Fermat, in the margin of his copy of Diophantus' Arithmetica}
+\textbf{E 1. } There is a positive integer $n$ such that $$ n^{5} = 133^{5} + 110^{5} + 84^{5} + 27^{5}. $$ Find the value of $n$. \source{AIME 1989/9}
+\textbf{E 2. } The number $21982145917308330487013369$ is the thirteenth power of a positive integer. Which positive integer? \source{UC Berkeley Preliminary Exam 1983}
+\textbf{E 3. } Does there exist a solution to the equation $$ x^{2}+y^{2}+z^{2}+u^{2}+v^{2}=xyzuv-65 $$ in integers with $x, y, z, u, v$ greater than $1998$? \source{Taiwan 1998}
+\textbf{E 4. } Find all pairs $(x, y)$ of positive rational numbers such that $x^{2}+3y^{2}=1$. \source{}
+\textbf{E 5. } Find all pairs $(x, y)$ of rational numbers such that $y^2 =x^3 -3x+2$. \source{}
+\textbf{E 6. } Show that there are infinitely many pairs $(x, y)$ of rational numbers such that $x^3 +y^3 =9$. \source{}
+\textbf{E 7. } Determine all pairs $(x,y)$ of positive integers satisfying the equation $$ (x+y)^{2}-2(xy)^{2}=1. $$ \source{Poland 2002}
+\textbf{E 8. } Show that the equation $$ x^{3}+y^{3}+z^{3}+t^{3}=1999 $$ has infinitely many integral solutions. \source{Bulgaria 1999}
+\textbf{E 9. } Determine all integers $a$ for which the equation $$ x^{2}+axy+y^{2}=1 $$ has infinitely many distinct integer solutions $x, \;y$. \source{Ireland 1995}
+\textbf{E 10. } Prove that there are unique positive integers $a$ and $n$ such that $$ a^{n+1}-(a+1)^{n}= 2001. $$ \source{Putnam 2001}
+\textbf{E 11. } Find all $(x,y,n) \in {\mathbb{N}}^3$ such that $\gcd(x, n+1)=1$ and $x^{n}+1=y^{n+1}$. \source{India 1998}
+\textbf{E 12. } Find all $(x,y,z) \in {\mathbb{N}}^3$ such that $x^{4}-y^{4}=z^{2}$. \source{}
+\textbf{E 13. } Find all pairs $(x,y)$ of positive integers that satisfy the equation $$ y^{2}=x^{3}+16. $$ \source{Italy 1994}
+\textbf{E 14. } Show that the equation $x^2 +y^5 =z^3$ has infinitely many solutions in integers $x, y, z$ for which $xyz \neq 0$. \source{Canada 1991}
+\textbf{E 15. } Prove that there are no integers $x$ and $y$ satisfying $x^{2}=y^{5}-4$. \source{Balkan Mathematical Olympiad 1998}
+\textbf{E 16. } Find all pairs $(a,b)$ of different positive integers that satisfy the equation $W(a)=W(b)$, where $W(x)=x^{4}-3x^{3}+5x^{2}-9x$. \source{}
+\textbf{E 17. } Find all positive integers $n$ for which the equation $$a+b+c+d=n \sqrt{abcd}$$ has a solution in positive integers. \source{Vietnam 2002}
+\textbf{E 18. } Determine all positive integer solutions $(x, y, z, t)$ of the equation $$ (x+y)(y+z)(z+x)=xyzt $$ for which $\gcd(x, y)=\gcd(y, z)=\gcd(z, x)=1$. \source{Romania 1995, M. Becheanu}
+\textbf{E 19. } Find all $(x, y, z, n) \in {\mathbb{N}}^4$ such that $ x^3 +y^3 +z^3 =nx^2 y^2 z^2$. \source{[UmDz pp.14] Unused Problem for the Balkan MO}
+\textbf{E 20. } Determine all positive integers $n$ for which the equation $$x^n + (2+x)^n + (2-x)^n = 0$$ has an integer as a solution. \source{APMO 1993/4}
+\textbf{E 21. } Prove that the equation $$6(6a^2 + 3b^2 + c^2) = 5n^2$$ has no solutions in integers except $a=b=c=n=0$. \source{APMO 1989/2}
+\textbf{E 22. } Find all integers $a,b,c,x,y,z$ such that $$ a+b+c=xyz, \; x+y+z=abc, \; a \ge b \ge c \ge 1, \; x \ge y \ge z \ge 1. $$ \source{Poland 1998}
+\textbf{E 23. } Find all $(x,y,z) \in {\mathbb{Z}}^3$ such that $x^{3}+y^{3}+z^{3}=x+y+z=3$. \source{}
+\textbf{E 24. } Prove that if $n$ is a positive integer such that the equation $$ x^{3}-3xy^{2}+y^{3}=n. $$ has a solution in integers $(x,y),$ then it has at least three such solutions.  Show that the equation has no solutions in integers when $n=2891$. \source{IMO 1982/4}
+\textbf{E 25. } What is the smallest positive integer $t$ such that there exist integers $x_{1},x_{2}, \cdots, x_{t}$ with $$ {x_{1}}^{3}+{x_{2}}^{3}+\cdots+{x_{t}}^{3}=2002^{2002} \;\;? $$ \source{IMO Short List 2002 N1}
+\textbf{E 26. } Solve in integers the following equation $$ n^{2002}=m(m+n)(m+2n)\cdots(m+2001n). $$ \source{Ukraine 2002}
+\textbf{E 27. } Prove that there exist infinitely many positive integers $n$ such that $p=nr$, where $p$ and $r$ are respectively the semi-perimeter and the inradius of a triangle with integer side lengths. \source{IMO Short List 2000 N5}
+\textbf{E 28. } Let $a, b, c$ be positive integers such that $a$ and $b$ are relatively prime and $c$ is relatively prime either to $a$ or $b$. Prove that there exist infinitely many triples $(x, y, z)$ of distinct positive integers such that $$ x^{a} +y^{b}= z^{c}. $$ \source{IMO Short List 1997 N6}
+\textbf{E 29. } Find all pairs of integers $(x, y)$ satisfying the equality $$ y(x^2 +36)+x(y^2 -36)+y^2 (y-12)=0.$$ \source{Belarus 2000}
+\textbf{E 30. } Let $a$, $b$, $c$ be given integers, $a\ge 0$, $ac-b^2=p$ a square-free positive integer. Let $M(n)$ denote the number of pairs of integers $(x, y)$ for which $ax^2 +bxy+cy^2=n$. Prove that $M(n)$ is finite and $M(n)=M(p^{k} \cdot n)$ for every integer $k \ge 0$. \source{IMO Short List 1993 G3}
+\textbf{E 31. } Determine all integer solutions of the system $$ 2uv-xy=16, $$ $$ xv-yu=12. $$ \source{[Eb1, pp. 19]  AMM 61(1954), 126; 62(1955), 263}
+\textbf{E 32. } Let $n$ be a natural number. Solve in whole numbers the equation $$ x^n +y^n =(x-y)^{n+1}. $$ \source{IMO Long List 1987 (Romania)}
+\textbf{E 33. } Does there exist an integer such that its cube is equal to $3n^2 +3n+7$, where $n$ is integer? \source{IMO Long List 1967 P (PL)}
+\textbf{E 34. } Are there integers $m$ and $n$ such that $5m^2 -6mn+7n^2 =1985$? \source{IMO Long List 1985 (SE1)}
+\textbf{E 35. } Find all cubic polynomials $x^3 +ax^2 +bx+c$ admitting the rational numbers $a$, $b$ and $c$ as roots. \source{IMO Long List 1985 (TR3)}
+\textbf{E 36. } Prove that the equation $a^2 +b^2 =c^2 +3$ has infinitely many integer solutions $(a, b, c)$. \source{Italy 1996}
+\textbf{E 37. } Prove that for each positive integer $n>2$ there exist odd positive integers $x_n$ and $y_n$ such that ${x_{n}}^2 +7{y_{n}}^2 =2^n$. \source{Bulgaria 1996}
+\textbf{E 38. } Suppose that $p$ is an odd prime such that $2p+1$ is also prime. Show that the equation $x^{p}+2y^{p}+5z^{p}=0$ has no solutions in integers other than $(0,0,0)$. \source{[JeMm, pp. 10]}
+\textbf{E 39. } Let $A, B, C, D, E$ be integers, $B \neq 0$ and $F=AD^{2}-BCD+B^{2}E \neq 0$. Prove that the number $N$ of pairs of integers $(x, y)$ such that $$ Ax^2 +Bxy+Cx+Dy+E=0, $$ satisfies $N \le 2 d( \vert F \vert )$, where $d(n)$ denotes the number of positive divisors of positive integer $n$. \source{[KhKw, pp. 9]}
+\textbf{E 40. } Determine all pairs of rational numbers $(x, y)$ such that $$ x^3 +y^3 = x^2 +y^2. $$ \source{[EbMk, pp. 44]}
+\textbf{E 41. } Find all integers $a$ for which $x^3 -x+a$ has three integer roots. \source{[GML, pp. 2]}
+\textbf{E 42. } Find all solutions in integers of $x^{3}+2y^{3}=4z^{3}$. \source{[GML, pp. 33]}
+\textbf{E 43. } For all $n \in \mathbb{N}$, show that the number of integral solutions $(x, y)$ of $$ x^{2}+xy+y^{2}=n $$ is finite and a multiple of $6$. \source{[GML, pp. 192]}
+\textbf{E 44. } Show that there cannot be four squares in arithmetical progression. \source{(Fermat) [Ljm, pp. 21]}
+\textbf{E 45. } Let $a, b, c, d, e, f$ be integers such that $b^2 -4ac>0$ is not a perfect square and $4acf+bde-ae^2 -cd^2 -fb^2 \neq 0$. Let $$ f(x, y)=ax^2 +bxy +cy^2 +dx+ey+f $$ Suppose that $f(x, y)=0$ has an integral solution. Show that $f(x, y)=0$ has infinitely many integral solutions. \source{(Gauss) [Ljm, pp. 57]}
+\textbf{E 46. } Show that the equation $x^4 +y^4 +4z^4 =1$ has infinitely many rational solutions. \source{[Ljm, pp. 94]}
+\textbf{E 47. } Solve the equation $x^2 +7=2^n$ in integers. \source{[Ljm, pp. 205]}
+\textbf{E 48. } Show that the only solutions of the equation $x^{3}-3xy^2 -y^3 =1$ are given by $(x,y)=(1,0),(0,-1),(-1,1),(1,-3),(-3,2),(2,1)$. \source{[Ljm, pp. 208]}
+\textbf{E 49. } Show that the equation $y^{2}=x^{3}+2a^{3}-3b^2$ has no solution in integers if $ab \neq 0$, $a \not\equiv 1 \; \pmod{3}$, $3$ does not divide $b$, $a$ is odd if $b$ is even, and $p=t^2 +27u^2$ has a solution in integers $t,u$ if $p \vert a$ and $p \equiv 1 \; \pmod{3}$. \source{[Her, pp. 287]}
+\textbf{E 50. } Prove that the product of five consecutive positive integers is never a perfect square. \source{[Rh3, pp. 207]}
+\textbf{E 51. } Do there exist two right-angled triangles with integer length sides that have the lengths of exactly two sides in common? \source{}
+\textbf{E 52. } Show that the number of integral-sided right triangles whose ratio of area to semi-perimeter is $p^{m}$, where $p$ is a prime and $m$ is an integer, is $m+1$ if $p=2$ and $2m+1$ if $p \neq 2$. \source{MM, Sep. 1980, Problem 1077, Henry Klostergaard}
+\textbf{E 53. } Given that $$ 34! = 295232799cd96041408476186096435ab000000_{(10)}, $$ determine the digits $a, b, c$, and $d$. \source{British Mathematical Olympiad 2002/2003, 1-1}
+\textbf{E 54. } Prove that the equation $$\prod_{cyc}^7 (x_1-x_2)= \prod_{cyc}^7 (x_1-x_3)$$ has a solution in natural numbers where all $x_i$ are different. \source{Latvia 1995}
+\textbf{E 55. } Show that the equation $\binom{n}{k}=m^{l}$ has no integral solution with $l \ge 2$ and $4 \le k \le n-4$. \source{(P. Erd\"os) [MaGz pp.13-16]}
+\textbf{E 56. } Solve in positive integers the equation $10^{a}+2^{b}-3^{c}=1997$. \source{Belarus 1999, S. Shikh}
+\textbf{E 57. } Solve the equation $28^x =19^y +87^z$, where $x, y, z$ are integers. \source{IMO Long List 1987 (Greece)}
+\textbf{E 58. } Show that the equation $x^7 + y^7 = {1998}^z$ has no solution in positive integers. \source{[VsAs]}
+\textbf{E 59. } Solve the equation $2^x -5 =11^{y}$ in positive integers. \source{CRUX, Problem 1797, Marcin E. Kuczma}
+\textbf{E 60. } Solve the equation $7^x -3^y =4$ in positive integers. \source{India 1995}
+\textbf{E 61. } Show that $\vert 12^m -5^n\vert \ge 7$ for all $m, n \in \mathbb{N}$. \source{}
+\textbf{E 62. } Show that there is no positive integer $k$ for which the equation $$ (n-1)!+1=n^{k} $$ is true when $n$ is greater than $5$. \source{[Rdc pp.51]}
+\textbf{E 63. } Determine all pairs $(a, b)$ of integers such that $$ (19a+b)^{18}+(a+b)^{18}+(19b+a)^{18} $$ is a nonzero perfect square. \source{Austria 2002}
+\textbf{E 64. } Let $b$ be a positive integer. Determine all $2002$-tuples of non-negative integers $(a_{1}, a_{2}, \cdots, a_{2002})$ satisfying $$ \sum^{2002}_{j=1} {a_{j}}^{a_{j}}=2002{b}^{b}. $$ \source{Austria 2002}
+\textbf{E 65. } Is there a positive integer $m$ such that the equation $$ \frac{1}{a}+ \frac{1}{b}+ \frac{1}{c}+ \frac{1}{abc} = \frac{m}{a+b+c} $$ has infinitely many solutions in positive integers $a, b, c \; $? \source{IMO Short List 2002 N4}
+\textbf{E 66. } Consider the system $$ x+y=z+u, $$ $$ 2xy=zu. $$ Find the greatest value of the real constant $m$ such that $m \le \frac{x}{y}$ for any positive integer solution $(x, y, z, u)$ of the system, with $x \ge y$. \source{IMO Short List 2001 N2}
+\textbf{E 67. } Determine all positive rational numbers $r \neq 1$ such that $\sqrt[r-1]{r}$ is rational. \source{Hong Kong 2000}
+\textbf{E 68. } Show that the equation $\{x^3\}+\{y^3\}=\{z^3\}$ has infinitely many rational non-integer solutions. \source{Belarus 1999}
+\textbf{E 69. } Let $n$ be a positive integer. Prove that the equation $$ x+y+\frac{1}{x}+\frac{1}{y}=3n $$ does not have solutions in positive rational numbers. \source{Baltic Way 2002}
+\textbf{E 70. } Find all pairs $(x, y)$ of positive rational numbers such that $x^{y}=y^{x}$. \source{}
+\textbf{E 71. } Find all pairs $(a,b)$ of positive integers that satisfy the equation $$ a^{b^2} = b^a.$$ \source{IMO 1997/5}
+\textbf{E 72. } Find all pairs $(a,b)$ of positive integers that satisfy the equation $$ a^{a^a} = b^b.$$ \source{Belarus 2000}
+\textbf{E 73. } Let $a,b$, and $x$ be positive integers such that $x^{a+b}=a^b{b}$. Prove that $a=x$ and $b=x^{x}$. \source{Iran 1998}
+\textbf{E 74. } Find all pairs $(m,n)$ of integers that satisfy the equation $$ (m-n)^{2}=\frac{4mn}{m+n-1}. $$ \source{Belarus 1996}
+\textbf{E 75. } Find all pairwise relatively prime positive integers $l, m, n$ such that $$ (l+m+n)\left( \frac{1}{l}+\frac{1}{m}+\frac{1}{n} \right) $$ is an integer. \source{Korea 1998}
+\textbf{E 76. } Let $x, y$, and $z$ be integers with $z>1$. Show that $$ (x+1)^2 +(x+2)^2 + \cdots +(x+99)^2 \neq y^z. $$ \source{Hungary 1998}
+\textbf{E 77. } Find all positive integers $m$ and $n$ for which $$ 1!+2!+3!+\cdots+n!=m^2.$$ \source{[Eb2, pp. 20] Q657, MM 52(1979), 47, 55}
+\textbf{E 78. } Prove that if $a, b, c, d$ are integers such that $d=( a+\sqrt[3]{2}b+\sqrt[3]{4}c)^{2}$ then $d$ is a perfect square. \source{IMO Short List 1980 (GB)}
+\textbf{E 79. } Find a pair of relatively prime four digit natural numbers $A$ and $B$ such that for all natural numbers $m$ and $n$, $\vert A^m -B^n \vert \ge 400$. \source{[DfAk, pp. 18] Leningrad Mathematical Olympiad 1988}
+\textbf{E 80. } Find all triples $(a, b, c)$ of positive integers  to the equation $$ a! b! = a! +b! +c!. $$ \source{British Mathematical Olympiad 2002/2003, 1-5}
+\textbf{E 81. } Find all pairs $(a, b)$  of positive integers  such that $$ (\sqrt[3]{a}+\sqrt[3]{b}-1 )^2 = 49+20 \sqrt[3]{6}. $$ \source{British Mathematical Olympiad 2000, 2-3}
+\textbf{E 82. } For what positive numbers $a$ is $$ \sqrt[3]{2+\sqrt{a}}+\sqrt[3]{2-\sqrt{a}} $$ an integer? \source{MM, Problem 1529, David C. Kay}
+\textbf{E 83. } Find all integer solutions to $2(x^5 +y^5 +1)=5xy(x^2 +y^2 +1)$. \source{MM, Problem 1538, Murray S. Klamkin and George T. Gilbert.}
+\textbf{E 84. } A triangle with integer sides is called Heronian if its area is an integer. Does there exist a Heronian triangle whose sides are the arithmetic, geometric and harmonic means of two positive integers? \source{CRUX, Problem 2351, Paul Yiu}
+\textbf{E 85. } What is the smallest perfect square that ends in $9009$? \source{[EbMk, pp. 22]}
+\textbf{E 86. } (Leo Moser) Show that the Diophantine equation $$ \frac{1}{x_{1}}+ \frac{1}{x_{2}}+ \cdots +\frac{1}{x_{n}}+ \frac{1}{x_{1} x_{2} \cdots x_{n}} = 1 $$ has at least one solution for every positive integers $n$. \source{[EbMk, pp. 46]}
+\textbf{E 87. } Prove that the number $99999+111111\sqrt{3}$ cannot be written in the form $(A+B\sqrt{3})^2$, where $A$ and $B$ are integers. \source{[DNI, 42]}
+\textbf{E 88. } Find all triples of positive integers $(x, y, z)$ such that $$ (x+y)(1+xy)= 2^{z}. $$ \source{Vietnam 2004}
+\textbf{E 89. } If $R$ and $S$ are two rectangles with integer sides such that the perimeter of $R$ equals the area of $S$ and the perimeter of $S$ equals the area of $R$, then we call $R$ and $S$ a friendly pair of rectangles. Find all friendly pairs of rectangles. \source{[JDS, pp. 29]}
+\textbf{E 90. } Find all integer solutions to $x^3 = y^2 + 4$. \source{}
+\chapter{Functional Equations}\quoting{The only way to learn Mathematics is to do Mathematics.}{Paul Halmos}
+\textbf{F 1. } Prove that there is a function $f$ from the set of all natural numbers into itself such that $f(f(n))=n^2$  for all $n \in \mathbb{N}$. \source{Singapore 1996}
+\textbf{F 2. } Find all surjective functions $f:\mathbb{N} \to \mathbb{N}$ such that for all $m,n\in \mathbb{N}$: $$ m \vert n \Longleftrightarrow f(m) \vert f(n).$$ \source{Turkey 1995}
+\textbf{F 3. } Find all functions $f:\mathbb{N} \to \mathbb{N}$ such that for all $n\in \mathbb{N}$: $$ f(n+1) > f(f(n)). $$ \source{IMO 1977/6}
+\textbf{F 4. } Find all functions $f:\mathbb{N} \to \mathbb{N}$ such that for all $n\in \mathbb{N}$: $$ f(f(f(n)))+f(f(n))+f(n)=3n. $$ \source{}
+\textbf{F 5. } Find all functions $f:\mathbb{N} \to \mathbb{N}$ such that for all $n\in \mathbb{N}$: $$ f(f(m)+f(n))=m+n. $$ \source{}
+\textbf{F 6. } Find all functions $f:\mathbb{N} \to \mathbb{N}$ such that for all $n\in \mathbb{N}$: $$ f^{(19)}(n)+97f(n)=98n+232. $$ \source{IMO unused 1997}
+\textbf{F 7. } Find all functions $f:\mathbb{N} \to \mathbb{N}$ such that for all $n\in \mathbb{N}$: $$ f(f(n))+f(n)=2n+2001 \text{ or } 2n+2002. $$ \source{Balkan 2002}
+\textbf{F 8. } Find all functions $f:\mathbb{N} \to \mathbb{N}$ such that for all $n\in \mathbb{N}$: $$ f(f(f(n)))+6f(n)=3f(f(n))+4n+2001. $$ \source{USAMO Summer Program 2001}
+\textbf{F 9. } Find all functions $f:\mathbb{N}_{0} \rightarrow \mathbb{N}_{0}$ such that for all $n\in \mathbb{N}_0$: $$ f(f(n))+f(n)=2n+6. $$ \source{Austria 1989}
+\textbf{F 10. } Find all functions $f:\mathbb{N}_{0} \to \mathbb{N}_{0}$ such that for all $n\in \mathbb{N}_0$: $$ f(m+f(n))=f(f(m))+f(n). $$ \source{IMO 1996/3}
+\textbf{F 11. } Find all functions $f:\mathbb{N}_{0} \to \mathbb{N}_{0}$ such that for all $m,n\in \mathbb{N}_0$: $$ mf(n)+nf(m)=(m+n)f(m^2 +n^2). $$ \source{Canada 2002}
+\textbf{F 12. } Find all functions $f:\mathbb{N} \to \mathbb{N}$ such that for all $m,n\in \mathbb{N}$: \begin{itemize}\item $f(2)=2$, \item $f(mn)=f(m)f(n)$, \item $f(n+1)>f(n)$. \end{itemize} \source{Canada 1969}
+\textbf{F 13. } Find all functions $f:\mathbb{Z} \to \mathbb{Z}$  such that for all $m\in \mathbb{Z}$: $$f(f(m))=m+1.$$ \source{Slovenia 1997}
+\textbf{F 14. } Find all functions $f:\mathbb{Z} \to \mathbb{Z}$ such that for all $m\in\mathbb{Z}$: \begin{itemize}\item $f(m+8) \le f(m)+8$, \item $f(m+11) \ge f(m)+11$.\end{itemize} \source{}
+\textbf{F 15. } Find all functions $f:\mathbb{Z} \to \mathbb{Z}$ such that for all $m,n\in \mathbb{Z}$: $$ f(m+f(n))=f(m)-n. $$ \source{APMC 1997}
+\textbf{F 16. } Find all functions $f:\mathbb{Z} \to \mathbb{Z}$ such that for all $m,n\in \mathbb{Z}$: $$ f(m+f(n)) = f(m)+n. $$ \source{South Africa 1997}
+\textbf{F 17. } Find all functions $h:\mathbb{Z} \to \mathbb{Z}$ such that for all $x,y\in \mathbb{Z}$:  $$ h(x+y)+h(xy)=h(x)h(y)+1.$$ \source{Belarus 1999}
+\textbf{F 18. } Find all functions $f:\mathbb{Q} \to \mathbb{R}$ such that for all $x,y\in \mathbb{Q}$: $$ f(xy)=f(x)f(y)-f(x+y)+1.$$ \source{APMC 1984}
+\textbf{F 19. } Find all functions $f:\mathbb{Q}^{+} \to \mathbb{Q}^{+}$ such that for all $x,y \in \mathbb{Q}^{+}$: $$ f \left( x + \frac{y}{x} \right) =f(x) +\frac{f(y)}{f(x)} +2y, \; x,y \in \mathbb{Q}^{+}. $$ \source{}
+\textbf{F 20. } Find all functions $f:\mathbb{Q} \to \mathbb{Q}$ such that for all $x,y \in \mathbb{Q}$: $$ f(x+y)+f(x-y)=2(f(x)+f(y)).$$ \source{Nordic Mathematics Contest 1998}
+\textbf{F 21. } Find all functions $f,g,h:\mathbb{Q} \to \mathbb{Q}$ such that for all $x,y \in \mathbb{Q}$: $$ f(x+g(y))=g(h(f(x)))+y.$$ \source{KMO Winter Program Test 2001}
+\textbf{F 22. } Find all functions $f:\mathbb{Q}^{+} \to \mathbb{Q}^{+}$ such that for all $x\in \mathbb{Q}^+$: \begin{itemize} \item $f(x+1)=f(x)+1$, \item $f(x^2)=f(x)^2$. \end{itemize} \source{Ukrine 1997}
+\textbf{F 23. } Let ${\mathbb Q}^+$ be the set of positive rational numbers. Construct a function $f: {\mathbb Q}^+ \rightarrow {\mathbb Q}^+$ such that $$f(xf(y)) = \frac{f(x)}{y}$$ for all $x, y \in {\mathbb Q}^+$. \source{IMO 1990/4}
+\textbf{F 24. } A function $f$ is defined on the positive integers by $$\left\{\begin{array}{rcl} f(1) &=& 1, \\ f(3) &=& 3, \\ f(2n) &=& f(n), \\ f(4n + 1) &=& 2f(2n + 1) - f(n), \\ f(4n + 3) &=& 3f(2n + 1) - 2f(n), \end{array}\right.$$ for all positive integers $n$.  Determine the number of positive integers $n$, less than or equal to 1988, for which $f(n) = n$. \source{IMO 1988/3}
+\textbf{F 25. } Consider all functions $f:\mathbb{N}\to\mathbb{N}$ satisfying $f(t^2 f(s)) = s(f(t))^2$ for all $s$ and $t$ in $N$.  Determine the least possible value of $f(1998)$. \source{IMO 1998/6}
+\textbf{F 26. } The function $f:\mathbb{N}\to\mathbb{N}_0$ satisfies for all $m,n\in\mathbb{N}$: $$ f(m+n)-f(m)-f(n)=0\text{ or }1, \; f(2)=0, \; f(3)>0, \; \text{ and }f(9999)=3333. $$ Determine $f(1982)$. \source{IMO 1982/1}
+\textbf{F 27. } Find all functions $f: \mathbb{N} \to \mathbb{N}$ such that for all $m,n\in \mathbb{N}$: $$ f(f(m)+f(n))=m+n.$$ \source{IMO Short List 1988}
+\textbf{F 28. } Find all surjective functions $f: \mathbb{N} \to \mathbb{N}$ such that for all $n\in \mathbb{N}$: $$ f(n) \ge n+(-1)^{n}.$$ \source{Romania 1986}
+\textbf{F 29. } Find all functions $f: \mathbb{Z}\setminus\{0\} \to \mathbb{Q}$ such that for all $x,y \in \mathbb{Z}\setminus\{0\}$: $$ f \left( \frac{x+y}{3} \right) =\frac{f(x)+f(y)}{2}, \; \;  x, y \in \mathbb{Z}\setminus\{0\} $$ \source{Iran 1995}
+\textbf{F 30. } Find all strictly increasing functions $f: \mathbb{N} \to \mathbb{N}$ such that $$ f(f(n))=3n. $$ \source{}
+\textbf{F 31. } Find all functions $f: \mathbb{Z}^{2} \to \mathbb{R}^{+}$ such that for all $i, j \in \mathbb{Z}$: $$ f(i,j)=\frac{f(i+1, j)+f(i,j+1)+f(i-1,j)+f(i,j-1)}{4}.$$ \source{}
+\textbf{F 32. } Find all functions $f: \mathbb{Q} \to \mathbb{Q}$ such that for all $x,y,z \in \mathbb{Q}$: $$ f(x+y+z)+f(x-y)+f(y-z)+f(z-x)=3f(x)+3f(y)+3f(z).$$ \source{}
+\textbf{F 33. } Show that there exists a bijective function $f:\mathbb{N}_{0} \to \mathbb{N}_{0}$ such that for all $m,n\in \mathbb{N}_0$: $$ f(3mn+m+n)=4f(m)f(n)+f(m)+f(n).$$ \source{IMO ShortList 1996}
+\chapter{Sequences of Integers}\quoting{A peculiarity of the higher arithmetic is the great difficulty which has often been experienced in proving simple general theorems which had been suggested quite naturally by numerical evidence.}{Harold Davenport}
+\textbf{G 1. } An integer sequence $\{a_n\}_{n \ge 1}$ is defined by $$ a_{0}=0, \; a_{1}=1, \; a_{n+2}=2a_{n+1}+a_{n} $$ Show that $2^k$ divides $a_n$ if and only if $2^k$ divides $n$. \source{IMO Short List 1988}
+\textbf{G 2. } The Fibonacci sequence $\{F_n\}$ is defined by $$ F_{1}=1, \; F_{2}=1, \; F_{n+2}=F_{n+1}+F_{n}. $$ Show that $\gcd (F_{m}, F_{n})=F_{\gcd (m, n)}$ for all $m, n \in \mathbb{N}$. \source{[Nv pp.58]}
+\textbf{G 3. } The Fibonacci sequence $\{F_n\}$ is defined by $$ F_{1}=1, \; F_{2}=1, \; F_{n+2}=F_{n+1}+F_{n}. $$ Show that $F_{mn-1}-F_{n-1}^{m}$ is divisible by $F_{n}^2$ for all $m \ge 1$ and $n>1$. \source{[Nv pp.74]}
+\textbf{G 4. } The Fibonacci sequence $\{F_n\}$ is defined by $$ F_{1}=1, \; F_{2}=1, \; F_{n+2}=F_{n+1}+F_{n}. $$ Show that $F_{mn}-F_{n+1}^{m} +F_{n-1}^{m}$ is divisible by $F_{n}^3$ for all $m \ge 1$ and $n>1$. \source{[Nv pp.75]}
+\textbf{G 5. } The Fibonacci sequence $\{F_n\}$ is defined by $$ F_{1}=1, \; F_{2}=1, \; F_{n+2}=F_{n+1}+F_{n}. $$ Show that $F_{2n-1}^2 +F_{2n+1}^{2} +1=3F_{2n-1}F_{2n+1}$ for all $n \ge 1$. \source{[Eb1 pp.21]}
+\textbf{G 6. } Prove that no Fibonacci number can be factored into a product of two smaller Fibonacci numbers, each greater than 1. \source{MM, Problem 1390, J. F. Stephany}
+\textbf{G 7. } Let $m$ be a positive integer. Define the sequence $\{a_n\}_{n \ge 0}$ by $$ a_{0}=0, \; a_{1}=m, \; a_{n+1}=m^2 a_{n} -a_{n-1}. $$ Prove that an ordered pair $(a, b)$ of non-negative integers, with $a \le b$, gives a solution to the equation $$ \frac{a^2 + b^2}{ab + 1} = m^2 $$ if and only if $(a, b)$ is of the form $(a_n, a_{n+1})$ for some $n \ge 0$. \source{Canada 1998}
+\textbf{G 8. } Let $\{x_n\}_{n\ge0}$ and $\{y_n\}_{n\ge0}$ be two sequences defined recursively as follows $$ x_{0}=1, \; x_{1}=4, \; x_{n+2}=3 x_{n+1} -x_{n},$$ $$ y_{0}=1, \; y_{1}=2, \; y_{n+2}=3 y_{n+1} -y_{n}.$$ \begin{enumerate}\item Prove that ${x_{n}}^2 -5{y_{n}}^2 +4=0$ for all non-negative integers. \item Suppose that $a$, $b$ are two positive integers such that $a^2 -5b^2 +4=0$. Prove that there exists a non-negative integer $k$ such that $a=x_k $ and $b=y_{k}$.\end{enumerate} \source{Vietnam 1999}
+\textbf{G 9. } Let $\{u_{n}\}_{n \ge 0}$ be a sequence of positive integers defined by $$ u_{0} = 1, \;u_{n+1} = au_{n} + b, $$ where $a, b \in \mathbb{N}$. Prove that for any choice of $a$ and $b$, the sequence $\{u_{n}\}_{n \ge 0}$ contains infinitely many composite numbers. \source{Germany 1995}
+\textbf{G 10. } The sequence $\{y_{n}\}_{n \ge 1}$ is defined by $$ y_{1}=y_{2}=1,\;\; y_{n+2} = (4k-5)y_{n+1} - y_n + 4-2k. $$ Determine all integers $k$ such that each term of this sequence is a perfect square. \source{Bulgaria 2003}
+\textbf{G 11. } Let the sequence $\{K_{n}\}_{n \ge 1}$ be defined by $$ K_{1}=2, K_{2}=8, K_{n+2} =3K_{n+1}-K_{n}+5(-1)^{n}. $$ Prove that if $K_{n}$ is prime, then $n$ must be a power of $3$. \source{MM, Problem 1558, Mansur Boase}
+\textbf{G 12. } The sequence $\{a_{n}\}_{n \ge 1}$ is defined by $$ a_{1}=1, \; a_{2}=12, \; a_{3}=20, \; a_{n+3} = 2a_{n+2}+2a_{n+1}-a_{n}. $$ Prove that $1+4a_{n}a_{n+1}$ is a square for all $n \in \mathbb{N}$. \source{[Ae, pp. 226]}
+\textbf{G 13. } The sequence $\{x_{n}\}_{n \ge 1}$ is defined by $$ x_{1}=x_{2}=1, \; x_{n+2} = 14x_{n+1}-x_{n}-4. $$ Prove that $x_n$ is always a perfect square. \source{[Rh2, pp. 197]}
+\textbf{G 14. } The Fibonacci sequence $\{F_n\}$ is defined by $$ F_{1}=1, \; F_{2}=1, \; F_{n+2}=F_{n+1}+F_{n}. $$ Let $A,B$ be positive integers sucht that $A^19|B^93$ and $B^19|A^93$. Show that $(AB)^{F_n}|(A^4 + B^8)^{F_{n+1}}$ for all $n\ge1$. \source{APMC 1993}
+\textbf{G 15. } Let $P(x)$ be a nonzero polynomial with integer coefficients. Let $a_{0}=0$ and for $i \ge 0$ define $a_{i+1}=P(a_{i})$. Show that $\gcd ( a_{m}, a_{n})=a_{ \gcd (m, n)}$ for all $m, n \in \mathbb{N}$. \source{}
+\textbf{G 16. } An integer sequence $\{a_n\}_{n \ge 1}$ is defined by $$ a_{1}=1, \; a_{n+1}=a_{n}+\lfloor \sqrt{a_{n}}\rfloor. $$ Show that $a_n$ is a square if and only if $n=2^k +k-2$ for some $k \in \mathbb{N}$. \source{AMM, Problem E2619, Thomas C. Brown}
+\textbf{G 17. } Let $f(n)=n+\lfloor \sqrt{n}\rfloor $. Prove that, for every positive integer $m$, the sequence $$ m, f(m), f(f(m)), f(f(f(m))), \cdots $$ contains at least one square of an integer. \source{Putnam 1983}
+\textbf{G 18. } The sequence $\{a_n\}_{n \ge 1}$ is defined by $$ a_{1}=1, \; a_{2}=2, \; a_{3}=24, \; a_{n}=\frac{ 6a_{n-1}^2 a_{n-3}-8a_{n-1} a_{n-2}^2 }{a_{n-2}a_{n-3}} \ \ \ \ (n\ge4). $$ Show that $a_n$ is an integer for all $n$, and show that $n|a_n$ for every $n\in\mathbb{N}$. \source{Putnam 1999}
+\textbf{G 19. } Show that there is a unique sequence of integers $\{a_n\}_{n \ge 1}$ with $$ a_{1}=1, \; a_{2}=2, \; a_{4}=12, \; a_{n+1}a_{n-1}=a_{n}^2 \pm1 \;\; (n \ge 2). $$ \source{United Kingdom 1998}
+\textbf{G 20. } The sequence $\{a_n\}_{n \ge 1}$ is defined by $$ a_{1}=1, \; a_{n+1}=2a_{n}+\sqrt{3a_n^{2}+1}.$$ Show that $a_n$ is an integer for every $n$. \source{Serbia 1998}
+\textbf{G 21. } Prove that the sequence $\{y_n\}_{n \ge 1}$ defined by $$ y_{0}=1, \; y_{n+1}= \frac{1}{2} \left( 3y_{n}+\sqrt{5y_n^{2}-4} \right)$$ consists only of integers. \source{United Kingdom 2002}
+\textbf{G 22. } An integer sequence $\{a_n\}_{n \ge 1}$ is defined by $$ a_{1}=2, \; a_{n+1}=\left\lfloor \frac{3}{2} a_{n} \right\rfloor.$$ Show that it has infinitely many even and infinitely many odd integers. \source{Putnam 1983}
+\textbf{G 23. } An integer sequence satisfies $a_{n+1}={a_n}^3 +1999$. Show that it contains at most one square. \source{APMC 1999}
+\textbf{G 24. } Let $a_{1}={11}^{11}$, $a_{2}={12}^{12}$, $a_{3}={13}^{13}$, and $$ a_{n}= \vert a_{n-1} -a_{n-2} \vert + \vert a_{n-2} -a_{n-3} \vert, n \ge 4. $$ Determine $a_{{14}^{14}}$. \source{IMO Short List 2001 N3}
+\textbf{G 25. } Let $k$ be a fixed positive integer. The sequence $\{a_{n}\}_{n\ge1}$ is defined by $$ a_{1}=k+1, a_{n+1}=a_{n}^{2}-ka_{n}+k.$$ Show that if $m \neq n$, then the numbers $a_{m}$ and $a_{n}$ are relatively prime. \source{Poland 2002}
+\textbf{G 26. } The sequence $\{x_n\}$ is defined by $$ x_{0} \in [0, 1], \; x_{n+1}=1-\vert 1-2 x_{n} \vert. $$ Prove that the sequence is periodic if and only if $x_{0}$ is irrational. \source{[Ae pp.228]}
+\textbf{G 27. } Let $x_{1}$ and $x_{2}$ be relatively prime positive integers. For $n \ge 2$, define $x_{n+1}=x_{n}x_{n-1}+1$.\begin{enumerate}\item Prove that for every $i>1$, there exists $j>i$ such that ${x_{i}}^{i}$ divides ${x_{j}}^{j}$. \item Is it true that $x_{1}$ must divide ${x_{j}}^{j}$ for some $j>1$? \end{enumerate} \source{IMO Short List 1994 N6}
+\textbf{G 28. } For a given positive integer $k$ denote the square of the sum of its digits by $f_{1}(k)$ and let $f_{n+1}(k)=f_{1}(f_{n}(k))$. Determine the value of $f_{1991}(2^{1990})$. \source{IMO Short List 1990 HUN1}
+\textbf{G 29. } Define a sequence $\{a_i\}$ by $a_1=3$ and $a_{i+1}=3^{a_i}$ for $i\geq 1$. Which integers between $00$ and $99$ inclusive occur as the last two digits in the decimal expansion of infinitely many $a_i$? \source{Putnam 1985/A4}
+\textbf{G 30. } A sequence of integers, $\{a_{n}\}_{n \ge 1}$ with $a_{1}>0$, is defined by $$ a_{n+1}=\frac{a_{n}}{2} \;\;\; \text{if} \;\; n \equiv 0 \;\; \pmod{4}, $$ $$ a_{n+1}=3 a_{n} +1 \;\;\; \text{if} \;\; n \equiv 1 \; \pmod{4}, $$ $$ a_{n+1}=2 a_{n} -1 \;\;\; \text{if} \;\; n \equiv 2 \; \pmod{4}, $$ $$ a_{n+1}=\frac{a_{n} +1}{4} \;\;\; \text{if} \;\; n \equiv 3 \; \pmod{4}. $$ Prove that there is an integer $m$ such that $a_{m}=1$. \source{CRUX, Problem 2446, Carherine Shevlin}
+\textbf{G 31. } Given is an integer sequence $\{a_n\}_{n \ge 0}$ such that $a_{0}=2$, $a_{1}=3$ and, for all positive integers $n \ge 1$, $a_{n+1}=2a_{n-1}$ or $a_{n+1}= 3a_{n} - 2a_{n-1}$. Does there exist a positive integer $k$ such that $1600 < a_{k} < 2000$? \source{Netherlands 1994}
+\textbf{G 32. } A sequence with first two terms equal $1$ and $24$ respectively is defined by the following rule: each subsequent term is equal to the smallest positive integer which has not yet occurred in the sequence and is not coprime with the previous term. Prove that all positive integers occur in this sequence. \source{[Tt] Tournament of the Towns 2002 Fall/A-Level}
+\textbf{G 33. } Each term of a sequence of natural numbers is obtained from the previous term by adding to it its largest digit. What is the maximal number of successive odd terms in such a sequence? \source{[Tt] Tournament of the Towns 2003 Spring/O-Level}
+\textbf{G 34. } In the sequence $1, 0, 1, 0, 1, 0, 3, 5, \cdots$, each member after the sixth one is equal to the last digit of the sum of the six members just preceeding it. Prove that in this sequence one cannot find the following group of six consecutive members: $$ 0, 1, 0, 1, 0, 1 $$ \source{[JtPt, pp. 93] Russia 1984}
+\textbf{G 35. } Let $\, a$, and $b \,$ be odd positive integers.  Define the sequence $\{f_n\}_{n\ge 1}$ by putting $\, f_1 = a,$ $f_2 = b, \,$ and by letting $\, f_n \,$ for $\, n \geq 3 \,$ be the greatest odd divisor of $\, f_{n-1} + f_{n-2}$.  Show that $\, f_n \,$ is constant for sufficiently large $\, n \,$  and determine the eventual value as a function of $\, a \,$ and $\, b$. \source{USA 1993}
+\textbf{G 36. } Define $$\begin{cases}d(n, 0)=d(n, n)=1&(n \ge 0),\\ md(n, m)=md(n-1, m)+(2n-m)d(n-1,m-1)&(0<m<n).\end{cases}$$ Prove that $d(n, m)$ are integers for all $m, n \in \mathbb{N}$. \source{IMO Long List 1987 (GB)}
+\textbf{G 37. } Let $k$ be a given positive integer. The sequence $x_n$ is defined as follows: $x_1 =1$ and $x_{n+1}$ is the least positive integer which is not in $\{x_{1}, x_{2},..., x_{n}, x_{1}+k, x_{2}+2k,..., x_{n}+nk \}$. Show that there exist real number $a$ such that $x_n = \lfloor an\rfloor$ for all positive integer $n$. \source{Vietnam 2000}
+\textbf{G 38. } Let $\{a_{n}\}_{n \ge 1}$ be a sequence of positive integers such that $$ 0 < a_{n+1}-a_{n} \le 2001 \;\; \text{for all} \;\; n \in \mathbb{N}. $$ Show that there are infinitely many pairs $(p, q)$ of positive integers such that $p>q$ and $a_{q} \; \vert \; a_{p}$. \source{Vietnam 1999}
+\textbf{G 39. } Let $p$ be an odd prime $p$ such that $2h \neq 1 \; \pmod{p}$ for all $h \in \mathbb{N}$ with $h< p-1$, and let $a$ be an even integer with $a \in] \tfrac{p}{2}, p [$. The sequence $\{a_n\}_{n \ge 0}$ is defined by $a_{0}=a$, $a_{n+1}=p -b_{n}$ \; $(n \ge 0)$, where $b_{n}$ is the greatest odd divisor of $a_n$. Show that the sequence $\{a_n\}_{n \ge 0}$ is periodic and find its minimal (positive) period. \source{Poland 1995}
+\textbf{G 40. } Let $p \ge 3$ be a prime number. The sequence $\{a_{n}\}_{n \ge 0}$ is defined by $a_{n}=n$ for all $0 \le n \le p-1$, and $a_{n}=a_{n-1}+a_{n-p}$ for all $n \ge p$. Compute $a_{p^3} \; \pmod{p}$. \source{Canada 1986}
+\textbf{G 41. } Let $\{u_{n}\}_{n \ge 0}$ be a sequence of integers satisfying the recurrence relation $u_{n+2}=u_{n+1}^2 -u_{n}$ $(n \in \mathbb{N})$. Suppose that $u_{0}=39$ and $u_{1}=45$. Prove that $1986$ divides infinitely many terms of this sequence. \source{China 1991}
+\textbf{G 42. } The sequence $\{a_{n}\}_{n \ge 1}$ is defined by $a_{1}=1$ and $$ a_{n+1} = \frac{a_{n}}{2}+ \frac{1}{4a_{n}} \; (n \in \mathbb{N}). $$ Prove that $\sqrt{\frac{2}{2a_{n}^2 -1}}$ is a positive integer for $n>1$. \source{MM, Problem 1545, Erwin Just}
+\textbf{G 43. } Let $k$ be a positive integer. Prove that there exists an infinite  monotone increasing sequence of integers $\{a_{n}\}_{n \ge 1}$ such that $$ a_{n} \; \text{divides} \; a_{n+1}^2 +k \;\; \text{and} \;\; a_{n+1} \; \text{divides} \; a_{n}^2 +k $$ for all $n \in \mathbb{N}$. \source{[Rh, pp. 276]}
+\textbf{G 44. } Each term of an infinite sequence of natural numbers is obtained from the previous term by adding to it one of its nonzero digits. Prove that this sequence contains an even number. \source{[Tt] Tournament of the Towns 2002 Fall/O-Level}
+\textbf{G 45. } In an increasing infinite sequence of positive integers, every term starting from the $2002$-th term divides the sum of all preceding terms. Prove that every term starting from some term is equal to the sum of all preceding terms. \source{[Tt] Tournament of the Towns 2002 Spring/A-Level}
+\textbf{G 46. } The sequence $\{x_{n}\}_{n \ge 1}$ is defined by $$ x_{1}=2, x_{n+1} = \frac{2+x_{n}}{1-2x_{n}} \;\; (n \in \mathbb{N}). $$ Prove that \begin{enumerate}\item $x_{n} \not= 0$ for all $n \in \mathbb{N}$, \item $\{x_{n}\}_{n \ge 1}$ is not periodic.\end{enumerate} \source{[Ae, pp. 227]}
+\textbf{G 47. } The sequence of integers $\{ x_{n} \}_{n\ge1}$ is defined as follows: $$ x_{1}=1, \;\; x_{n+1}=1+{x_{1}}^{2}+ \cdots + {x_{n}}^{2} \;(n=1,2,3 \cdots). $$ Prove that there are no squares of natural numbers in this sequence except $x_{1}$. \source{(A. Perlin) [Ams, pp. 104]}
+\textbf{G 48. } The first four terms of an infinite sequence $S$ of decimal digits are $1$, $9$, $8$, $2$, and succeeding terms are given by the final digit in the sum of the four immediately preceding terms. Thus $S$ begins $1$, $9$, $8$, $2$, $0$, $9$, $9$, $0$, $8$, $6$, $3$, $7$, $4$, $\cdots$. Do the digits $3$, $0$,  $4$,  $4$ ever come up consecutively in $S$? \source{[Rh3, pp. 103]}
+\textbf{G 49. } Show that the sequence $\{a_{n}\}_{n \ge 1}$ defined by $a_{n}=\lfloor n\sqrt{2}\rfloor$ contains an infinite number of integer powers of $2$. \source{IMO Long List 1985 (RO3)}
+\textbf{G 50. } Let $a_{n}$ be the last nonzero digit in the decimal representation of the number $n!$. Does the sequence $a_{1}$, $a_{2}$, $a_{3}$, $\cdots$ become periodic after a finite number of terms? \source{IMO Short List 1991 P14 (USS 2)}
+\textbf{G 51. } Let $\,n>6\,$ be an integer and $\,a_{1},a_{2},\ldots,a_{k}\,$ be all the natural numbers less than $n$ and relatively prime to $n$. If $$ a_{2}-a_{1}=a_{3}-a_{2}=\cdots =a_{k}-a_{k-1}>0, $$ prove that $\,n\,$ must be either a prime number or a power of $\,2$. \source{IMO 1991/2}
+\textbf{G 52. } Show that if an infinite arithmetic progression of positive integers contains a square and a cube, it must contain a sixth power. \source{IMO Short List 1997}
+\textbf{G 53. } Prove that there exist two strictly increasing sequences $a_{n}$ and $b_{n}$ such that $a_{n}(a_{n} +1)$ divides $b_{n}^2 +1$ for every natural $n$. \source{IMO Short List  1999 N3}
+\textbf{G 54. } Let $\{a_n\}$ be a strictly increasing positive integers sequence such that $\gcd(a_i, a_j)=1$ and $a_{i+2}-a_{i+1}>a_{i+1}-a_{i}$. Show that the infinite series $$ \sum^{\infty}_{i=1} \frac{1}{a_i} $$ converges. \source{Pi Mu Epsilon Journal, Problem 339, Paul Erd\"os}
+\textbf{G 55. } Let $\{n_k\}_{k \ge 1}$ be a sequence of natural numbers such that for $i<j$, the decimal representation of $n_i$ does not occur as the leftmost digits of the decimal representation of $n_j$. Prove that $$ \sum^{\infty}_{k=1} \frac{1}{n_k} \le \frac{1}{1} + \frac{1}{2} + \cdots+ \frac{1}{9}. $$ \source{Iran 1998}
+\textbf{G 56. } An integer sequence $\{a_n\}_{n \ge 1}$ is given such that $$ 2^{n}=\sum_{d \vert n} a_d $$ for all $n \in \mathbb{N}$. Show that $a_n$ is divisible by $n$ for all $n \in \mathbb{N}$. \source{IMO Short List 1989}
+\textbf{G 57. } Let $q_{0}, q_{1}, \cdots $ be a sequence of integers such that \begin{itemize}\item for any $m>n$, $m-n$ is a factor of $q_{m}-q_{n}$, \item $|q_n| \le n^{10} $ for all integers $n \ge 0$.\end{itemize} Show that there exists a polynomial $Q(x)$ satisfying $q_{n}=Q(n)$ for all $n$. \source{Taiwan 1996}
+\textbf{G 58. } Let $a,b$ be integers greater than 2. Prove that there exists a positive integer $k$ and a finite sequence $n_1, n_2, \dots, n_k$ of positive integers such that $n_1 = a$, $n_k = b$, and $n_i n_{i+1}$ is divisible by $n_i + n_{i+1}$ for each $i$ ($1 \leq i < k$). \source{USA 2002}
+\textbf{G 59. } The infinite sequence of 2's and 3's \begin{align*} &2,3,3,2,3,3,3,2,3,3,3,2,3,3,2,3,3, \\ &3,2,3,3,3,2,3,3,3,2,3,3,2,3,3,3,2,\dots \end{align*} has the property that, if one forms a second sequence that records the number of 3's between successive 2's, the result is identical to the given sequence. Show that there exists a real number $r$ such that, for any $n$, the $n$th term of the sequence is 2 if and only if $n = 1 + \lfloor rm \rfloor $ for some nonnegative integer $m$. \source{Putnam 1993/A6}
+\textbf{G 60. } The sequence $\{a_{n}\}_{n \ge 1}$ is defined by $$ a_{n} = 1+2^2 +3^3 + \cdots  +n^n. $$ Prove that the sequence contains infinitely many odd composite numbers. \source{Russia 1988}
+\textbf{G 61. } One member of an infinite arithmetic sequence in the set of natural numbers is a perfect square. Show that there are infinitely many members of this sequence having this property. \source{Croatia 1994}
+\textbf{G 62. } In the sequence $00$, $01$, $02$, $03$, $\cdots$, $99$ the terms are rearranged so that each term is obtained from the previous one by increasing or decreasing one of its digits by $1$ (for example, $29$ can be followed by $19$, $39$, or $28$, but not by $30$ or $20$). What is the maximal number of terms that could remain on their places? \source{[Tt] Tournament of the Towns 2003 Spring/O-Level}
+\textbf{G 63. } Does there exist positive integers $a_{1}<a_{2}<\cdots<a_{100}$ such that for $2 \le k \le 100$, the least common multiple of $a_{k-1}$ and $a_{k}$ is greater than the least common multiple of $a_{k}$ and $a_{k+1}$? \source{[Tt] Tournament of the Towns 2001 Fall/A-Level}
+\textbf{G 64. } Does there exist positive integers $a_{1}<a_{2}<\cdots<a_{100}$ such that for $2 \le k \le 100$, the greatest common divisor of $a_{k-1}$ and $a_{k}$ is greater than the greatest common divisor of $a_{k}$ and $a_{k+1}$? \source{[Tt] Tournament of the Towns 2001 Fall/A-Level}
+\textbf{G 65. } Suppose that $a$ and $b$ are distinct real numbers such that $$ a-b, \; a^{2}-b^{2}, \; \cdots, \;  a^{k}-b^{k}, \; \cdots $$ are all integers. Show that $a$ and $b$ are integers. \source{[GML, pp. 173]}
+\chapter{Additive Number Theory}\quoting{I remember once going to see him when he was lying ill at Putney. I had ridden in taxi cab number $1729$ and remarked that the number seemed to me rather a dull one, and that I hoped it was not an unfavorable omen. `No,' he replied, `it is a very interesting number; it is the smallest number expressible as the sum of two cubes in two different ways.'}{G. H. Hardy, on Ramanujan}
+\textbf{H 1. } Show that any integer can be expressed as a sum of two squares and a cube. \source{AMM, Problem 10426, Noam Elkies and Irving Kaplansky}
+\textbf{H 2. } Prove that infinitely many positive integers cannot be written in the form $$ {x_{1}}^3+ {x_{2}}^5+ {x_{3}}^7+ {x_{4}}^9+ {x_{5}}^{11}, $$ where $x_{1}, x_{2}, x_{3}, x_{4}, x_{5} \in \mathbb{N}$. \source{Belarus 2002, V. Bernik}
+\textbf{H 3. } Determine all positive integers that are expressible in the form $$ a^2 +b^2 +c^2 +c, $$ where $a$, $b$, $c$ are integers. \source{MM, Problem Q817, Robert B. McNeill}
+\textbf{H 4. } Show that any positive rational number can be represented as the sum of three positive rational cubes. \source{}
+\textbf{H 5. } Show that every integer greater than $1$ can be written as a sum of two square-free integers. \source{[IHH, pp. 474]}
+\textbf{H 6. } Prove that every integer $n \ge 12$ is the sum of two composite numbers. \source{[Tma, pp. 22]}
+\textbf{H 7. } Prove that any positive integer can be represented as an aggregate of different powers of $3$, the terms in the aggregate being combined by the signs $+$ and $-$ appropriately chosen. \source{[Rdc pp.24]}
+\textbf{H 8. } The integer $9$ can be written as a sum of two consecutive integers: 9=4+5. Moreover it can be written as a sum of (more than one) consecutive positive integers in exactly two ways, namely 9=4+5= 2+3+4. Is there an integer which can be written as a sum of $1990$  consecutive integers and which can be written as a sum of (more than one) consecutive positive integers in exactly $1990$ ways? \source{IMO Short List 1990 AUS3}
+\textbf{H 9. } For each positive integer $\,n,\;S(n)\,$ is defined to be the greatest integer such that, for every positive integer $\,k\leq S(n),\;n^{2}\,$ can be written as the sum of $\,k\,$ positive squares. \begin{enumerate} \item Prove that $S(n)\leq n^{2}-14$ for each $n\geq 4$. \item Find an integer $n$ such that $S(n)=n^{2}-14$. \item Prove that there are infinitely many integers $n$ such that $S(n)=n^{2}-14$. \end{enumerate} \source{IMO 1992/6}
+\textbf{H 10. } For each positive integer $n$, let $f(n)$ denote the number of ways of representing $n$ as a sum of powers of 2 with nonnegative integer exponents. Representations which differ only in the ordering of their summands are considered to be the same. For instance, $f(4)=4$, because the number $4$ can be represented in the following four ways: $$4, 2+2, 2+1+1, 1+1+1+1. $$ Prove that, for any integer $n \geq 3$, $$ 2^{n^2/4} < f(2^n) < 2^{n^2/2}. $$ \source{IMO 1997/6}
+\textbf{H 11. } The positive function $p(n)$ is defined as the number of ways that the positive integer $n$ can be written as a sum of positive integers. For example, $5=4+1=3+2=3+1+1=2+2+1=2+1+1+1=1+1+1+1+1$ gives us $p(5)=7$. Show that, for all positive integers $n \ge 2$, $$ 2^{\lfloor \sqrt{n}\rfloor} \le p(n) \le n^{3 \lfloor\sqrt{n}\rfloor }. $$  \source{[Hua pp.199]}
+\textbf{H 12. } Let $a_{1}=1$, $a_{2}=2$, $a_3$, $a_4$, $\cdots$ be the sequence of positive integers of the form $2^{\alpha} 3^{\beta}$, where $\alpha$ and $\beta$ are nonnegative integers. Prove that every positive integer is expressible in the form $$ a_{i_{1}}+a_{i_{2}}+ \cdots + a_{i_{n}}, $$ where no summand is a multiple of any other. \source{MM, Problem Q814, Paul Erd\"os, further used as Putnam 2005 A1}
+\textbf{H 13. } Let $n$ be a non-negative integer. Find all non-negative integers $a$, $b$, $c$, $d$ such that $$ a^2 +b^2 +c^2 +d^2 = 7 \cdot 4^{n}. $$ \source{Romania 2001, Laurentiu Panaitopol}
+\textbf{H 14. } Find all integers $m>1$ such that $m^3$ is a sum of $m$ squares of consecutive integers. \source{AMM, Problem E3064, Ion Cucurezeanu}
+\textbf{H 15. } Prove that there exist infinitely many integers $n$ such that $n, n+1, n+2$ are each the sum of the squares of two integers. \source{Putnam 2000}
+\textbf{H 16. } Let $p$ be a prime number of the form $4k+1$. Suppose that $r$ is a quadratic residue of $p$ and that $s$ is a quadratic nonresidue of $p$. Show that $p=a^2 +b^2$, where $$ a=\frac{1}{2} \sum^{p-1}_{i=1} \left( \frac{i(i^2 -r)}{p} \right), b=\frac{1}{2} \sum^{p-1}_{i=1} \left( \frac{i(i^2 -s)}{p} \right). $$ Here, $\left( \frac{k}{p} \right)$ denotes the Legendre Symbol. \source{Jacobsthal}
+\textbf{H 17. } Let $p$ be a prime with $p \equiv 1 \pmod{4}$. Let $a$ be the unique integer such that $$ p=a^2 +b^2, \; a \equiv -1 \pmod{4}, \; b \equiv 0 \; \pmod{2} $$ Prove that $$ \sum^{p-1}_{i=0} \left( \frac{i^3 +6i^2 +i }{p} \right) = 2 \left( \frac{2}{p} \right), $$ where $\left(\frac kp\right)$ denotes the Legendre Symbol. \source{AMM, Problem 2760, Kenneth S. Williams}
+\textbf{H 18. } Let $n$ be an integer of the form $a^2 + b^2$, where $a$ and $b$ are relatively prime integers and such that if $p$ is a prime, $p \leq \sqrt{n}$, then $p$ divides $ab$. Determine all such $n$. \source{APMO 1994/3}
+\textbf{H 19. } If an integer $n$ is such that $7n$ is the form $a^2 +3b^2$, prove that $n$ is also of that form. \source{India 1998}
+\textbf{H 20. } Let $A$ be the set of positive integers of the form $a^2 +2b^2$, where $a$ and $b$ are integers and $b \neq 0$. Show that if $p$ is a prime number and $p^2 \in A$, then $p \in A$. \source{Romania 1997, Marcel Tena}
+\textbf{H 21. } Show that an integer can be expressed as the difference of two squares if and only if it is not of the form $4k+2 \; (k \in \mathbb{Z})$. \source{}
+\textbf{H 22. } Show that any integer can be expressed as the form $a^{2}+b^{2}-c^{2}$, where $a, b, c \in \mathbb{Z}$. \source{}
+\textbf{H 23. } Let $a$ and $b$ be positive integers with $\gcd(a, b)=1$. Show that every integer greater than $ab-a-b$ can be expressed in the form $ax+by$, where $x, y \in \mathbb{N}_{0}$. \source{}
+\textbf{H 24. } Let $a, b$ and $c$ be positive integers, no two of which have a common divisor greater than $1$. Show that $2abc-ab-bc-ca$ is the largest integer which cannot be expressed in the form $xbc+yca+zab$, where $x, y, z \in \mathbb{N}_{0}$ \source{IMO 1983/3}
+\textbf{H 25. } Determine, with proof, the largest number which is the product of positive integers whose sum is $1976$. \source{IMO 1976/4}
+\textbf{H 26. } Prove that any positive integer can be represented as a sum of Fibonacci numbers, no two of which are consecutive. \source{Zeckendorf}
+\textbf{H 27. } Show that the set of positive integers which cannot be represented as a sum of distinct perfect squares is finite. \source{IMO Short List 2000 N6}
+\textbf{H 28. } Let $a_{1}, a_{2}, a_{3}, \cdots$ be an increasing sequence of nonnegative integers such that every nonnegative integer can be expressed uniquely in the form $a_{i}+2a_{j}+4a_{k}$, where $i, j, $ and $k$ are not necessarily distinct. Determine $a_{1998}$. \source{IMO Short List  1998 P21}
+\textbf{H 29. } A finite sequence of integers $a_{0}, a_{1}, \cdots, a_{n}$ is called \textit{quadratic} if for each $i \in \{1,2,\cdots,n \}$ we have the equality $\vert a_{i}-a_{i-1} \vert = i^2$. \begin{enumerate} \item Prove that for any two integers $b$ and $c$, there exists a natural number $n$ and a quadratic sequence with $a_{0}=b$ and $a_{n}=c$. \item Find the smallest natural number $n$ for which there exists a quadratic sequence with $a_{0}=0$ and $a_{n}=1996$. \end{enumerate} \source{IMO Short List 1996 N3}
+\textbf{H 30. } A composite positive integer is a product $ab$ with $a$ and $b$ not necessarily distinct integers in $\{2,3,4,\dots\}$. Show that every composite positive integer is expressible as $xy+xz+yz+1$, with $x,y,z$ positive integers. \source{Putnam 1988/B1}
+\textbf{H 31. } Let $a_{1}, a_{2}, \cdots, a_{k}$ be relatively prime positive integers. Determine the largest integer which cannot be expressed in the form $$ x_{1} a_{2} a_{3} \cdots a_{k} + x_{2} a_{1} a_{3} \cdots a_{k} + \cdots + x_{k} a_{1} a_{2} \cdots a_{k-1} $$ for some nonnegative integers $x_{1}, x_{2}, \cdots, x_{k}$. \source{MM, Problem 1561, Emre Alkan}
+\textbf{H 32. } If $n$ is a positive integer which can be expressed in the form $n=a^{2}+b^{2}+c^{2}$, where $a, b, c$ are positive integers, prove that for each positive integer $k$, $n^{2k}$ can be expressed in the form $A^2 +B^2 +C^2$, where $A, B, C$ are positive integers. \source{[KhKw, pp. 21]}
+\textbf{H 33. } Prove that every positive integer which is not a member of the infinite set below is equal to the sum of two or more distinct numbers of the set $$ \{ 3, -2, 2^2 3, -2^3, \cdots, 2^{2k} 3, -2^{2k+1}, \cdots \}=\{3, -2, 12, -8, 48, -32, 192, \cdots \}. $$ \source{[EbMk, pp. 46]}
+\textbf{H 34. } Let $k$ and $s$ be odd positive integers such that $$ \sqrt{3k-2} -1 \le s \le \sqrt{4k}. $$ Show that there are nonnegative integers $t$, $u$, $v$, and $w$ such that $$ k=t^{2}+u^{2}+v^{2}+w^{2}, \;\; \text{and} \;\; s=t+u+v+w. $$ \source{[Wsa, pp. 271]}
+\textbf{H 35. } Let $S_{n}=\{1,n,n^{2},n^{3}, \cdots \}$, where $n$ is an integer greater than $1$. Find the smallest number $k=k(n)$ such that there is a number which may be expressed as a sum of $k$ (possibly repeated) elements in $S_{n}$ in more than one way. (Rearrangements are considered the same.) \source{[GML, pp. 37]}
+\textbf{H 36. } Find the smallest possible $n$ for which there exist integers $x_{1}$, $x_{2}$, $\cdots$, $x_{n}$ such that each integer between $1000$ and $2000$ (inclusive) can be written as the sum (without repetition), of one or more of the integers $x_{1}$, $x_{2}$, $\cdots$, $x_{n}$. \source{[GML, pp. 144]}
+\textbf{H 37. } In how many ways can $2^{n}$ be expressed as the sum of four squares of natural numbers? \source{[DNI, 28]}
+\textbf{H 38. } Show that \begin{enumerate}\item infinitely many perfect squares are a sum of a perfect square and a prime number, \item infinitely many perfect squares are not a sum of a perfect square and a prime number. \end{enumerate} \source{[JDS, pp. 25]}
+\textbf{H 39. } The famous conjecture of Goldbach is the assertion that every even integer greater than $2$ is the sum of two primes. Except $2$, $4$, and $6$, every even integer is a sum of two positive composite integers: $n=4+(n-4)$. What is the largest positive even integer that is not a sum of two odd composite integers? \source{[JDS, pp. 25]}
+\textbf{H 40. } Prove that for each positive integer $K$ there exist infinitely many even positive integers which can be written in more than $K$ ways as the sum of two odd primes. \source{MM, Feb. 1986, Problem 1207, Barry Powell}
+\textbf{H 41. } A positive integer $n$ is abundant if the sum of its proper divisors exceeds $n$. Show that every integer greater than $89 \times 315$ is the sum of two abundant numbers. \source{MM, Nov. 1982, Problem 1130, J. L. Selfridge}
+\textbf{H 42. } Find all $3$-digit natural numbers which are equal to the third power of the sum of their digits. \source{}
+\textbf{H 43. } Prove that all positive integers can be written as the difference of two positive integers which have the same number of prime divisors. \source{}
+\chapter{Combinatorial Number Theory}\quoting{In great mathematics there is a very high degree of unexpectedness, combined with inevitability and economy.}{Godfrey Harold Hardy}
+\textbf{I 1. } Let $n$ be an integer with $n \ge 2$. Show that $\phi(2^{n}-1)$ is divisible by $n$. \source{}
+\textbf{I 2. } Show that for all $n \in \mathbb{N}$, $$ n = \sum_{d \vert n} \phi(d). $$ \source{Gauss}
+\textbf{I 3. } If $p$ is a prime and $n$ an integer such that $1<n \le p$, then $$ \phi \left( \sum_{k=0}^{p-1} n^k \right) \equiv 0 \; \pmod{p}. $$ \source{MM, Problem 1376, Eric Canning}
+\textbf{I 4. } Let $m$, $n$ be positive integers. Prove that, for some positive integer $a$, each of $\phi(a)$, $\phi(a+1)$, $\cdots$, $\phi(a+n)$ is a multiple of $m$. \source{AMM, Problem 10837, Hojoo Lee}
+\textbf{I 5. } If $n$ is composite, prove that $\phi(n) \le n- \sqrt{n}$. \source{[Km, Problems Sheet 1-11]}
+\textbf{I 6. } Show that if $m$ and $n$ are relatively prime positive integers, then $\phi( 5^m -1) \neq 5^{n}-1$. \source{AMM, Problem 10626, Florian Luca}
+\textbf{I 7. } Prove that for any $\delta\in[0,1]$ and any $\varepsilon>0$, there is an $n\in\mathbb{N}$ such that $\left |\frac{\phi (n)}{n} -\delta\right| <\varepsilon$. \source{[PeJs, pp. 237]}
+\textbf{I 8. } Prove that $\left\{d\left((n^2 +1)^2\right)\right\}_{n\ge1}$ does not become monotonic from any given point onwards. \source{Russia 1998}
+\textbf{I 9. } Determine all positive integers $n$ such that $n={d(n)}^2$. \source{Canada 1999}
+\textbf{I 10. } Determine all positive integers $k$ such that $$\frac{d(n^2)}{d(n)} = k$$ for some $n \in \mathbb{N}$. \source{IMO 1998/3}
+\textbf{I 11. } Find all positive integers $n$ such that ${d(n)}^{3} =4n$. \source{IMO Short List 2000 N2}
+\textbf{I 12. } Determine all positive integers for which $d(n)=\frac{n}{3}$ holds. \source{Canada 1992}
+\textbf{I 13. } We say that an integer $m \ge 1$ is super-abundant if $$ \frac{\sigma(m)}{m}>\frac{\sigma(k)}{k}$$ for all $k \in \{1, 2,\cdots, m-1 \}$. Prove that there exists an infinite number of super-abundant numbers. \source{IMO Short List 1983 (Belgium)}
+\textbf{I 14. } Show that $\phi(n)+\sigma(n) \ge 2n$ for all positive integers $n$. \source{[Rh pp.104] Quantum, Problem M59, B. Martynov}
+\textbf{I 15. } Prove that for any $\delta$ greater than 1 and any positive number $\epsilon$, there is an $n$ such that $\left \vert \frac{\sigma (n)}{n} -\delta \right \vert < \epsilon$. \source{[PeJs, pp. 237]}
+\textbf{I 16. } Prove that $\sigma(n)\phi(n) < n^2$, but that there is a positive constant $c$ such that $\sigma(n)\phi(n) \ge c n^2$ holds for all positive integers $n$. \source{[PeJs, pp. 237]}
+\textbf{I 17. } Show that $\sigma (n) -d(m)$ is even for all positive integers $m$ and $n$ where $m$ is the largest odd divisor of $n$. \source{[Jjt, pp. 95]}
+\textbf{I 18. } Show that for any positive integer $n$, $$ \frac{\sigma(n!)}{n!} \ge \sum_{k=1}^{n} \frac{1}{k}. $$ \source{[Dmb, pp. 108]}
+\textbf{I 19. } Let $n$ be an odd positive integer. Prove that $\sigma(n)^3 <n^4$. \source{Belarus 1999, D. Bazylev}
+\textbf{I 20. } Suppose all the pairs of a positive integers from a finite collection $$ A=\{a_{1}, a_{2}, \cdots \} $$ are added together to form a new collection $$ A^{*}=\{a_{i}+a_{j} \;\; \vert \; 1 \le i < j \le n \}. $$ For example, $A=\{ 2, 3, 4, 7 \}$ would yield $A^{*}=\{ 5, 6, 7, 9, 10, 11 \}$ and $B=\{ 1, 4, 5, 6 \}$ would give $B^{*}=\{ 5, 6, 7, 9, 10, 11 \}$. These examples show that it's possible for different collections $A$ and $B$ to generate the same collections $A^{*}$ and $B^{*}$. Show that if $A^{*}=B^{*}$ for different sets $A$ and $B$, then $|A|=|B|$ and $|A|=|B|$ must be a power of $2$. \source{(Erd\"os) [Rh2, pp. 243]}
+\textbf{I 21. } Let $p$ be a prime. For which $k$ can the set $\left\{1,\ 2,\ \ldots,\ k\right\}$ be partitioned into $p$ subsets with equal sums of elements. \source{IMO Long List 1985 (PL2)}
+\textbf{I 22. } Prove that the sequence $2^{n}-3$ ($n > 1$) contains a subsequence of numbers relatively prime in pairs. \source{IMO 1971/3}
+\textbf{I 23. } The set of positive integers is partitioned into finitely many subsets. Show that some subset $S$ has the following property: for every positive integer $n$, $S$ contains infinitely many multiples of $n$. \source{Berkeley Math Circle Monthly Contest 1999-2000}
+\textbf{I 24. } Let $M$ be a positive integer and consider the set $$ S=\{n \in \mathbb{N} \; \vert \; M^2 \le n <(M+1)^2 \}. $$ Prove that the products of the form $ab$ with $a, b \in S$ are distinct. \source{India 1998}
+\textbf{I 25. } Let $S$ be a set of integers (not necessarily positive) such that \begin{itemize}\item there exist $a,b \in S$ with $\gcd(a,b) = \gcd(a - 2,b - 2) = 1$; \item if $x$ and $y$ are elements of $S$ (possibly equal), then $x^2 - y$ also belongs to $S$. \end{itemize} Prove that $S$ is the set of all integers. \source{USA 2001}
+\textbf{I 26. } Show that for each $n \ge 2$, there is a set $S$ of $n$ integers such that $(a-b)^2$ divides $ab$ for every distinct $a, b\in S$. \source{USA 1998}
+\textbf{I 27. } Let $a$ and $b$ be positive integers greater than $2$. Prove that there exists a positive integer $k$ and a finite sequence $n_1$, $\cdots$, $n_k$ of positive integers such that $n_1 =a$, $n_k =b$, and $n_i n_{i+1}$ is divisible by $n_{i}+n_{i+1}$ for each $i$ $(1 \le i \le k)$. \source{Romania 1998}
+\textbf{I 28. } Let $n$ be an integer, and let $X$ be a set of $n+2$ integers each of absolute value at most $n$. Show that there exist three distinct numbers $a, b, c \in X$ such that $c=a+b$. \source{India 2000}
+\textbf{I 29. } Let $m \ge 2$ be an integer. Find the smallest integer $n>m$ such that for any partition of the set $\{m,m+1,\cdots,n\}$ into two subsets, at least one subset contains three numbers $a, b, c$ such that $c=a^{b}$. \source{Romania 1998}
+\textbf{I 30. } Let $S=\{1,2,3,\ldots,280\}$. Find the smallest integer $n$ such that each $n$-element subset of $S$ contains five numbers which are pairwise relatively prime. \source{IMO 1991/3}
+\textbf{I 31. } Let $m$ and $n$ be positive integers. If $x_1$, $x_2$, $\cdots$, $x_m$ are positive integers whose arithmetic mean is less than $n+1$ and if $y_1$, $y_2$, $\cdots$, $y_n$ are positive integers whose arithmetic mean is less than $m+1$, prove that some sum of one or more $x$'s equals some sum of one or more $y$'s. \source{MM, Problem 1466, David M. Bloom}
+\textbf{I 32. } Let $n$ and $k$ be relatively prime positive integers with $k < n$. Each number in the set $M = \{1,2,3,\ldots,n - 1\}$ is colored either blue or white. For each $i$ in $M$, both $i$ and $n - i$ have the same color. For each $i\ne k$ in $M$ both $i$ and $|i - k|$ have the same color. Prove that all numbers in $M$ must have the same color. \source{IMO 1985/2}
+\textbf{I 33. } Let $p$ be a prime number, $p \ge 5$, and $k$ be a digit in the $p$-adic representation of positive integers. Find the maximal length of a non constant arithmetic progression whose terms do not contain the digit $k$ in their $p$-adic representation. \source{Romania 1997, Marian Andronache and Ion Savu}
+\textbf{I 34. } Is it possible to choose $1983$ distinct positive integers, all less than or equal to $10^{5}$, no three of which are consecutive terms of an arithmetic progression? \source{IMO 1983/5}
+\textbf{I 35. } Is it possible to find $100$ positive integers not exceeding $25000$ such that all pairwise sums of them are different? \source{IMO Short List 2001}
+\textbf{I 36. } Find the maximum number of pairwise disjoint sets of the form $$ S_{a,b}=\{n^2 +an+b \; \vert \; n \in \mathbb{Z}\}, $$ with $a,b \in \mathbb{Z}$. \source{Turkey 1996}
+\textbf{I 37. } Let $p$ be an odd prime number. How many $p$-element subsets $A$ of $\{1,2,\ldots \ 2p\}$ are there, the sum of whose elements is divisible by $p$? \source{IMO 1995/6}
+\textbf{I 38. } Let $m, n \ge 2$ be positive integers, and let $a_{1}, a_{2}, \cdots,a_{n}$ be integers, none of which is a multiple of $m^{n-1}$. Show that there exist integers $e_{1}, e_{2}, \cdots, e_{n}$, not all zero, with $\vert e_i \vert<m$ for all $i$, such that $e_{1}a_{1}+e_{2}a_{2}+ \cdots +e_{n}a_{n}$ is a multiple of $m^n$. \source{IMO Short List 2002 N5}
+\textbf{I 39. } Determine the smallest integer $n \ge 4$ for which one can choose four different numbers $a, b, c, $ and $d$ from any $n$ distinct integers such that $a+b-c-d$ is divisible by $20$ . \source{IMO Short List  1998 P16}
+\textbf{I 40. } A sequence of integers $a_{1}, a_{2}, a_{3}, \cdots$  is defined as follows: $a_{1}=1$, and for $n \ge 1$, $a_{n+1}$ is the smallest integer greater than $a_{n}$ such that $a_{i}+a_{j} \neq 3a_{k}$ for any $i, j, $ and $k$ in $\{1, 2, 3, \cdots, n+1 \}$, not necessarily distinct. Determine $a_{1998}$. \source{IMO Short List  1998 P17}
+\textbf{I 41. } Prove that for each positive integer $n$, there exists a positive integer with the following properties: \begin{itemize} \item it has exactly $n$ digits, \item none of the digits is 0, \item it is divisible by the sum of its digits.\end{itemize} \source{IMO ShortList  1998 P20}
+\textbf{I 42. } Let $k, m, n$ be integers such that $1<n\le m-1 \le k$. Determine the maximum size of a subset $S$ of the set $\{ 1,2, \cdots, k \}$ such that no $n$ distinct elements of $S$ add up to $m$. \source{IMO Short List 1996}
+\textbf{I 43. } Find the number of subsets of $\{1, 2, \cdots, 2000 \}$, the sum of whose elements is divisible by $5$. \source{[TaZf pp.10] High-School Mathematics (China) 1994/1}
+\textbf{I 44. } Let $A$ be a non-empty set of positive integers. Suppose that there are positive integers $b_{1}$, $\cdots$, $b_{n}$ and $c_{1}$, $\cdots$, $c_{n}$ such that \begin{itemize} \item for each $i$ the set $b_{i}A+c_{i}=\{b_{i}a+c_{i} \vert a \in A \}$ is a subset of $A$, \item the sets $b_{i}A+c_{i}$ and $b_{j}A+c_{j}$ are disjoint whenever $i \neq j$.\end{itemize} Prove that $$ \frac{1}{b_{1}}+ \cdots + \frac{1}{b_{n}} \le 1. $$ \source{IMO Short List 2002 A6}
+\textbf{I 45. } A set of three nonnegative integers $\{x, y, z \}$ with $x<y<z$ is called historic if $\{z-y, y-x\}=\{1776,2001\}$. Show that the set of all nonnegative integers can be written as the union of pairwise disjoint historic sets. \source{IMO Short List 2001 C4}
+\textbf{I 46. } Let $p$ and $q$ be relatively prime positive integers. A subset $S\subseteq \mathbb{N}_0$ is called ideal if $0 \in S$ and, for each element $n \in S$, the integers $n+p$ and $n+q$ belong to $S$. Determine the number of ideal subsets of $\mathbb{N}_0$. \source{IMO Short List 2000 C6}
+\textbf{I 47. } Prove that the set of positive integers cannot be partitioned into three nonempty subsets such that, for any two integers $x$, $y$ taken from two different subsets, the number $x^{2}-xy+y^{2}$ belongs to the third subset. \source{IMO Short List 1999 A4}
+\textbf{I 48. } Let $A$ be a set of $N$ residues $\pmod{N^2}$. Prove that there exists a set $B$ of $N$ residues $\pmod{N^2}$ such that the set $A+B=\{a+b \vert a \in A, b \in B \}$ contains at least half of all the residues $\pmod{N^2}$. \source{IMO Short List 1999 C4}
+\textbf{I 49. } Determine the largest positive integer $n$ for which there exists a set $S$ with exactly $n$ numbers such that \begin{itemize}\item each member in $S$ is a positive integer not exceeding $2002$,  \item if $a,b\in S$ (not necessarily different), then $ab\not\in S$. \end{itemize} \source{Australia 2002}
+\textbf{I 50. } Prove that, for any integer $a_{1}>1$, there exist an increasing sequence of positive integers $a_{1}, a_{2}, a_{3}, \cdots$ such that $$ a_{1}+ a_{2}+ \cdots +a_{n} \; \vert \; a_{1}^{2}+ a_{2}^{2}+ \cdots +a_{n}^{2} $$ for all $n \in \mathbb{N}$. \source{[Ae pp.228]}
+\textbf{I 51. } An odd integer $n \ge 3$ is said to be nice if and only if there is at least one permutation $a_{1}, \cdots, a_{n}$ of $1, \cdots, n$ such that the $n$ sums $a_{1}-a_{2}+a_{3}-\cdots -a_{n-1}+a_{n}$, $a_{2}-a_{3}+a_{3}-\cdots -a_{n}+a_{1}$, $a_{3}-a_{4}+a_{5}-\cdots -a_{1}+a_{2}$, $\cdots$, $a_{n}-a_{1}+a_{2}-\cdots -a_{n-2}+a_{n-1}$ are all positive. Determine the set of all `nice' integers. \source{IMO ShortList 1991 P24 (IND 2)}
+\textbf{I 52. } Assume that the set of all positive integers is decomposed into $r$ disjoint subsets $A_{1}, A_{2}, \cdots, A_{r}$ $A_{1} \cup A_{2} \cup \cdots \cup A_{r}= \mathbb{N}$. Prove that one of them, say $A_{i}$, has the following property: There exist a positive integer $m$ such that for any $k$ one can find numbers $a_{1}, \cdots, a_{k}$ in $A_{i}$ with $0 < a_{j+1}-a_{j} \le m \; (1\le j \le k-1)$. \source{IMO Short List 1990 CZE2}
+\textbf{I 53. } Determine for which positive integers $k$, the set $$ X=\{1990, 1990+1, 1990+2, \cdots, 1990+k \} $$ can be partitioned into two disjoint subsets $A$ and $B$ such that the sum of the elements of $A$ is equal to the sum of the elements of $B$. \source{IMO Short List 1990 MEX2}
+\textbf{I 54. } Let $n \ge 3$ be a prime number and $a_{1}<a_{2}<\cdots<a_{n}$ be integers. Prove that $a_{1}, \cdots,a_{n}$ is an arithmetic progression if and only if there exists a partition of $\{0, 1, 2, \cdots \}$ into sets $A_{1},A_{2},\cdots,A_{n}$ such that $$ a_{1}+A_{1}=a_{2}+A_{2}=\cdots=a_{n}+A_{n}, $$ where $x+A$ denotes the set $\{x+a \vert a \in A \}$. \source{Romania TST 1998}
+\textbf{I 55. } Let a and b be non-negative integers such that $ab \ge c^2$ where $c$ is an integer. Prove that there is a positive integer n and integers $x_1$, $x_2$, $\cdots$, $x_n$, $y_1$, $y_2$, $\cdots$, $y_n$ such that $${x_{1}}^{2} + \cdots + {x_{n}}^{2}=a,\; {y_{1}}^{2} + \cdots + {y_{n}}^{2}=b,\; x_{1}y_{1} + \cdots + x_{n}y_{n}=c $$ \source{IMO Short List 1995}
+\textbf{I 56. } Let $n$, $k$ be positive integers such that $n$ is not divisible by $3$ and $k\ge n$. Prove that there exists a positive integer m which is divisible by $n$ and the sum of its digits in the decimal representation is $k$. \source{IMO Short List 1999}
+\textbf{I 57. } Prove that for every real number $M$ there exists an infinite arithmetical progression of positive integers such that \begin{itemize} \item the common difference is not divisible by $10$, \item the sum of digits of each term exceeds $M$. \end{itemize} \source{IMO Short List 1999}
+\textbf{I 58. } Find the smallest positive integer $n$ for which there exist $n$ different positive integers $a_{1}, a_{2}, \cdots, a_{n}$ satisfying \begin{itemize} \item $\text{lcm}(a_1,a_2,\cdots,a_n)=1995$,\item for each $i, j \in \{1, 2, \cdots, n \}$, $gcd(a_i,a_j)\not=1$, \item the product $a_{1}a_{2} \cdots a_{n}$ is a perfect square and is divisible by $243$, \end{itemize} and find all such $n$-tuples $(a_{1}, \cdots, a_{n})$. \source{Romania 1995}
+\textbf{I 59. } Let $X$ be a non-empty set of positive integers which satisfies the following: \begin{itemize} \item if $x \in X$, then $4x \in X$, \item if $x \in X$, then $\lfloor \sqrt{x}\rfloor \in X$. \end{itemize} Prove that $X=\mathbb{N}$. \source{Japan 1990}
+\textbf{I 60. } Prove that for every positive integer $n$ there exists an $n$-digit number divisible by $5^n$ all of whose digits are odd. \source{USA 2003}
+\textbf{I 61. } Let $N_n$ denote the number of ordered $n$-tuples of positive integers $(a_1,a_2,\ldots,a_n)$ such that $$ 1/a_1 + 1/a_2 +\ldots +1/a_n=1. $$ Determine whether $N_{10}$ is even or odd. \source{Putnam 1997/A5}
+\textbf{I 62. } Is it possible to find a set $A$ of eleven positive integers such that no six elements of $A$ have a sum which is divisible by $6$? \source{British Mathematical Olympiad 2000}
+\textbf{I 63. } A set $C$ of positive integers is called good if for every integer $k$ there exist distinct $a, b \in C$ such that the numbers $a+k$ and $b+k$ are not relatively prime. Prove that if the sum of the elements of a good set $C$ equals $2003$, then there exists $c \in C$ such that the set $C-\{c\}$ is good. \source{Bulgaria 2003}
+\textbf{I 64. } Find all positive integers $n$ with the property that the set $$ \{n,n+1,n+2,n+3,n+4,n+5\} $$ can be partitioned into two sets such that the product of the numbers in one set equals the product of the numbers in the other set. \source{IMO 1970/4}
+\textbf{I 65. } Suppose $p$ is a prime with $p \equiv 3 \; \pmod{4}$. Show that for any set of $p-1$ consecutive integers, the set cannot be divided two subsets so that the product of the members of the one set is equal to the product of the members of the other set. \source{CRUX, Problem A233, Mohammed Aassila}
+\textbf{I 66. } Let $S$ be the set of all composite positive odd integers less than $79$. \begin{enumerate} \item Show that $S$ may be written as the union of three (not necessarily disjoint) arithmetic progressions.\item Show that $S$ cannot be written as the union of two arithmetic progressions.\end{enumerate} \source{[KhKw, pp. 12]}
+\textbf{I 67. } Consider the set of all five-digit numbers whose decimal representation is a permutation of the digits $1, 2, 3, 4, 5$. Prove that this set can be divided into two groups, in such a way that the sum of the squares of the numbers in each group is the same. \source{(D. Fomin) [Ams, pp. 12]}
+\textbf{I 68. } What's the largest number of elements that a set of positive integers between $1$ and $100$ inclusive can have if it has the property that none of them is divisible by another? \source{}
+\textbf{I 69. } Prove the among $16$ consecutive integers it is always possible to find one which is relatively prime to all the rest. \source{[DNI, 19]}
+\textbf{I 70. } Is there a set $S$ of positive integers such that a number is in $S$ if and only if it is the sum of two distinct members of $S$ or a sum of two distinct positive integers not in $S$? \source{[JDS, pp. 31]}
+\textbf{I 71. } Suppose that the set $M=\{1,2,\cdots,n\}$ is split into $t$ disjoint subsets $M_{1}$, $\cdots$, $M_{t}$ where the cardinality of $M_i$ is $m_{i}$, and $m_{i} \ge m_{i+1}$, for $i=1,\cdots,t-1$. Show that if $n>t!\cdot e$ then at least one class $M_z$ contains three elements $x_{i}$, $x_{j}$, $x_{k}$ with the property that $x_{i}-x_{j}=x_{k}$. \source{Schur's theorem, [Her, pp. 16]}
+\textbf{I 72. } Let $S$ be a subset of $\{1, 2, 3, \cdots, 1989 \}$ in which no two members differ by exactly $4$ or by exactly $7$. What is the largest number of elements $S$ can have? \source{[Rh2, pp. 89]}
+\textbf{I 73. } The set $M$ consists of integers, the smallest of which is $1$ and the greatest $100$. Each member of $M$, except $1$, is the sum of two (possibly identical) numbers in $M$. Of all such sets, find one with the smallest possible number of elements. \source{[Rh2, pp. 125]}
+\textbf{I 74. } Show that it is possible to color the set of integers $$ M=\{ 1, 2, 3, \cdots, 1987 \}, $$ using four colors, so that no arithmetic progression with $10$ terms has all its members the same color. \source{[Rh2, pp. 145]}
+\textbf{I 75. } Prove that every selection of $1325$ integers from $M=\{1, 2, \cdots, 1987 \}$ must contain some three numbers $\{a, b, c\}$ which are pairwise relatively prime, but that it can be avoided if only $1324$ integers are selected. \source{[Rh2, pp. 202]}
+\textbf{I 76. } Prove that every infinite sequence $S$ of distinct positive integers contains either an infinite subsequence such that for every pair of terms, neither term ever divides the other, or an infinite subsequence such that in every pair of terms, one always divides the other. \source{[Rh3, pp. 213]}
+\textbf{I 77. } Let $a_{1} < a_{2} < a_{3} < \cdots $ be an infinite increasing sequence of positive integers in which the number of prime factors of each term, counting repeated factors, is never more than $1987$. Prove that it is always possible to extract from $A$ an infinite subsequence $b_{1} < b_{2} < b_{3} < \cdots $ such that the greatest common divisor $(b_i, b_j)$ is the same number for every pair of its terms. \source{[Rh3, pp. 51]}
+\chapter{Algebraic Number Theory}
+\textbf{J 1. } Let $n$ be a positive integer. Show that there are infinitely many primes $p$ such that the smallest positive primitive root of $p$ is greater than $n$. \source{}
+\textbf{J 2. } Show that for each odd prime $p$, there is an integer $g$ such that $1<g<p$ and $g$ is a primitive root modulo $p^n$ for every positive integer $n$. \source{MM, Problem 1419, William P. Wardlaw}
+\textbf{J 3. } Let $g$ be a Fibonacci primitive root $\pmod{p}$. i.e. $g$ is a primitive root $\pmod{p}$ satisfying $g^2  \equiv g+1\; \pmod{p}$. Prove that \begin{enumerate} \item $g-1$ is also a primitive root $\pmod{p}$. \item if $p=4k+3$ then $(g-1)^{2k+3} \equiv g-2 \pmod{p}$, and deduce that $g-2$ is also a primitive root $\pmod{p}$. \end{enumerate} \source{[Km, Problems Sheet 3-9]}
+\textbf{J 4. } Let $p$ be an odd prime. If $g_{1}, \cdots, g_{\phi(p-1)}$ are the primitive roots $\pmod{p}$ in the range $1<g \le p-1$, prove that $$ \sum_{i=1}^{\phi(p-1)} g_i \equiv \mu(p-1) \pmod{p}. $$ \source{[Km, Problems Sheet 3-11]}
+\textbf{J 5. } Suppose that $m$ does not have a primitive root. Show that $$ a^{ \frac{\phi(m)}{2}} \equiv 1 \; \pmod{m} $$ for every $a$ relatively prime $m$. \source{[AaJc, pp. 178]}
+\textbf{J 6. } Suppose that $p>3$ is prime. Prove that the products of the primitive roots of $p$ between $1$ and $p-1$ is congruent to $1$ modulo $p$. \source{[AaJc, pp. 181]}
+\textbf{J 7. } Find all positive integers $n$ that are quadratic residues modulo all primes greater than $n$. \source{CRUX, Problem 2344, Murali Vajapeyam}
+\textbf{J 8. } The positive integers $a$ and $b$ are such that the numbers $15a+16b$ and $16a-15b$ are both squares of positive integers. What is the least possible value that can be taken on by the smaller of these two squares? \source{IMO 1996/4}
+\textbf{J 9. } Let $p$ be an odd prime number. Show that the smallest positive quadratic nonresidue of $p$ is smaller than $\sqrt{p}+1$. \source{[IHH pp.147]}
+\textbf{J 10. } Let $M$ be an integer, and let $p$ be a prime with $p>25$. Show that the set $\{M, M+1, \cdots, M+ 3\lfloor \sqrt{p} \rfloor  -1\}$ contains a quadratic non-residue to modulus $p$. \source{[Imv, pp. 72]}
+\textbf{J 11. } Let $p$ be an odd prime and let $Z_p$ denote (the field of) integers modulo $p$. How many elements are in the set $$ \{x^2: x \in Z_p\} \cap \{y^2 + 1: y \in Z_p\}? $$ \source{Putnam 1991/B5}
+\textbf{J 12. } Let $a, b, c$ be integers and let $p$ be an odd prime with $$ p \not\vert a \;\; \text{and} \;\; p \not\vert b^2 -4ac. $$ Show that $$ \sum_{k=1}^{p} \left( \frac{ak^2 +bk+c}{p} \right) = - \left( \frac{a}{p} \right). $$ \source{[Ab, pp. 34]}
+\textbf{J 13. } Suppose $p(x) \in \mathbb{Z}[x]$ and $P(a)P(b)=-(a-b)^2$ for some distinct $a, b \in \mathbb{Z}$. Prove that $P(a)+P(b)=0$. \source{MM, Problem Q800, Bjorn Poonen}
+\textbf{J 14. } Prove that there is no nonconstant polynomial $f(x)$ with integral coefficients such that $f(n)$ is prime for all $n \in \mathbb{N}$. \source{}
+\textbf{J 15. } Let $n \ge 2$ be an integer. Prove that if $k^2 + k + n$ is prime for all integers $k$ such that $0 \leq k \leq \sqrt{\frac{n}{3}}$, then $k^2 +k + n$ is prime for all integers $k$ such that $0 \leq k \leq n - 2$. \source{IMO 1987/6}
+\textbf{J 16. } A prime $p$ has decimal digits $p_{n}p_{n-1} \cdots p_0$ with $p_{n}>1$. Show that the polynomial $p_{n}x^{n} + p_{n-1}x^{n-1}+\cdots+ p_{1}x + p_0$ cannot be represented as a product of two nonconstant polynomials with integer coefficients \source{Balkan Mathematical Olympiad 1989}
+\textbf{J 17. } (Eisentein's Criterion) Let $f(x)=a_{n}x^{n} +\cdots +a_{1}x+a_{0}$ be a nonconstant polynomial with integer coefficients. If there is a prime $p$ such that $p$ divides each of $a_{0}$, $a_{1}$, $\cdots$,$a_{n-1}$ but $p$ does not divide $a_{n}$ and $p^2$ does not divide $a_{0}$, then $f(x)$ is irreducible in $\mathbb{Q}[x]$. \source{[Twh, pp. 111]}
+\textbf{J 18. } Prove that for a prime $p$, $x^{p-1}+x^{p-2}+ \cdots +x+1$ is irreducible in $\mathbb{Q}[x]$. \source{Gauss, [Twh, pp. 114]}
+\textbf{J 19. } Let $f(x)=x^{n}+5x^{n-1}+3$, where $n>1$ is an integer. Prove that $f(x)$ cannot be expressed as the product of two nonconstant polynomials with integer coefficients. \source{IMO 1993/1}
+\textbf{J 20. } Show that a polynomial of odd degree $2m+1$ over $\mathbb{Z}$, $$ f(x)=c_{2m+1}x^{2m+1} +\cdots +c_{1}x+c_{0}, $$ is irreducible if there exists a prime $p$ such that $$ p \not\vert c_{2m+1}, p \vert c_{m+1}, c_{m+2}, \cdots, c_{2m}, p^2 \vert c_{0}, c_{1}, \cdots, c_{m}, \; \text{and} \; p^3 \not\vert c_{0}. $$ \source{(Eugen Netto) [Ac, pp. 87] For a proof, see [En].}
+\textbf{J 21. } For non-negative integers $n$ and $k$, let $P_{n, k}(x)$ denote the rational function $$ \frac{(x^n -1)(x^n -x) \cdots (x^n -x^{k-1})}{(x^k -1)(x^k -x) \cdots (x^k -x^{k-1})}. $$ Show that $P_{n, k}(x)$ is actually a polynomial for all $n, k \in \mathbb{N}$. \source{CRUX, Problem A230, Naoki Sato}
+\textbf{J 22. } Suppose that the integers $a_{1}$, $a_{2}$, $\cdots$, $a_{n}$ are distinct. Show that $$ (x-a_{1})(x-a_{2}) \cdots (x-a_{n})-1 $$ cannot be expressed as the product of two nonconstant polynomials with integer coefficients. \source{[Ae, pp. 257]}
+\textbf{J 23. } Prove that if the integers $a_{1}$, $a_{2}$, $\cdots$, $a_{n}$ are all distinct, then the polynomial $$ (x-a_{1})^2 (x-a_{2})^2 \cdots (x-a_{n})^2 +1 $$ cannot be expressed as the product of two nonconstant polynomials with integer coefficients. \source{[DNI, 47]}
+\textbf{J 24. } For $n>1$, let $a_1,a_2,..,a_n$ be distinct positive integers and let $p_i= \prod^n_{j=1, j\not=i}(a_i-a_j)$. Show that for all $k\in\mathbb{N}$ we have that $\sum_{i=1}^n \frac{a_i^k}{p_i}$ is an integer. \source{UK 1981}
+\chapter{Analytic Number Theory}\quoting{Number theorists are like lotus-eaters - having tasted this food they can never give it up.}{Leopold Kronecker}
+\textbf{K 1. } Let $\alpha$ be the positive root of the equation $x^{2}=1991x+1$. For natural numbers $m$ and $n$ define $$ m*n=mn+\lfloor\alpha m \rfloor  \lfloor \alpha n\rfloor. $$ Prove that for all natural numbers $p$, $q$, and $r$, $$ (p*q)*r=p*(q*r). $$ \source{IMO ShortList 1991 P20 (IRE 3)}
+\textbf{K 2. } Prove that for any positive integer $n$, $$ \left\lfloor \frac{n}{3} \right\rfloor  + \left\lfloor \frac{n+2}{6} \right\rfloor  + \left\lfloor \frac{n+4}{6} \right\rfloor  = \left\lfloor \frac{n}{2} \right\rfloor  + \left\lfloor \frac{n+3}{6} \right\rfloor.  $$ \source{[EbMk, pp. 5]}
+\textbf{K 3. } Prove that for any positive integer $n$, $$ \left\lfloor  \frac{n+1}{2} \right\rfloor  + \left\lfloor  \frac{n+2}{4} \right\rfloor  + \left\lfloor  \frac{n+4}{8} \right\rfloor  + \left\lfloor  \frac{n+8}{16} \right\rfloor  + \cdots = n. $$ \source{[EbMk, pp. 7]}
+\textbf{K 4. } Show that for all positive integers $n$, $$ \lfloor \sqrt{n}+\sqrt{n+1}\rfloor =\lfloor \sqrt{4n+1}\rfloor =\lfloor \sqrt{4n+2}\rfloor =\lfloor \sqrt{4n+3}\rfloor. $$ \source{Canada 1987}
+\textbf{K 5. } Find all real numbers $\alpha$ for which the equality $$ \lfloor \sqrt{n}+\sqrt{n+ \alpha}\rfloor =\lfloor \sqrt{4n+1}\rfloor  $$ holds for all positive integers $n$. \source{CRUX, Problem 1650, Iliya Bluskov}
+\textbf{K 6. } Prove that for all positive integers $n$, $$ \lfloor \sqrt{n}+\sqrt{n+1}+\sqrt{n+2}\rfloor =\lfloor \sqrt{9n+8}\rfloor. $$ \source{Iran 1996}
+\textbf{K 7. } Prove that  for all positive integers $n$, $$ \lfloor \sqrt[3]{n}+\sqrt[3]{n+1}\rfloor =\lfloor \sqrt[3]{8n+3}\rfloor.$$ \source{MM, Problem 1410, Seung-Jin Bang}
+\textbf{K 8. } Prove that $\lfloor \sqrt[3]{n}+\sqrt[3]{n+1}+\sqrt[3]{n+2}\rfloor =\lfloor \sqrt[3]{27n+26}\rfloor$ for all positive integers $n$. \source{Can. Math. Soc. Notes, Problem P11, Mih\'aly Bencze}
+\textbf{K 9. } Show that for all positive integers $m$ and $n$, $$ \gcd(m, n) = m+n-mn+2\sum^{m-1}_{k=0} \left \lfloor  \frac{kn}{m} \right \rfloor. $$ \source{Taiwan 1998}
+\textbf{K 10. } Show that for all primes $p$, $$ \sum^{p-1}_{k=1} \left \lfloor  \frac{k^3}{p} \right \rfloor  =\frac{(p+1)(p-1)(p-2)}{4}. $$ \source{AMM, Problem 10346, David Doster}
+\textbf{K 11. } Let $p$ be a prime number of the form $4k+1$. Show that $$ \sum^{p-1}_{i=1} \left( \left \lfloor  \frac{2i^2}{p} \right \rfloor  - 2\left \lfloor  \frac{i^2}{p} \right \rfloor  \right) = \frac{p-1}{2}. $$ \source{Korea 2000}
+\textbf{K 12. } Let $p=4k+1$ be a prime. Show that $$ \sum^{k}_{i=1} \left \lfloor  \sqrt{ ip } \right \rfloor  = \frac{p^2 -1}{12}. $$ \source{[IHH pp.142]}
+\textbf{K 13. } Suppose that $n \ge 2$. Prove that $$ \sum_{k=2}^{n} \left\lfloor  \frac{n^2}{k} \right\rfloor  = \sum_{k=n+1}^{n^2} \left\lfloor  \frac{n^2}{k} \right\rfloor.  $$ \source{CRUX, Problem 2321, David Doster}
+\textbf{K 14. } Let $a, b, n$ be positive integers with $\gcd(a, n)=1$. Prove that $$ \sum_{k} \left\{ \frac{ak+b}{n} \right\}=\frac{n-1}{2}, $$ where $k$ runs through a complete system of residues modulo $m$. \source{}
+\textbf{K 15. } Find the total number of different integer values the function $$f(x) = \lfloor x\rfloor  + \lfloor 2x\rfloor  + \left\lfloor \frac{5x}{3}\right\rfloor  + \lfloor 3x\rfloor  + \lfloor 4x\rfloor $$ takes for real numbers $x$ with $0 \leq x \leq 100$. \source{APMO 1993/2}
+\textbf{K 16. } Prove or disprove that there exists a positive real number $u$ such that $\lfloor u^n \rfloor -n$ is an even integer for all positive integer $n$. \source{}
+\textbf{K 17. } Determine all real numbers $a$ such that $$ 4\lfloor an\rfloor =n+\lfloor a\lfloor an\rfloor \rfloor  \; \text{for all} \; n \in \mathbb{N}. $$ \source{Bulgaria 2003}
+\textbf{K 18. } Do there exist irrational numbers $a, b>1$ and $\lfloor a^{m}\rfloor \not=\lfloor b^{n}\rfloor $ for any positive integers $m$ and $n$? \source{[Tt] Tournament of the Towns 2002 Spring/A-Level}
+\textbf{K 19. } Let $a, b, c$, and $d$ be real numbers. Suppose that $\lfloor na\rfloor +\lfloor nb\rfloor =\lfloor nc\rfloor +\lfloor nd\rfloor $ for all positive integers $n$. Show that at least one of $a+b$, $a-c$, $a-d$ is an integer. \source{[PbAw, pp. 5]}
+\textbf{K 20. } Find all integer solutions of the equation $$ \left\lfloor  \frac{x}{1!} \right\rfloor  + \left\lfloor  \frac{x}{2!} \right\rfloor  + \cdots + \left\lfloor  \frac{x}{10!} \right\rfloor  =1001. $$ \source{(S. Reznichenko) [Ams, pp. 45]}
+\chapter{Geometric Number Theory}
+\textbf{L 1. } Does there exist a convex pentagon, all of whose vertices are lattice points in the plane, with no lattice point in the interior? \source{J. R. Arkinstall, Bull. of the Australian Math. Soc., 1980}
+\textbf{L 2. } Show there do not exist four points in the Euclidean plane such that the pairwise distances between the points are all odd integers. \source{Putnam 1993/B5}
+\textbf{L 3. } Prove no three lattice points in the plane form an equilateral triangle. \source{}
+\textbf{L 4. } The sidelengths of a polygon with $1994$ sides are $a_{i}=\sqrt{i^2 +4}$ $ \; (i=1,2,\cdots,1994)$. Prove that its vertices are not all on lattice points. \source{Israel 1994}
+\textbf{L 5. } A triangle has lattice points as vertices and contains no other lattice points. Prove that its area is $\frac{1}{2}$. \source{}
+\textbf{L 6. } Let $R$ be a convex region symmetrical about the origin with area greater than $4$. Show that $R$ must contain a lattice point different from the origin. \source{[Hua pp.535]}
+\textbf{L 7. } Show that the number $r(n)$ of representations of $n$ as a sum of two squares has $\pi$ as arithmetic mean, that is $$ \lim_{n \to \infty} \frac{1}{n} \sum^{n}_{m=1} r(m) = \pi. $$ \source{[GjJj pp.215]}
+\textbf{L 8. } Prove that on a coordinate plane it is impossible to draw a closed broken line such that \begin{itemize}\item coordinates of each vertex are rational, \item the length of its every edge is equal to $1$, \item the line has an odd number of vertices.\end{itemize} \source{IMO Short List 1990 USS3}
+\textbf{L 9. } Prove that if a lattice triangle has no lattice points on its boundary in addition to its vertices, and one point in its interior, then this interior point is its center of gravity. \source{[PeJs, pp. 125]}
+\textbf{L 10. } Find coordinates of a set of eight non-collinear planar points so that each has an integral distance from others. \source{[Jjt, pp. 75]}
+\chapter{Miscellaneous Problems}\quoting{Mathematics is not yet ready for such problems.}{Paul Erd\"os}
+\textbf{M 1. } Two positive integers are chosen. The sum is revealed to logician $A$, and the sum of squares is revealed to logician $B$. Both $A$ and $B$  are given this information and the information contained in this sentence. The conversation between $A$ and $B$ goes as follows: $B$ starts \begin{quote}  B: ` I can't tell what they are.' \\  A: ` I can't tell what they are.' \\  B: ` I can't tell what they are.' \\  A: ` I can't tell what they are.' \\  B: ` I can't tell what they are.' \\  A: ` I can't tell what they are.' \\  B: ` Now I can tell what they are.' \end{quote} \begin{enumerate} \item What are the two numbers? \item When $B$ first says that he cannot tell what the two numbers are, $A$ receives a large amount of information. But when $A$ first says that he cannot tell what the two numbers are, $B$ already knows that $A$ cannot tell what the two numbers are. What good does it do $B$ to listen to $A$?\end{enumerate} \source{MM, May 1984, Problem 1173, Thomas S.Ferguson}
+\textbf{M 2. } It is given that $2^{333}$ is a $101$-digit number whose first digit is $1$. How many of the numbers $2^k$, $1 \le k \le 332$, have first digit $4$? \source{[Tt] Tournament of the Towns 2001 Fall/A-Level}
+\textbf{M 3. } Is there a power of $2$ such that it is possible to rearrange the digits giving another power of $2$? \source{[Pt] Tournament of the Towns}
+\textbf{M 4. } If $x$ is a real number such that $x^2 -x$ is an integer, and for some $n \ge 3$, $x^n -x$ is also an integer, prove that $x$ is an integer. \source{Ireland 1998}
+\textbf{M 5. } Suppose that both $x^{3}-x$ and $x^{4}-x$ are integers for some real number $x$. Show that $x$ is an integer. \source{Vietnam 2003 (Tran Nam Dung)}
+\textbf{M 6. } Suppose that $x$ and $y$ are complex numbers such that $$ \frac{x^n -y^n}{x-y} $$ are integers for some four consecutive positive integers $n$. Prove that it is an integer for all positive integers $n$. \source{AMM, Problem E2998, Clark Kimberling}
+\textbf{M 7. } Let $n$ be a positive integer. Show that $$ \sum^{n}_{k=1} \tan^{2} \frac{k \pi}{2n+1} $$ is an odd integer. \source{}
+\textbf{M 8. } The set $S=\{ \frac{1}{n} \; \vert \; n \in \mathbb{N} \}$ contains arithmetic progressions of various lengths. For instance, $\frac{1}{20}$, $\frac{1}{8}$, $\frac{1}{5}$ is such a progression of length $3$ and common difference $\frac{3}{40}$. Moreover, this is a maximal progression in $S$ since it cannot be extended to the left or the right within $S$ ($\frac{11}{40}$ and $\frac{-1}{40}$ not being members of $S$). Prove that for all $n \in \mathbb{N}$, there exists a maximal arithmetic progression of length $n$ in $S$. \source{British Mathematical Olympiad 1997}
+\textbf{M 9. } Suppose that $$ \prod_{n=1}^{1996} (1 + nx^{3^{n}}) = 1 + a_{1} x^{k_{1}} + a_{2} x^{k_{2}} + \cdots + a_{m} x^{k_{m}} $$ where $a_{1}$, $a_{2}$,..., $a_{m}$ are nonzero and $k_{1}< k_{2} < \cdots < k_{m}$. Find $a_{1996}$. \source{Turkey 1996}
+\textbf{M 10. } Let $p$ be an odd prime. Show that there is at most one non-degenerate integer triangle with perimeter $4p$ and integer area. Characterize those primes for which such triangle exist. \source{CRUX, Problem 2331, Paul Yiu}
+\textbf{M 11. } For each positive integer $n$, prove that there are two consecutive positive integers each of which is the product of $n$ positive integers greater than $1$. \source{[Rh, pp. 165] Unused problems for 1985 CanMO}
+\textbf{M 12. } Let $$ \begin{array}{cccc} a_{1,1} & a_{1,2} & a_{1,3} & \dots \\ a_{2,1} & a_{2,2} & a_{2,3} & \dots \\ a_{3,1} & a_{3,2} & a_{3,3} & \dots \\ \vdots & \vdots & \vdots & \ddots \end{array} $$ be a doubly infinite array of positive integers, and suppose each positive integer appears exactly eight times in the array. Prove that $a_{m,n} > mn$ for some pair of positive integers $(m,n)$. \source{Putnam 1985/B3}
+\textbf{M 13. } The sum of the digits of a natural number $n$ is denoted by $S(n)$. Prove that $S(8n) \ge \frac{1}{8} S(n)$ for each $n$. \source{Latvia 1995}
+\textbf{M 14. } Let $p$ be an odd prime. Determine positive integers $x$ and $y$ for which $x \le y$ and $\sqrt{2p}-\sqrt{x}-\sqrt{y}$ is nonnegative and as small as possible. \source{IMO Short List 1992 P17}
+\textbf{M 15. } Let $\alpha(n)$ be the number of digits equal to one in the dyadic representation of a positive integer $n$. Prove that \begin{enumerate} \item the inequality $\alpha(n^2 ) \le \frac{1}{2} \alpha(n) (1+\alpha(n))$ holds, \item equality is attained for infinitely $n\in\mathbb{N}$, \item there exists a sequence $\{n_i\}$ such that $\lim_{i \to \infty} \frac{ \alpha({n_{i}}^2 )}{ \alpha(n_{i}) } = 0$.\end{enumerate} \source{}
+\textbf{M 16. } Show that if $a$ and $b$ are positive integers, then $$ \left( a+ \frac{1}{2} \right)^{n} + \left( b+ \frac{1}{2} \right)^{n} $$ is an integer for only finitely many positive integer $n$. \source{[Ns pp.4]}
+\textbf{M 17. } Determine the maximum value of $m^{2}+n^{2}$, where $m$ and $n$ are integers satisfying $m,n\in \{1,2,...,1981\}$ and $(n^{2}-mn-m^{2})^{2}=1.$ \source{IMO 1981/3}
+\textbf{M 18. } Denote by $S$ the set of all primes $p$ such that the decimal representation of $\frac{1}{p}$ has the fundamental period of divisible by $3$. For every $p \in S$ such that $\frac{1}{p}$ has the fundamental period $3r$ one may write $$ \frac{1}{p} = 0.a_{1} a_{2} \cdots a_{3r} a_{1} a_{2} \cdots a_{3r} \cdots, $$ where $r=r(p)$. For every $p \in S$ and every integer $k \ge 1$ define $$ f(k, p)=a_{k}+a_{k+r(p)}+a_{k+2r(p)}. $$ \begin{enumerate} \item Prove that $S$ is finite. \item Find the highest value of $f(k, p)$ for $k \ge 1$ and $p \in S$.\end{enumerate} \source{IMO Short List 1999 N4}
+\textbf{M 19. } Determine all pairs $(a, b)$ of real numbers such that $a\lfloor bn\rfloor =b\lfloor an\rfloor$ for all positive integer $n$. \source{IMO Short List 1998 P15}
+\textbf{M 20. } Let $n$ be a positive integer that is not a perfect cube. Define real numbers $a$, $b$, $c$ by $$ a=\sqrt[3]{n}, \; b=\frac{1}{a-\lfloor a\rfloor}, \; c=\frac{1}{b-\lfloor b\rfloor}.$$ Prove that there are infinitely many such integers $n$ with the property that there exist integers $r$, $s$, $t$, not all zero, such that $ra+sb+tc=0$. \source{IMO Short List 2002 A5}
+\textbf{M 21. } Find, with proof, the number of positive integers whose base-$n$ representation consists of distinct digits with the property that, except for the leftmost digit, every digit differs by $\pm 1$ from some digit further to the left. \source{USA 1990}
+\textbf{M 22. } The decimal expression of the natural number $a$ consists of $n$ digits, while that of $a^3$ consists of $m$ digits. Can $n+m$ be equal to $2001$? \source{[Tt] Tournament of the Towns 2001 Spring/O-Level}
+\textbf{M 23. } Observe that $$ \frac{1}{1}+\frac{1}{3}=\frac{4}{3}, \;\; 4^2 +3^2 =5^2, $$ $$ \frac{1}{3}+\frac{1}{5}=\frac{8}{15}, \;\; 8^2 +{15}^2 ={17}^2, $$ $$ \frac{1}{5}+\frac{1}{7}=\frac{12}{35}, \;\; {12}^2 +{35}^2 ={37}^2. $$ State and prove a generalization suggested by these examples. \source{[EbMk, pp. 10]}
+\textbf{M 24. } A number $n$ is called a Niven number, named for Ivan Niven, if it is divisible by the sum of its digits. For example, $24$ is a Niven number. Show that it is not possible to have more than $20$ consecutive Niven numbers. \source{(C. Cooper, R. E. Kennedy) [Jjt, pp. 58]}
+\textbf{M 25. } Prove that there does not exist a natural number which, upon transfer of its initial digit to the end, is increased five, six or eight times. \source{[DNI, 12]}
+\textbf{M 26. } Which integers have the following property? If the final digit is deleted, the integer is divisible by the new number. \source{[DNI, 11]}
+\textbf{M 27. } Let $A$ be the set of the $16$ first positive integers. Find the least positive integer $k$ satisfying the condition: In every $k$-subset of $A$, there exist two distinct $a, b \in A$ such that $a^2 + b^2$ is prime. \source{Vietnam 2004}
+\textbf{M 28. } What is the rightmost nonzero digit of $1000000!$? \source{[JDS, pp. 28]}
+\textbf{M 29. } For how many positive integers $n$ is $$ \left( 1999+\frac{1}{2}\right)^n + \left(2000+\frac{1}{2}\right)^n $$ an integer? \source{[JDS, pp. 30]}
+\textbf{M 30. } A magic square is an $n\times n$ matrix, containing the numbers $1,2,\cdots n^2$ exactly once each, such that the sum of the elements in each row, each colum, and each of both main diagonals is equal.
+
+Is there a $3 \times 3$ magic square consisting of distinct Fibonacci numbers (two $1$s are allowed)? \source{[JDS, pp. 31]}
+\textbf{M 31. } Alice and Bob play the following number-guessing game. Alice writes down a list of positive integers $x_{1}$, $\cdots$, $x_{n}$, but does not reveal them to Bob, who will try to determine the numbers by asking Alice questions. Bob chooses a list of positive integers $a_{1}$, $\cdots$, $a_{n}$ and asks Alice to tell him the value of $a_{1}x_{1}+\cdots+a_{n}x_{n}$. Then Bob chooses another list of positive integers $b_{1}$, $\cdots$, $b_{n}$ and asks Alice for $b_{1}x_{1}+\cdots+b_{n}x_{n}$. Play continues in this way until Bob is able to determine Alice's numbers. How many rounds will Bob need in order to determine Alice's numbers? \source{[JDS, pp. 57]}
+\textbf{M 32. } Four consecutive even numbers are removed from the set $$ A=\{ 1, 2, 3, \cdots, n \}. $$ If the arithmetic mean of the remaining numbers is $51.5625$, which four numbers were removed? \source{[Rh2, pp. 78]}
+\textbf{M 33. } Let $S_{n}$ be the sum of the digits of $2^n$. Prove or disprove that $S_{n+1}=S_{n}$ for some positive integer $n$. \source{MM Nov. 1982, Q679, M. S. Klamkin and M. R.Spiegel}
+\textbf{M 34. } Counting from the right end, what is the $2500$th digit of $10000!$? \source{MM Sep. 1980, Problem 1075, Phillip M.Dunson}
+\textbf{M 35. } For every natural number $n$, denote $Q(n)$ the sum of the digits in the decimal representation of $n$. Prove that there are infinitely many natural numbers $k$ with $Q(3^{k})>Q(3^{k+1})$. \source{Germany 1996}
+\textbf{M 36. } Let $n$ and $k$ are integers with $n>0$. Prove that $$  -\frac{1}{2n} \sum^{n-1}_{m=1} \cot \frac{\pi m}{n} \sin \frac{2\pi km}{n} = \begin{cases}\tfrac{k}{n}-\lfloor\tfrac{k}{n}\rfloor-\frac12 & \text{if }k|n \\ 0 & \text{otherwise} \end{cases}. $$ \source{[Tma, pp.175]}
+\textbf{M 37. } The function $\mu: \mathbb{N} \to \mathbb{C}$ is defined by $$ \mu(n) = \sum_{k \in R_{n}} \left( \cos \frac{2k\pi}{n} + i \sin \frac{2k\pi}{n} \right), $$ where $R_{n}=\{ k \in \mathbb{N} \vert 1 \le k \le n, \gcd(k, n)=1 \}$. Show that $\mu(n)$ is an integer for all positive integer $n$. \source{}
+\textbf{M 38. } Consider $n$ positive integers $a_{1}, \ldots, a_{n}$. Any two numbers $a_{i}$ and $a_{k}$ with $i < k$ can be changed as follows: $a_{i}$ is replaced by $\gcd(a_{i},a_{k})$ and $a_{k}$ is subsituted by $\text{lcm}(a_{i},a_{k})$. Prove that the sequence is changed only a finite number of times. \source{}
+\chapter{References}
+\section*{Abbreviations used in the book}
+$$\begin{array}{ll}
+\text{AIME} & \text{American Invitational Mathematics Examination} \\
+\text{APMO} & \text{Asian Pacific Mathematics Olympiads} \\
+\text{IMO} & \text{International Mathematical Olympiads} \\
+\text{CRUX} & \text{Crux Mathematicorum (with Mathematical Mayhem)}\\
+\text{MM} & \text{Math. Magazine}\\
+\text{AMM} & \text{American Math. Monthly}
+\end{array}$$
+
+\section*{References}
+\begin{itemize}
+\item[AaJc] Andrew Adler, John E. Coury, \textit{The Theory of Numbers - A Text and Source Book of Problems}, John and Bartlet Publishers
+\item[Ab] Alan Baker, \textit{A Consise Introduction to the Theory of Numbers}, Cambridge University Press
+\item[Ac] Allan Clark, \textit{Elements of Abstract Algebra}, Dover
+\item[Ae] Arthur Engel, \textit{Problem-Solving Strategies}, Springer-Verlag
+\item[Ams] A. M. Slinko, \textit{USSR Mathematical Olympiads 1989-1992}, AMT\footnote{Australian Mathematics Trust}
+\item[AI] A. N. Parshin, I. R. Shafarevich, \textit{Number Theory IV - Encyclopaedia of Mathematical Sciences, Volume 44}, Spinger-Verlag
+\item[DfAk] Dmitry Fomin, Alexey Kirichenko, \textit{Leningrad Mathematical Olympiads 1987-1991}, \\MathPro Press
+\item[Dmb] David M. Burton, \textit{Elementary Number Theory}, MathPro Press
+\item[DNI] D. O. Shklarsky, N. N. Chentzov, I. M. Yaglom, \textit{The USSR Olympiad Problem Book}, Dover
+\item[Dz] http://www-gap.dcs.st-and.ac.uk/$\sim$john/Zagier/Problems.html
+\item[Eb1] Edward J. Barbeau, \textit{Pell's Equation}, Springer-Verlag
+\item[Eb2] Edward J. Barbeau, \textit{Power Play}, MAA\footnote{Mathematical Association of America}
+\item[EbMk] Edward J. Barbeau, Murry S. Klamkin \textit{Five Hundred Mathematical Challenges}, MAA
+\item[ElCr] Edward Lozansky, Cecil Rousseau, \textit{Winning Solutions}, Springer-Verlag
+\item[En] Eugen Netto, \textit{??}, Mathematische Annalen, vol 48(1897)
+\item[Er] Elvira Rapaport, \textit{Hungarian Problem Book I}, MAA
+\item[GhEw] G. H. Hardy, E. M. Wright, \textit{An Introduction to the theory of numbers}, Fifth Edition, Oxford University Press
+\item[GjJj] Gareth A. Jones, J. Mary Jones, \textit{Elementary Number Theory}, Springer-Verlag
+\item[GML] George T. Gilbert, Mark I. Krusemeyer, Loren C. Larson, \textit{The Wohascum County Problem Book}, MAA
+\item[Her] H. E. Rose, \textit{A Course in Number Theory}, Cambridge University Press
+\item[Hs] {http://www-gap.dcs.st-and.ac.uk/$\sim$history/index.html}, \textit{The MacTutor History of \\ Mathematics Archive}
+\item[Hua] Hua Loo Keng, \textit{Introduction to Number Theory}, Springer-Verlag
+\item[IHH] Ivan Niven, Herbert S. Zuckerman, Hugh L. Montogomery, \textit{An Introduction to the Theory of Numbers}, Fifth Edition, John Wiley and Sons, Inc.
+\item[Imv] I. M. Vinogradov, \textit{An Introduction to The Theory of Numbers}, Pergamon Press
+\item[JDS] Joseph D. E. Konhauser, Dan Velleman, Stan Wagon, \textit{Which Way Did The Bicycle Go?}, MAA
+\item[Jjt] James J. Tattersall, \textit{Elementary Number Theory in Nine Chapters}, Cambridge University Press
+\item[JtPt] Jordan B. Tabov, Peter J. Taylor, \textit{Methods of Problem Solving Book 1}, AMT
+\item[JeMm] J. Esmonde, M. R. Murty, \textit{Problems in Algebraic Number Theory}, Springer-Verlag
+\item[KaMr] K. Alladi, M. Robinson, \textit{On certain irrational values of the logarithm.} Lect. Notes Math. 751, 1-9
+\item[KhKw] Kenneth Hardy, Kenneth S. Williams, \textit{The Green Book of Mathematical Problems}, Dover
+\item[KiMr] Kenneth Ireland, Michael Rosen, \textit{A Classical Introduction to Modern Number Theory}, Springer-Verlag
+\item[Km] {http://www.numbertheory.org/courses/MP313/index.html}, Keith Matthews, \textit{MP313 \\ Number Theory III, Semester 2, 1999}
+\item[Kmh] K. Mahler, \textit{On the approximation of $\pi$}, Proc. Kon. Akad. Wet. A., Vol 56, 30-42
+\item[Ksk] Kiran S. Kedlaya, \textit{When is (xy+1)(yz+1)(zx+1) a square?}, Math. Magazine, Vol 71 (1998), 61-63
+\item[Ljm] L. J. Mordell, \textit{Diophantine Equations}, Acadmic Press
+\item[MaGz] Martin Aigner, G\"unter M. Ziegler, \textit{Proofs from THE BOOK}, Springer-Verlag
+\item[Nv] Nicolai N. Vorobiev, \textit{Fibonacci Numbers}, Birkh\"auser
+\item[PbAw] Pitor Biler, Alfred Witkowski, \textit{Problems in Mathematical Analysis}, Marcel Dekker, Inc.
+\item[PJ] Paulo Ney de Souza, Jorge-Nuno Silva, \textit{Berkeley Problems in Mathematics}, Second Edition, Springer-Verlag
+\item[Pp] \textit{Purdue Univ. POW}, http://www.math.purdue.edu/academics/pow
+\item[Pr] Paulo Ribenboim, \textit{The New Book of Prime Number Records}, Springer-Verlag
+\item[Hrh] Paul R. Halmos, \textit{Problems for Mathematicians, Young and Old}, MAA
+\item[Pt] Peter J. Taylor, \textit{Tournament of the Towns 1984-1989, Questions and Solutions}, AMT
+\item[PeJs] Paul Erd\"os, J\'anos Sur\'anyi, \textit{Topics in the Theory of Numbers}, Springer-Verlag
+\item[Rc] Robin Chapman, \textit{A Polynomial Taking Integer Values}, Math. Magazine, Vol 69 (1996), 121
+\item[Rdc] Robert D. Carmichael, \textit{The Theory of Numbers}
+\item[Rh] R. Honsberger, \textit{Mathematical Chestnuts from Around the World}, MAA
+\item[Rh2] R. Honsberger, \textit{In P\'olya's Footsteps}, MAA
+\item[Rh3] R. Honsberger, \textit{From Erd\"os To Kiev}, MAA
+\item[Rs] {http://www.cs.man.ac.uk/cnc/EqualSums/equalsums.html}, Rizos Sakellariou, \textit{On E- \\ qual Sums of Like Powers (Euler's Conjecture)}
+\item[TaZf] Titu Andreescu, Zuming Feng, \textit{102 Combinatorial Problems From the Training of the USA IMO Team}, Birkh\"auser
+\item[Tma] Tom M. Apostol, \textit{Introduction to Analytic Number Theory}, Springer-Verlag
+\item[Twh] Thomas W. Hungerford, \textit{ABSTRACT ALGEBRA - An Introduction}, Brooks/Cole
+\item[UmDz] Uro\~s Milutinovi\'c, Darko \~Zubrini\'c, \textit{Balkanian Mathematical Olmpiades 1984-1991}
+\item[VsAs] V. Senderov, A. Spivak, \textit{Fermat's Little Theorem}, Quantum, May/June 2000
+\item[Vvp] V. V. Prasolov, \textit{Problems and Theorems in Linear Algebra}, AMS\footnote{American Mathematical Society}
+\item[Wlp] {http://www.unl.edu/amc/a-activities/a7-problems/putnam/-pindex.html}, Kiran S. \\ Kedlaya, \textit{William Lowell Putnam Mathematics Competition Archive}
+\item[Wsa] W. S. Anglin, \textit{The Queen of Mathematics}, Kluwer Academic Publishers
+\item[Zh] Zeljko Hanjs, \textit{Mediterranean Mathematics Competition MMC}, Mathematics Competitions, Vol 12 (1999), 37-41
+\end{itemize}
+\end{document}
