@@ -1,0 +1,20 @@
+# -*- mode: org; coding: utf-8-unix; fill-column: 75 -*-
+
+# ISC License (ISC)
+
+Copyright 2021 Anderson Torres
+
+Permissões de uso, cópia, modificação e distribuição deste programa para
+qualquer propósito, com ou sem pagamento de valores, é por meio deste concedida,
+desde que a notificação de diretos de cópia acima e esta notificação de
+permissão esteja presente em todas as cópias.
+
+*O programa é fornecido "da forma como está", e o autor abdica quaisquer
+garantias com relação a este programa, incluindo todas as garantias implícitas
+de comercialização e adequação. Em evento algum deve o autor ser responsável por
+quaisquer danos especiais, diretos, indiretos ou consequenciais resultantes de
+perda de usos, dados ou lucros, seja em ação de contato, negligência ou outros
+atos de ilicitude, resultantes de ou em conexão com o uso ou execução deste
+programa.*
+
+Redação original em inglês [[https://opensource.org/licenses/ISC][aqui]].
