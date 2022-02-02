@@ -1,0 +1,12 @@
+# -*- mode:org; coding:utf-8-unix; fill-column:80 -*-
+
+#+title: README
+
+* INTRO
+
+Esta é a parte mais pessoal e menos organizada do ferro-velho. Seu funcionamento
+será uma mistura de ferro-velho com blog.
+
+A ideia é servir como porta de entrada para as outras sub-árvores E também para
+aquelas coisas mais pessoais e menos apropriadas, indo desde contos-da-cripta
+até famigerados =gists=.
